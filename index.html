@@ -271,6 +271,8 @@ Error message and password prompt
 
 <li>Quotes and passages</li>
 
+<li>RapidQ Esperanto Diacritic Adder</li>
+
 <li>RapidQ Reference</li>
 
 <li>Scribendi test invite</li>
@@ -9556,10 +9558,10 @@ Error message and password prompt
 <div created="20200402182518749" modified="20200415230102972" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20200402000457344" modified="20200419114951446" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200402000457344" modified="20200419211828995" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
-<div created="20200419185114683" list="[[Swingers we're talking to]] ToDo" modified="20200419185114683" title="$:/StoryList">
+<div created="20200419190127017" list="[[RapidQ Esperanto Diacritic Adder]]" modified="20200419211833012" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9620,8 +9622,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200402031459511" modified="20200419120635477" title="$:/temp/search">
-<pre>des</pre>
+<div created="20200402031459511" modified="20200419211841569" title="$:/temp/search">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -11041,6 +11043,67 @@ I don't know if I've said this to anyone, but I believe that [[the theory of lit
 * [[Metta]]
 * [[The Temporary Autonomous Zone, Ontological Anarchy, Poetic Terrorism, by Hakim Bey|https://hermetic.com/bey/taz1]]
 * [[The Rubaiyat Of Omar Khayyam Of Naishapur by Edward Fitzgerald|http://famouspoetsandpoems.com/poets/edward_fitzgerald/poems/8160]]</pre>
+</div>
+<div created="20200419211843309" modified="20200419211948058" tags="code" title="RapidQ Esperanto Diacritic Adder">
+<pre>
+```
+$INCLUDE &quot;RAPIDQ.INC&quot;
+
+ DECLARE SUB esperantize
+  DIM InputFile AS QFileStream
+  DIM OutputFile AS QFileStream
+  DIM sx as STRING
+  
+  OutputString$ = &quot;&quot;
+
+ 
+  InputFile.Open(&quot;eo_input.txt&quot;, fmOpenRead)
+  S$ = InputFile.ReadStr(InputFile.Size)         '' Read entire file
+  InputFile.Close
+  
+  sx = S$
+  esperantize
+  
+  OutputFile.Open(&quot;eo_output.txt&quot;,fmCreate)
+  OutputFile.WriteStr(OutputString$,len(S$))
+  OutputFile.Close
+    
+  
+  SUB esperantize
+  stringlengthminusone = (len(S$)-1)
+  FOR iterate% = 1 to stringlengthminusone
+  IF MID$(sx,iterate%,2) = &quot;Cx&quot; then 
+  OutputString$ = OutputString$ + &quot;Ĉ&quot;
+  ELSEIF MID$(sx,iterate%,2) = &quot;cx&quot; then 
+  OutputString$ = OutputString$ + &quot;ĉ&quot;
+  ELSEIF MID$(sx,iterate%,2) = &quot;Gx&quot; then 
+  OutputString$ = OutputString$ + &quot;Ĝ&quot;
+  ELSEIF MID$(sx,iterate%,2) = &quot;gx&quot; then 
+  OutputString$ = OutputString$ + &quot;ĝ&quot;
+  ELSEIF MID$(sx,iterate%,2) = &quot;Sx&quot; then 
+  OutputString$ = OutputString$ + &quot;Ŝ&quot;
+  ELSEIF MID$(sx,iterate%,2) = &quot;sx&quot; then 
+  OutputString$ = OutputString$ + &quot;ŝ&quot;
+  ELSEIF MID$(sx,iterate%,2) = &quot;Hx&quot; then 
+  OutputString$ = OutputString$ + &quot;Ĥ&quot;
+  ELSEIF MID$(sx,iterate%,2) = &quot;hx&quot; then 
+  OutputString$ = OutputString$ + &quot;ĥ&quot;
+  ELSEIF MID$(sx,iterate%,2) = &quot;Ux&quot; then 
+  OutputString$ = OutputString$ + &quot;Ŭ&quot;
+  ELSEIF MID$(sx,iterate%,2) = &quot;ux&quot; then 
+  OutputString$ = OutputString$ + &quot;ŭ&quot;
+  ELSEIF ucase$(MID$(sx,iterate%,1)) = &quot;X&quot; then 
+  
+  ELSE
+  OutputString$ = OutputString$ + MID$(sx,iterate%,1)
+
+  END IF
+  NEXT iterate%
+  END SUB
+ 
+  
+```
+</pre>
 </div>
 <div created="20200419022518165" modified="20200419032855324" tags="" title="RapidQ Reference">
 <pre>!ABS 
