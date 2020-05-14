@@ -153,13 +153,19 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/palette</li>
 
+<li>$:/plugins/danielo515/encryptTiddler</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
+
+<li>$:/state/encrypt</li>
 
 <li>$:/state/image-picker/system--1365487189</li>
 
@@ -188,6 +194,10 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/password1</li>
+
+<li>$:/temp/password2</li>
 
 <li>$:/temp/search</li>
 
@@ -235,7 +245,7 @@ Error message and password prompt
 
 <li>9th May 2020</li>
 
-<li>A/B DMT Extraction 'Tek'</li>
+<li>A/B Tek</li>
 
 <li>Accounts and passwords</li>
 
@@ -263,8 +273,6 @@ Error message and password prompt
 
 <li>Desires</li>
 
-<li>Draft of 'Music'</li>
-
 <li>DrugFacts</li>
 
 <li>Every book I've ever read</li>
@@ -278,8 +286,6 @@ Error message and password prompt
 <li>Glasses prescription</li>
 
 <li>GoBag</li>
-
-<li>GordoTek</li>
 
 <li>GroceryList</li>
 
@@ -305,6 +311,8 @@ Error message and password prompt
 
 <li>On universal love</li>
 
+<li>Other Tek</li>
+
 <li>Practice and Study</li>
 
 <li>Predictions</li>
@@ -327,7 +335,7 @@ Error message and password prompt
 
 <li>Slate Star Codex (SSC) automated podcast</li>
 
-<li>Smoking 5-MEO-MIPT</li>
+<li>Smoking Moxy</li>
 
 <li>StartUps</li>
 
@@ -9562,17 +9570,126 @@ Error message and password prompt
 <pre>ToDo
 </pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[$:/plugins/danielo515/encryptTiddler]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
 <div created="20200402053604856" modified="20200402053714218" title="$:/palette">
 <pre>$:/palettes/Twilight</pre>
 </div>
+<div author="DanieloRodrigez" bag="default" core-version="&gt;=5.1.1" dependents="" description="adds the ability to encrypt single tiddlers" list="Encrypt-Tiddler Changelog" plugin-type="plugin" released="2020-04-24T08:52:17.122Z" revision="0" source="https://github.com/danielo515/TIddlywiki5-EncryptTiddlerPlugin" title="$:/plugins/danielo515/encryptTiddler" type="application/json" version="2.3">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/danielo515/encryptTiddler/Encrypt-Tiddler&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/Encrypt-Tiddler&quot;,
+            &quot;created&quot;: &quot;20140406153742691&quot;,
+            &quot;creator&quot;: &quot;Danielo515&quot;,
+            &quot;description&quot;: &quot;add the hability to encrypt individual tiddlers&quot;,
+            &quot;modified&quot;: &quot;20141029152631265&quot;,
+            &quot;modifier&quot;: &quot;Danielo Rodriguez&quot;,
+            &quot;tags&quot;: &quot;index plugins&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;caption&quot;: &quot;readme&quot;,
+            &quot;text&quot;: &quot;This plugin adds the ability to encrypt your tiddlers individually. This have several advantages:\n\n* You can specify a different password for each tiddler if you want.\n* You don't have to encrypt your whole wiky.\n* If you forget your password, you only lose a tiddler.\n* It's possible to edit the tiddler content , tags and fields ''except the encrypt field'' after encryption. Decrypting your tiddler will restore it to its original state when you encrypted it. This way you can hide the encrypted tiddlers as a \&quot;different\&quot; thing.\n* You can even encrypt images.\n* You can have sensible data in a day to day wiky.\n* I didn't try this, but theoretically you can apply double encryption by encrypting your wiki too.&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/Changelog&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/Changelog&quot;,
+            &quot;text&quot;: &quot;!! V2.3\n* No need to double type password for decrypt tiddlers\n* Fix bug with batch encryption\n* Code simplified\n!! V2.2\n* Added the need to type the password twice\n* Tested on tw 5.1.22\n!! V2.1\n* Added control panel.\n* Added ability to batch encrypt and decrypt tiddlers.\n* Added some documentation an language strings.\n\n&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/control-panel/batch-encrypt&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/control-panel/batch-encrypt&quot;,
+            &quot;caption&quot;: &quot;Batch Encryption&quot;,
+            &quot;text&quot;: &quot;\\define lingo-base() $:/language/Search/\n&lt;&lt;lingo Filter/Hint&gt;&gt;\n{{$:/plugins/danielo515/encryptTiddler/language/batch}}\n\n&lt;$linkcatcher to=\&quot;$:/temp/encrypt/filter\&quot;&gt;\n\n&lt;div class=\&quot;tc-search tc-advanced-search\&quot;&gt;\n&lt;$edit-text tiddler=\&quot;$:/temp/encrypt/filter\&quot; type=\&quot;search\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;filter tiddlers\&quot;/&gt;\n&lt;$button popup=&lt;&lt;qualify \&quot;$:/state/filterDropdown\&quot;&gt;&gt; class=\&quot;tc-btn-invisible\&quot;&gt;\n{{$:/core/images/down-arrow}}\n&lt;/$button&gt;\n&lt;$reveal state=\&quot;$:/temp/encrypt/filter\&quot; type=\&quot;nomatch\&quot; text=\&quot;\&quot;&gt;\n&lt;$button class=\&quot;tc-btn-invisible\&quot;&gt;\n&lt;$action-setfield $tiddler=\&quot;$:/temp/encrypt/filter\&quot; $field=\&quot;text\&quot; $value=\&quot;\&quot;/&gt;\n{{$:/core/images/close-button}}\n&lt;/$button&gt;\n\n\n&lt;$edit-text tag=\&quot;input\&quot; tiddler=\&quot;$:/temp/password1\&quot; placeholder=\&quot;password\&quot; type=\&quot;password\&quot; default=\&quot;\&quot; col=\&quot;4\&quot;/&gt;\n&lt;$edit-text tag=\&quot;input\&quot; tiddler=\&quot;$:/temp/password2\&quot; placeholder=\&quot;confirm password\&quot; type=\&quot;password\&quot; default=\&quot;\&quot; col=\&quot;4\&quot;/&gt;\n&lt;$encryptTiddler passwordTiddler1=\&quot;$:/temp/password1\&quot; passwordTiddler2=\&quot;$:/temp/password2\&quot; filter={{$:/temp/encrypt/filter}}&gt;\n&lt;$button message=\&quot;tw-encrypt-tiddler\&quot;&gt;\nEncrypt\n&lt;/$button&gt;\n&lt;$button message=\&quot;tw-decrypt-tiddler\&quot;&gt;\nDecrypt\n&lt;/$button&gt;\n&lt;/$encryptTiddler&gt;\n&lt;/$reveal&gt;\n&lt;/div&gt;\n\n&lt;div class=\&quot;tc-block-dropdown-wrapper\&quot;&gt;\n&lt;$reveal state=&lt;&lt;qualify \&quot;$:/state/filterDropdown\&quot;&gt;&gt; type=\&quot;nomatch\&quot; text=\&quot;\&quot; default=\&quot;\&quot;&gt;\n&lt;div class=\&quot;tc-block-dropdown tc-edit-type-dropdown\&quot;&gt;\n&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/Filter]!sort[]] -[[$:/core/Filters/SystemTags]] -[[$:/core/Filters/AllTags]]\&quot;&gt;&lt;$link to={{!!filter}}&gt;&lt;$transclude field=\&quot;description\&quot;/&gt;&lt;/$link&gt;\n&lt;/$list&gt;\n&lt;/div&gt;\n&lt;/$reveal&gt;\n&lt;/div&gt;\n\n&lt;/$linkcatcher&gt;\n\n&lt;$reveal state=\&quot;$:/temp/encrypt/filter\&quot; type=\&quot;nomatch\&quot; text=\&quot;\&quot;&gt;\n&lt;$set name=\&quot;resultCount\&quot; value=\&quot;\&quot;\&quot;&lt;$count filter={{$:/temp/encrypt/filter}}/&gt;\&quot;\&quot;\&quot;&gt;\n&lt;div class=\&quot;tc-search-results\&quot;&gt;\n&lt;&lt;lingo Filter/Matches&gt;&gt;\n&lt;$list filter={{$:/temp/encrypt/filter}} template=\&quot;$:/plugins/danielo515/encryptTiddler/ui/listItemTemplate\&quot;/&gt;\n&lt;/div&gt;\n&lt;/$set&gt;\n&lt;/$reveal&gt;&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/control-panel&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/control-panel&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ControlPanel&quot;,
+            &quot;caption&quot;: &quot;Encrypt Tiddlers&quot;,
+            &quot;text&quot;: &quot;\\define prefix(name) $:/plugins/danielo515/encryptTiddler/control-panel/$name$\n\n&lt;$macrocall $name=\&quot;tabs\&quot; tabsList=\&quot;[all[shadows+tiddlers]prefix[$:/plugins/danielo515/encryptTiddler/control-panel/]]\&quot; default=&lt;&lt;prefix \&quot;batch-encrypt\&quot;&gt;&gt; state=\&quot;$:/state/encryptTiddler/control-panel/tabs\&quot;&gt;&gt;&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/crypt-batch-button&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/crypt-batch-button&quot;,
+            &quot;creator&quot;: &quot;Danielo&quot;,
+            &quot;text&quot;: &quot;&lt;span title=\&quot;Encrypt/Decrypt tiddler\&quot; class=\&quot;pc-batch-controls\&quot;&gt;\n    &lt;$reveal state=&lt;&lt;qualify \&quot;$:/state/encrypt\&quot;&gt;&gt; type=\&quot;nomatch\&quot; text={{!!title}} animate=\&quot;no\&quot;&gt;&lt;$button set=&lt;&lt;qualify \&quot;$:/state/encrypt\&quot;&gt;&gt; setTo={{!!title}} class=\&quot;tc-btn-invisible\&quot;&gt;{{$:/plugins/danielo515/encryptTiddler/unlocked}}&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal state=&lt;&lt;qualify \&quot;$:/state/encrypt\&quot;&gt;&gt; type=\&quot;match\&quot; text={{!!title}} animate=\&quot;no\&quot;&gt;&lt;$button set=&lt;&lt;qualify \&quot;$:/state/encrypt\&quot;&gt;&gt; setTo=\&quot;\&quot; class=\&quot;tc-btn-invisible\&quot;&gt;{{$:/plugins/danielo515/encryptTiddler/unlocked}}&lt;/$button&gt;&lt;/$reveal&gt;\n    &lt;$encryptTiddler passwordTiddler1=\&quot;$:/temp/password1\&quot; passwordTiddler2=\&quot;$:/temp/password2\&quot; filter={{$:/temp/encrypt/filter}}&gt;&lt;$reveal state=&lt;&lt;qualify \&quot;$:/state/encrypt\&quot;&gt;&gt; type=\&quot;match\&quot; text={{!!title}} animate=\&quot;yes\&quot;&gt;\n    &lt;div class=\&quot;tc-block-dropdown tw-crypt-dropdown\&quot;&gt;\n        &lt;span class=\&quot;tw-password-field\&quot;&gt;&lt;$edit-text tiddler=\&quot;$:/temp/password1\&quot; tag=\&quot;input\&quot; type=\&quot;password\&quot; default=\&quot;\&quot; placeholder=\&quot;password\&quot; class=\&quot;tc-edit-texteditor\&quot;/&gt;&lt;/span&gt;\n        &lt;span class=\&quot;tw-password-field\&quot;&gt;&lt;$edit-text tiddler=\&quot;$:/temp/password2\&quot; tag=\&quot;input\&quot; type=\&quot;password\&quot; default=\&quot;\&quot; placeholder=\&quot;repeat\&quot; class=\&quot;tc-edit-texteditor\&quot;/&gt;&lt;/span&gt;\n        &lt;span class=\&quot;tw-crypt-button\&quot;&gt; &lt;$button message=\&quot;tw-encrypt-tiddler\&quot;  set=&lt;&lt;qualify \&quot;$:/state/encrypt\&quot;&gt;&gt; setTo=\&quot;\&quot; &gt;Encrypt&lt;/$button&gt; &lt;$button message=\&quot;tw-decrypt-tiddler\&quot; set=&lt;&lt;qualify \&quot;$:/state/encrypt\&quot;&gt;&gt; setTo=\&quot;\&quot; &gt;Decrypt&lt;/$button&gt;&lt;/span&gt;\n    &lt;/div&gt;\n    &lt;/$reveal&gt;&lt;/$encryptTiddler&gt;\n&lt;/span&gt;\n&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/crypt-button&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/crypt-button&quot;,
+            &quot;created&quot;: &quot;20140405233000477&quot;,
+            &quot;creator&quot;: &quot;Danielo&quot;,
+            &quot;modified&quot;: &quot;20200422065835622&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ViewToolbar button encrypt export&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;span title=\&quot;Encrypt/Decrypt tiddler\&quot;&gt;&lt;$transclude tiddler=\&quot;$:/plugins/danielo515/encryptTiddler/openPopup\&quot;/&gt;\n&lt;/span&gt;&lt;$encryptTiddler passwordTiddler1=\&quot;$:/temp/password1\&quot; passwordTiddler2=\&quot;$:/temp/password2\&quot;&gt;&lt;$reveal state=\&quot;$:/state/encrypt\&quot; type=\&quot;match\&quot; text={{!!title}} animate=\&quot;yes\&quot;&gt;\n&lt;div class=\&quot;tc-block-dropdown tw-crypt-dropdown\&quot;&gt;\n&lt;div&gt;\n    &lt;div class=\&quot;tw-password-field\&quot;&gt;&lt;$edit-text tiddler=\&quot;$:/temp/password1\&quot; tag=\&quot;input\&quot; type=\&quot;password\&quot; default=\&quot;\&quot; placeholder=\&quot;password\&quot; class=\&quot;tc-edit-texteditor\&quot;/&gt;&lt;/div&gt;\n    &lt;$list filter=\&quot;[all[current]!has[encrypted]]\&quot;&gt;&lt;div class=\&quot;tw-password-field\&quot;&gt;&lt;$edit-text tiddler=\&quot;$:/temp/password2\&quot; tag=\&quot;input\&quot; type=\&quot;password\&quot; default=\&quot;\&quot; placeholder=\&quot;repeat\&quot; class=\&quot;tc-edit-texteditor\&quot;/&gt;&lt;/div&gt;&lt;/$list&gt;\n&lt;/div&gt;\n    &lt;span class=\&quot;tw-crypt-button\&quot;&gt; &lt;$list filter=\&quot;[all[current]!has[encrypted]]\&quot;&gt; &lt;$button message=\&quot;tw-encrypt-tiddler\&quot;  set=\&quot;$:/state/encrypt\&quot; setTo=\&quot;\&quot; &gt;Encrypt&lt;/$button&gt;&lt;/$list&gt;&lt;$list filter=\&quot;[is[current]has[encrypted]]\&quot;&gt; &lt;$button message=\&quot;tw-decrypt-tiddler\&quot; set=\&quot;$:/state/encrypt\&quot; setTo=\&quot;\&quot; &gt;Decrypt&lt;/$button&gt;&lt;/$list&gt;&lt;/span&gt;\n&lt;/div&gt;\n&lt;/$reveal&gt;&lt;/$encryptTiddler&gt;\n&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/encrypttiddler.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/encrypttiddler.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/danielo515/encryptTiddler/encrypttiddler.js\ntype: application/javascript\nmodule-type: widget\n\nencrypttiddler widget\n\n\n\\*/\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar encryptTiddlerWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n\tthis.addEventListeners([\n\t\t\t{type: \&quot;tw-encrypt-tiddler\&quot;, handler: \&quot;handleEncryptevent\&quot;},\n\t\t\t{type: \&quot;tw-decrypt-tiddler\&quot;, handler: \&quot;handleDecryptevent\&quot;},\n\t\t\t]);\n};\n\n/*\nInherit from the base widget class\n*/\nencryptTiddlerWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nencryptTiddlerWidget.prototype.render = function(parent,nextSibling) {\n\tconsole.log(\&quot;Render\&quot;);\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tthis.renderChildren(parent,nextSibling);\n};\n\n/*\nCompute the internal state of the widget\n*/\nencryptTiddlerWidget.prototype.execute = function() {\n\t// Get attributes\n\t this.tiddlerTitle=this.getAttribute(\&quot;tiddler\&quot;,this.getVariable(\&quot;currentTiddler\&quot;));\n\t this.filter=this.getAttribute(\&quot;filter\&quot;,undefined);\n \t this.passwordTiddler1=this.getAttribute(\&quot;passwordTiddler1\&quot;);\n \t this.passwordTiddler2=this.getAttribute(\&quot;passwordTiddler2\&quot;);\n\t// Construct the child widgets\n\tconsole.log(this.targetTiddler);\n\t\tthis.makeChildWidgets();\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nencryptTiddlerWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes.tiddler || changedAttributes.filter) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t} else {\n\t\treturn this.refreshChildren(changedTiddlers);\n\t}\n};\n\nencryptTiddlerWidget.prototype.getTiddlersToProcess = function () {\n    if (this.filter) {\n        //we have a filter to work with\n        return this.wiki.filterTiddlers(this.filter);\n    }\n    //single tiddler case\n    var tiddler = this.wiki.getTiddler(this.tiddlerTitle);\n    return tiddler ? [tiddler.fields.title] : [];\n};\n\nencryptTiddlerWidget.prototype.handleEncryptevent = function (event) {\n    var password = this.getPassword(true);\n    var tiddlers = this.getTiddlersToProcess();\n\n    if (tiddlers.length &gt; 0 &amp;&amp; password) {\n        var self = this;\n        $tw.utils.each(tiddlers, function (title) {\n            var tiddler = self.wiki.getTiddler(title);\n            var fields = {\n                text: \&quot;!This is an encrypted Tiddler\&quot;,\n                encrypted: self.encryptFields(title, password),\n            };\n            self.saveTiddler(tiddler, fields);\n        });\n    } else {\n        console.log(\n            \&quot;We did not find any tiddler to encrypt or password not set!\&quot;\n        );\n    }\n};\n\nencryptTiddlerWidget.prototype.handleDecryptevent = function(event){\n\tvar password =this.getPassword(false);\n\tvar tiddlers = this.getTiddlersToProcess();\n\n\tif(tiddlers.length &gt; 0 &amp;&amp; password){\n\t\tvar self = this;\n\t\t$tw.utils.each(tiddlers, function(title){\n\t\t\tvar tiddler = self.wiki.getTiddler(title);\n\t\t\tvar fields = self.decryptFields(tiddler,password);\n\t\t\tif(fields)self.saveTiddler(tiddler,fields);\n\t\t});\n\t}\n};\n\nencryptTiddlerWidget.prototype.saveTiddler=function(tiddler,fields){\n\tthis.wiki.addTiddler(  new $tw.Tiddler(this.wiki.getModificationFields(),tiddler,this.clearNonStandardFields(tiddler), fields ) )\n}\n\nencryptTiddlerWidget.prototype.encryptFields = function (title,password){\n\tvar jsonData=this.wiki.getTiddlerAsJson(title);\n\treturn $tw.crypto.encrypt(jsonData,password);\n\n};\n\nencryptTiddlerWidget.prototype.decryptFields = function (tiddler, password) {\n    var JSONfields = $tw.crypto.decrypt(tiddler.fields.encrypted, password);\n    if (JSONfields !== null) {\n        return JSON.parse(JSONfields);\n    }\n    console.log(\n        \&quot;Error decrypting \&quot; + tiddler.fields.title + \&quot;. Probably bad password\&quot;\n    );\n    return false;\n};\n\nencryptTiddlerWidget.prototype.getPasswordFromTiddler = function(title){\n\tvar tiddler=this.wiki.getTiddler(title);\n\tif(tiddler){\n\t\tvar password=tiddler.fields.text;\n\t\tthis.saveTiddler(tiddler); //reset password tiddler\n\t\treturn password;\n\t}\n\n\treturn false\n}\n\nencryptTiddlerWidget.prototype.getPassword = function(confirm){\n\tvar password1 = this.getPasswordFromTiddler(this.passwordTiddler1);\n\tif(!confirm) return password1\n    var password2 = this.getPasswordFromTiddler(this.passwordTiddler2);\n\n    if (password1 === password2) {\n        return password1;\n    }\n\n    return null;\n}\n\n// This function erases every field of a tiddler that is not standard and also\n// the text field\nencryptTiddlerWidget.prototype.clearNonStandardFields =function(tiddler) {\n\tvar standardFieldNames = \&quot;title tags modified modifier created creator\&quot;.split(\&quot; \&quot;);\n\t\tvar clearFields = {};\n\t\tfor(var fieldName in tiddler.fields) {\n\t\t\tif(standardFieldNames.indexOf(fieldName) === -1) {\n\t\t\t\tclearFields[fieldName] = undefined;\n\t\t\t}\n\t\t}\n\t\tconsole.log(\&quot;Cleared fields \&quot;+JSON.stringify(clearFields));\n\t\treturn clearFields;\n};\n\nexports.encryptTiddler = encryptTiddlerWidget;&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/Filters/encrypted-tiddlers&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/Filters/encrypted-tiddlers&quot;,
+            &quot;description&quot;: &quot;All encrypted tiddlers&quot;,
+            &quot;filter&quot;: &quot;[has[encrypted]]&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Filter&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/Filters/normal-unencrypted-tiddlers&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/Filters/normal-unencrypted-tiddlers&quot;,
+            &quot;filter&quot;: &quot;[!is[system]!has[encrypted]]&quot;,
+            &quot;description&quot;: &quot;Non-encrypted normal tiddlers&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Filter&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/language/batch&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/language/batch&quot;,
+            &quot;text&quot;: &quot;Use below controls to encrypt or decrypt a bunch of tiddlers. Encryption ''controls are hidden'' until you type something in the search box. All listed tiddlers will be affected. The presence of a small padlock (&lt;span class=\&quot;pc-listItem-lock\&quot;&gt;{{$:/core/images/locked-padlock}}&lt;/span&gt;) next to the tiddler title indicates that particular tiddler is already encrypted.&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/ui/listItemTemplate&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/ui/listItemTemplate&quot;,
+            &quot;text&quot;: &quot;&lt;div class=\&quot;tc-menu-list-item\&quot;&gt;\n&lt;$link to={{!!title}}&gt;\n&lt;$view field=\&quot;title\&quot;/&gt;\n&lt;$list filter=\&quot;[all[current]has[encrypted]]\&quot;&gt;\n&lt;span class=\&quot;pc-listItem-lock\&quot;&gt;{{$:/core/images/locked-padlock}}&lt;/span&gt;\n&lt;/$list&gt;\n&lt;/$link&gt;\n&lt;/div&gt;&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/openPopup&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/openPopup&quot;,
+            &quot;created&quot;: &quot;20140406151910358&quot;,
+            &quot;creator&quot;: &quot;Danielo&quot;,
+            &quot;modified&quot;: &quot;20140608121417975&quot;,
+            &quot;modifier&quot;: &quot;Danielo515&quot;,
+            &quot;tags&quot;: &quot;button encrypt export&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;$reveal state=\&quot;$:/state/encrypt\&quot; type=\&quot;nomatch\&quot; text={{!!title}} animate=\&quot;no\&quot;&gt;&lt;$button set=\&quot;$:/state/encrypt\&quot; setTo={{!!title}} class=\&quot;tc-btn-invisible\&quot;&gt;{{$:/plugins/danielo515/encryptTiddler/unlocked}}&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal state=\&quot;$:/state/encrypt\&quot; type=\&quot;match\&quot; text={{!!title}} animate=\&quot;no\&quot;&gt;&lt;$button set=\&quot;$:/state/encrypt\&quot; setTo=\&quot;\&quot; class=\&quot;tc-btn-invisible\&quot;&gt;{{$:/plugins/danielo515/encryptTiddler/unlocked}}&lt;/$button&gt;&lt;/$reveal&gt;&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/styles&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/styles&quot;,
+            &quot;created&quot;: &quot;20140406110705085&quot;,
+            &quot;creator&quot;: &quot;danielo&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Stylesheet encrypt export&quot;,
+            &quot;type&quot;: &quot;text/plain&quot;,
+            &quot;text&quot;: &quot;.tw-password-field {\n\tdisplay: block;\n\tfont-size:1em;\n\tline-height:0;\n\tmargin: 0;\n}\n\n/*It is for use in combination with tc-block-dropdown */\n.tw-crypt-dropdown{\n\tline-height:0;\n\tpadding: 8px;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.pc-batch-controls .tw-crypt-dropdown{\n\tright: 0px;\n}\n\n.pc-batch-controls{\n\tposition:relative;\n}\n\n.pc-listItem-lock svg{\n\theight: 1em;\n\twidth: 1em;\n\tfill: #aaaaaa;\n}\n\n.tw-password-field input{\n\tfont-size:0.5em;\n}\n\n.tw-crypt-button {\n\tdisplay: inline-block;\n\tpadding: 8px;\n}\n\n.tw-crypt-button button{\n\tfont-size:0.5em;\n\ttext-transform: uppercase;\n\tborder-radius: 4px;\n}\n&quot;
+        },
+        &quot;$:/plugins/danielo515/encryptTiddler/unlocked&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/encryptTiddler/unlocked&quot;,
+            &quot;created&quot;: &quot;20140406101339943&quot;,
+            &quot;creator&quot;: &quot;danielo515&quot;,
+            &quot;modified&quot;: &quot;20140608121532690&quot;,
+            &quot;modifier&quot;: &quot;danielo515&quot;,
+            &quot;tags&quot;: &quot;encrypt export&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;svg version=\&quot;1.1\&quot; id=\&quot;Capa_1\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot; class=\&quot;tc-image-button\&quot;\n\t viewBox=\&quot;0 0 100 100\&quot; style=\&quot;enable-background:new 0 0 100 100;\&quot; xml:space=\&quot;preserve\&quot;&gt;\n&lt;g&gt;\n\t&lt;path d=\&quot;M77.555,50H35.304V31.63c0-4.057,1.435-7.521,4.305-10.391c2.87-2.87,6.333-4.305,10.391-4.305\n\t\tc4.056,0,7.52,1.435,10.39,4.305s4.305,6.335,4.305,10.391c0,0.996,0.363,1.857,1.091,2.583c0.727,0.729,1.588,1.09,2.583,1.09\n\t\th3.674c0.995,0,1.856-0.361,2.583-1.09c0.727-0.727,1.091-1.588,1.091-2.583c0-7.079-2.517-13.136-7.549-18.17\n\t\tC63.136,8.428,57.08,5.912,50,5.912c-7.081,0-13.137,2.516-18.169,7.548c-5.033,5.034-7.549,11.091-7.549,18.17V50h-1.837\n\t\tc-1.531,0-2.833,0.536-3.904,1.608c-1.072,1.072-1.607,2.372-1.607,3.902v33.067c0,1.532,0.535,2.832,1.607,3.904\n\t\tc1.071,1.072,2.372,1.608,3.904,1.608h55.11c1.53,0,2.832-0.536,3.904-1.608c1.071-1.072,1.607-2.372,1.607-3.904V55.51\n\t\tc0-1.529-0.536-2.83-1.607-3.902C80.387,50.536,79.085,50,77.555,50z M54.315,72.937V83.72c0,2.173-1.762,3.935-3.935,3.935H49.62\n\t\tc-2.173,0-3.935-1.762-3.935-3.935V72.937c-2.31-1.443-3.852-4.001-3.852-6.925c0-4.511,3.657-8.167,8.167-8.167\n\t\ts8.167,3.657,8.167,8.167C58.167,68.937,56.625,71.495,54.315,72.937z\&quot;/&gt;\n&lt;/g&gt;\n&lt;/svg&gt;\n&quot;
+        }
+    }
+}</pre>
+</div>
 <div created="20200404032122182" modified="20200404041127355" title="$:/SiteSubtitle">
 <pre>a living document</pre>
 </div>
 <div created="20200401233041813" modified="20200401233048248" title="$:/SiteTitle">
 <pre>Ken's wiki</pre>
+</div>
+<div created="20200514104057410" modified="20200514105823008" title="$:/state/encrypt">
+<pre></pre>
 </div>
 <div created="20200402031115798" modified="20200402031138005" title="$:/state/image-picker/system--1365487189">
 <pre>show</pre>
@@ -9610,7 +9727,7 @@ Error message and password prompt
 <div created="20200402000457344" modified="20200512083454084" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20200514061439772" list="Music" modified="20200514095851096" title="$:/StoryList">
+<div created="20200514104031372" list="ToDo" modified="20200514110003649" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9626,19 +9743,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://wiki.pagey.page/&quot;
+            &quot;text&quot;: &quot;file:///media/removable/SD%20Card/wiki/index.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;wiki.pagey.page&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;wiki.pagey.page&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;https:&quot;
+            &quot;text&quot;: &quot;file:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -9646,7 +9763,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/&quot;
+            &quot;text&quot;: &quot;/media/removable/SD%20Card/wiki/index.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9654,7 +9771,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;https://wiki.pagey.page&quot;
+            &quot;text&quot;: &quot;file://&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -9671,7 +9788,13 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200402031459511" modified="20200514095837231" title="$:/temp/search">
+<div created="20200514104115211" modified="20200514105818983" title="$:/temp/password1">
+<pre></pre>
+</div>
+<div created="20200514104125949" modified="20200514105822053" title="$:/temp/password2">
+<pre></pre>
+</div>
+<div created="20200402031459511" modified="20200514110001962" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
@@ -9786,85 +9909,17 @@ Error message and password prompt
 <div created="20200402053526888" modified="20200402182952867" title="$:/view">
 <pre>classic</pre>
 </div>
-<div created="20200411233721522" modified="20200411234501427" tags="Journal" title="11th April 2020">
-<pre>What's my game plan here. What do I need? Ditch Ray and find someone I can be obsessed with like Ally? Work on me and Ray's relationship? Find games to play, and cultivate, raise her as a person?
-
-Chando wants us to visit today, and I don't like seeing Chando. What is wrong with me? Is something wrong with me?
-</pre>
+<div created="20200411233721522" encrypted="{&quot;iv&quot;:&quot;c1kIVVazBu7Eeb4dP3goNg==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;0M610Z6Lql04F4upWdglqTnRmempHvd6mEM+88XzkcuicxQkmnHdo7YAYXH7cHEckZqKIWtiDGFTsAGIpTONvjoJGooQn1Vc+90e2FceDttItfDSxXwl8Gas3nYCY0xc76HuBYiE+bq+SfTbBXYGxs18z1HOQqfk5bxttQml0H7OdMYd0tAMCqVtEPoCT9x1iHqvAx/fwGr6r92FNn4li38BzhrrCeVS6HO1loOrIcDlI2Gw159wRt2FziXmiixFN/lO3Pr5C6z6jF8m9zpfeKOCmu6OWrxzQMTeW4qMvf1kxi2JZ891ArbMQz4wW9fQiYOxvbpuMEIfWgUUaGxMZgSa9EVRSo+xb+1n0UeIKHF/3SM+v+E6ZejjhGq8TqI55YLlwDe9o0703xzxuZuvja+HiNU9eiYRxxXPSsa553+ifEra2Q4WUzPvQ6h6UmqrtCVVI+GMhmPQ9W+6QPvsIVw5pJcFdHcLbV+ooj/ydwqeOEtoiP7Tdl0AFJk0cRPVM0Qns6nmYECpDuKT+uF8zRtrd8AobPXQqAWrDCxmwT3NADN048/uAQkYSweiFmILpUlWSJk/&quot;}" modified="20200411234501427" tags="Journal" title="11th April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200413003829736" modified="20200413003955794" tags="Journal" title="12th April 2020">
-<pre>God fucking dammit I wish that I knew what my variables were. I'm doing good today. Is it because Railee's gone? Because I chatted up other girls? Because I've been better about alcohol lately? Because I listened to Seneca? Because my brain has rested longer from drugs?
-
-It is a good day. May all sentient beings by restful and at peace.</pre>
+<div created="20200413003829736" encrypted="{&quot;iv&quot;:&quot;CBSXY8pdItlNhooqTYnr7w==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;LDM6XlgcTCsgj0eNSRJ2RQCPmnRmXgRoLXaJgSIJAgnqmUYFbPyFHm6NbgM52Cm3R/cEXmYgM1i7xxmgkqf5z+tHBXsVU7+8qRQRt5ZB9zWA/jsH4i0ASOkEGsi1S5gtCYRJYLEgZkt+0B2TBDUU7F8grMQ09c6Hs+aWpkK5aIBquy8Vc0SYv9YJwGFHOFiAXQehCxSKc9lxk8UBQg3ARvu3uh9ycNEmB/MfrMYABzmX9d/WQdJqYQxGutInvtmTxqgNNueScPFNUcpZMLjdaoh8xIkqwUMWHAwBLjtu+haib5+Td/MzYDseIJ/w/EloRUmb5hhYcziD21Qsl9mT3tQH152jrzMwlhQFyH9yHuULu5kozO6SaSmnCqHI2ZxbSw9jRNYiktDb8k1EJorQSj26jWqa6s2LGGV4g3aJNnoKH09cIMfleY86TD/1PAreIcn44y/qKNg4OGr6+Nlywyw4FhoFfXTMEqRz/LI2y4sB5T1tyQJ6XPpwHH7Jf0Z9uyAlEBfXxr/JzcDJpETwLrznGnb8BPUSadoQQJnsvBF/MU9KRYgUNXTws3498fwXBulREHwH6L/CwAOrx8z97lzzzIqgaS6g8BYp8dVgWA==&quot;}" modified="20200413003955794" tags="Journal" title="12th April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200512081557527" modified="20200512083756919" tags="Journal" title="12th May 2020">
-<pre>Today has been an e-crash day, in part, I think, maybe.
-
-Railee has been a trooper, and a saint, coming over here and cooking for all of us and being especially sweet to me, even as I was dull and unresponsive.
-
-I'm preparing for //la empresa//, but I'm honestly really torn about what, if anything, is  possible for me. That may be that E crash we've been hearing about.
-
-
-```
-
-```
-
-&lt;&lt;&lt;
-!!!Walk humbly before the chemicals.
-&lt;&lt;&lt;
-
-```
-
-```
-
-I played minecraft for like six hours today. Then I slept a few hours and dreamt of Star Trek TNG stuff. 
-
-Now I'm back up, but I've taken a melatonin. I always wanted to do a thing where you made music with a genetic algorithm, but you used a person in the loop as the fitness test, so that in a sense a person was writing with their taste, or finding the perfect song for them.
-
-Someone has done something along these lines for visual art. I've been fiddling with this while trying to sleep.
-
-|[img[art1.jpg]]|[img[art2.png]]|[img[art3.png]]|[img[art4.png]]|
-|[img[art5.png]]|[img[art6.png]]| [img[art7.png]]|[img[art8.png]]|
-
-It was particularly interesting to do this stuff with a girl's face. 
-
-God help me. May I be a good father.
-
-May all sentient beings be happy.
-
-
-
-
-</pre>
+<div created="20200512081557527" encrypted="{&quot;iv&quot;:&quot;X9OXNOqQuGClekP/TA6MgQ==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;C/EHBvfvE80TdU9bZKbTm1s0y6Oo7r1B2Jgt5dexEvpFoGU0lCMzpWEJK2g5c3pH0FzqJtqiuRQB6vlqottsa3YOriwEYzg0OHLHuzkT+m8mqQ+xbv6ku/c4gIByzJVKXUErhfouE8MEaD0F2cQ5V5sjgJ2Is6UtcBvuukPt8JjFPig7NC15D5AzKWNdMBLdzuxSSZSti8uYblbx9wVUPSWdQsO/dt0v7kcxTs50JRn5LKhGXtB8fbTIqIR6ES3c68C2dZuuyeqb1Rw++E006eTTHwS5A8Ecm+gtMiToQtiyRa8Ru83HMCna0wmcLxbJeYfCV/cD3p24yClG0UGGHG0ZpSPTe2gX6g8djyqx1YiCkOCNNY3L0cMO878b0+f1LXxLNVpQ1iezWHu8qxZUj372coQF4P+LRy7LMmanifYrdhja9T2P1sTgXcqIFVWTNXOlZL7YlHXmFHSaAtc0B/EDVtoIphiXMCkkgdqQf+Q3j5tnOBI43qO5M3TexoqEReNwdr3oAKlz80e3bi74Qtk/bnR4LDP8hO732Ng93xw3QIzwllIo2sbo0+f1DToCRxrwzE717HA9oT7atNaBj0aKOrtJkO2Oy2GuhNDuSxXXrdDBqKnr6OuS6YG/JcCpqEmWoO7FMUuBvdBss+v8js/k6xKeVEHFEpDm8G0NoZZHqDa6xzBtT9v2tQulasyIrPzZb4Hbs9g1F2543TT7VIZUO6wey2xsrKlgb6MwAzR+D5z3WFdVK0wMXHgbDIHe1Kp0ok+wEApQqJUkSFiKNivd+y1J/b1XU9nD1nj5dRsTO4sxPQck3W1/r0Re8++ThuQnPXet7vwE8u2k/CuSCQn/WXre8HBloI6YBLebrFiVkhEbySlIJUSLOVA938zeM523KnX9WwGjEj0m/8PLwp3zvnOaLa+G0O8NMw+SPEbLIRizrI3t8hv2YkVTQqz5diNE5jhj4PN9vvPqiLMMYylZ86PAYeHRD2D0LUNit2ZaL/yNVDrthU/yDMx5KTH7Bkdcy6fryn0LHignbsMTiMHWI3eKR6gvEwF9ypzSawjbQwgTLfWzpl+r4TH1lLNK5R0WnyoAvzS7z30VJYbT4E3Ovik3/Orgr2wiD45IDL9k9f/wUbFcTO7aUg3kfP8GGpxGGeofcwc6IjH039PlZ+axGx/PgZh7ED+vveaPID7xsC97eC2Xtx2RornOiTpnBg50OlQ6q+9ITQKmVFOFvqekQizb1VE4Uh4IUDQNOdUYZ/m0wI+ya00qTYX0ml6evg7McbOY/L0I2Mb0MvlHpYVcsVK9WIVZjGbvN0I61uBE4+X5Tbvbj76JnLB5hQkWof+DFgkcNfcASlhV44gOwFb2RA9UmqVpKBgHI7LtkFXlu6cuqFKgruCkZ+VRHm6bnadOgXtMnqEx34tw+SJouXbkSRpJlAUTr3ieU/4as+JllPnJi3hUzqz3k6q85mYZtZhhSy8XjJ/xqTSO1WKz/mRQ4OZbwquE4myjW7DeZlUlwfH7hyJFv5sZ8qB8BOeKLiDvrLDpm+cvfWuMfC5MtLz6XksxCrMp/aJBabAxr66bey81ftuIdqmfQwFQbiKq/pc6A29RpcTAtfsGFEfmH1P+NuAVDXyteuM1GJk/1j0iDyYUR+t6bEv/B/ZpaUI7cq6jX9aYOC1TmROaGjuQwJwj1GGE8cX8LB0fHOGtadrSbGYnAOw2IFKINXwd5vDKrMt7VTCIjGANweP9NNLUfEnwX9/5gh4LagiBrNzu4uLnQmgHBfbDZh87D2TjsW6+Kfo6WsvteKFuhFuxlzq2PXkbR8022cj/o9+K/BJd&quot;}" modified="20200512083756919" tags="Journal" title="12th May 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200513065113979" modified="20200513071238774" tags="Journal" title="13th May 2020">
-<pre>Ok, wow. 
-
-This is possibly Suicide Tuesday, but I think it's not. I do think it has been Railee's (and the beginning of her period). 
-
-I slept like two hours in the night last night, and couldn't get back to sleep. I decided on coffee at around 6am, and Elijah asked if I wanted to take a sunrise walk. Sunrise walk met thunder. It was sweet fammo times.
-
-I got a LOT done just after sunrise, and the day was a trooper-y doing day. 
-
-At some point, inspired by K3, I decided that I need to start doing more [[Practice and Study]] in life. Like, I need to do 15 minutes  a day of practice and study, K3 / Levi style. It's late in life, but I bet that shit is synonymous with greatness. 
-
-So today, I practiced (easily an hour) playing in the key of G on ukulele. I'm gonna sometimes do [[Music]], sometimes do code or whatever. I don't know how sustainable it'll be outside of [[COVID-19]].
-
-Then I played minecraft for about an hour with Rail-o. Ken offered to show me his minecraft world. He apparently hosts it, and his extended friend group uses it.
-
-HO LEE SHIT. The stuff was masterful. Like all of them are crazy geniuses. Like, they are acting casual, but this stuff is &quot;live off of our youtube channel&quot; good. 
-
-This, the piano, his secret advance calculus AP plans, the pushups. This kid is metal. Today was kind of a day of realizing how rich and successful he's liable to be. 
-
-Christ. It makes me feel weird. I feel like he's completely bested me. I feel like I need to achieve more just to deserve to be his dad, and not to shame him.
-
-Weirdly, this all made me miss Allybird, but it also made me realize what a waste it was to be with her. She's not Kenny-level, and she's not me-level. She //could// be, if it weren't for the poor baby's addiction and lying and stuff, but she isn't.
-
-But whoah, I feel weird. 
-
-May I get my life permanently, really together during this quarantine. May I not forget virtue and sweetness and some of the greater gold I had with Ally.
-
-May all sentient beings be well. </pre>
+<div created="20200513065113979" encrypted="{&quot;iv&quot;:&quot;IwisCmWpb7SMPNih+cOuig==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;LN+36d1A2MmG0C2YNU5dFqT+4JngRtIoI8vWl9nQIjaBDi+akkigc66t5dR28wDLiRqa8bOOJLmZUObjRPsoIbeksv7avo78FsZwBhtCUnavyaITMsWQsptIKaOQu8q8F/LnXOSdr9JsMMmfot5ukbLsm7ljLjIr26mMDjl+HuPwEpfk1NxcudFeH3Niay0K30yhf979VCtci3Ppip+Q4aH4v1USwkF8NUbGougmZ+v7NNzCoSpBEhfGWw6dmyVQrEbg9eXW2nhP+8yroWDXH9Axq+GotjbbqcjF78YyZJegtZAP/eE45ouOZfoFUQpXOo4esbSus5r+Vdx8x7x3mQUwYd/vFyFgynHe+mO/hjvdzz1WzEWas22veMhZ83Zoeig34d/a151e7EwFZA2XRKr+Ad5ZbjaJU3JnJyUcowOoWlyaew5d1jy6jG0FxCwMSuRkrLYOr8h8qNDBeqstNaopXU1U/z4nSVEGBOut9UFeUow9xNVnjiMwsoE8UrisYjsI8dkY4Sxq4Gur201KBBnWDwYCSVW6yx/6vMgOiK616OQY3dgTsblNukYuJ4b73ZJpUDV1fZM4lJZmvBdpxiHqbaDNZe0jLzdRq/k3JFcq/DQoiW14JgUTcK0R4V+ewn9io/8rg8m69nLdKezYabFWCvgqFvvq0gycB0xMcCfGywFU2ZycxoXRel4Hb08rbawcZk3LncFsodeWL3QmEWgE6plc3TnVpqN1/alZNJka82T0waVa5Hk5tvH/85cFCw2vF7cKxZBDzY5uq/Jb/pKX32LShOXVZlHHiiAzsvsUZoyr40+QStZhGZULjjelOx9Eolq+SZYP5ntvaeymcUTuUztNZCMZRxgw7EsJ2XetwNShUHkXDCMaAwTCf+vIc0jdVszevKjYqOYo8HaqXjsEsR3v81XAci4Taag+JqSdAcj2O+gG3kK5daiW1orJI2orlLwwIdLnPLIwYJ9Jet0inRUbNT/xE8+d9X2V/lAsSeHlSwXwkkdxgW0bjrJDqdZJjUQdhPHqDgs9KMKj361UOPfluo4WIthSjh/NTQfaKv9vqDqOFWlD/Sscw6qiW8KeTA362RQ3RaE3wC2R2ibdzW3HA9bi/OwogAU+pokOE43hBFHpzgvy3cPM6e7fQHi8xhCy9z1XB/3k/ljrRuS5Vl9ekZxfX4YT4daqqtY1ssXXCnTKnzgWxSk3i1/sV/9NrAFCvXDnSHQxIwXaXJS9cZyxZU5ZW6l3LTKVsFcRLqq/XPVd1ns1WIwiF4ECw1/36oCSRv/8iWRZ4TlJBt4pvQa+R9O2mxTdBbUYu74lHLqYCWDKwOxOHA0HJ1Tt4cGPbRGNMN+PvRXJWVHhWsWeOnEIS6nLsNVumjZaGINV5UwdyPo7dIvk3+UlqceVVc5mHq5vwiDD/EWgA8PGG7Mm7YOKVKvQ6zopXZhPSzMsfGCoq3d8R4B60yorLfXE78GoWMmNyFidYKmm8XhKJGHyCcva3mwVIKHKvvEefjTFh6Zemw56LY4J59d7Vbnwz5zgd0cvFLuDDw3kgF6sGnhS0SGaOVExrSX1XXGIWKi04I0jsr5cG99ixiPi4zvJw58j5QWGES1ww5rzIdpFG73WYXrBXB0w2mErfSqzGB2dEJOzQR42m8HL2MkeHfcXjU7Vcmekqgn0zkn1vzX+UU4xMlN3y6h2ZxpQZXhQ0MEDXUjojbOYJNkOTT1UIIgED5cHP1KJjQyynZIXTPxBPvhnfZA31iBCs4FIsvroNzh3zgGY0UKd+wsyyIGuYNyR1iTpU23BXT+P2UesvgZixpeiVuVN0dhLRVKddfekV+edngYWie3tRxByzNOiBd8wzDJloe+ZoQPnfbfxIpWGQs9WovZCHzzKWFWfM7rI22+rd4uYSwQs57YHPANq/Q8bPlQeDsB82qiHm9+e30waU357XyskAzxOe86B4WqXKzTN4cMl+j/r0KLFyrtKoHoyVbMYVzZ/MYQzfSruApSvtMlGOCq8+vXUefJMBZ+IUS/RzORudq7JMV0DFA9HvEU+jfhGCAfmFvoK+KK4mSA3fmFSU2gYDESCCv2eNTS7qt4I7zGLJH6CGAFjr/OpGGc1PQIcBD3+fwEH13+oem8oYa2tCxO0RRiZ68VJOA9YhvT5eadwcuCOcvYA4DEv5Q36Si5T/sRigWd2xWsPUal3dL+KzdHPG9fObjXamv0Hg3c4mZUOwmtHtiibXBxEpy7VZz3u/Ici785jOZsngUdoImBI8+bKnSqcoaez9H27mJ0U4iPaCsFNxdlq6+LwUchx7FDCE0xI92+nwiYv1ZGf/byc8AXkMyFzL6nBOHhfbJwN7KrvWZIhDU9c6q1Ozq4DkX5cDPwoto5reb8dRjD313glHM/V0BEO6AT5FRhXYpYiPgaQpy0jQ41iWzwGCEr6kF1eY3XexC6DOZXq2WYrDPj7CVn4swydsVp8KZPLQa3eFv3SRfw2c4Px1nV+fXlraCxuIXHmv1ZLxNqFsanIYc3f6TTTOpEw8Gv96p9sZKM0CpfhlV0W96YffDw/Yq3zAsk9kLDtzjWqKl95XSP3d/ZoPfMs8If0f3KizUe4jueniJn3QVnFA9xGK0qmY+Ab6M3AgKkjzOa65BlcEf/FcSmCxDw+ylz9wGx7XBUVeKm+3jn9rA98P+vRpOCBHpZFrFNVmiKGAma8tFkSOABva41puSM5zshmjLWV+K14gIsVfKlrcVDgCwHraPEaZ3215KNoH1LwN4RPwte6yF5lmRcw8Mt2oJHFT3EFjIwA3GZAS3xCCOT+RIDeP/gsq8X0lQoqwUQZZfd3G1Fa+neYNclemVHVQgYZp42OMm468fcXLIuqILj44DpG3ttE1a4shKUSzOk=&quot;}" modified="20200513071238774" tags="Journal" title="13th May 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200414062102577" modified="20200414064753586" tags="Journal DearRailee" title="14th April 2020">
 <pre>! Rambles about Ally trauma, to no end, just venting
@@ -9904,66 +9959,17 @@ I love you.
 
 Also, I think I like this. Occasionally exporting a tiddler as an HTML file and hosting it online for you to read. It's easy. You just click the little down arrow button at the top of a tiddler.</pre>
 </div>
-<div created="20200415081807829" modified="20200415083323458" tags="Journal" title="15th April 2020">
-<pre>My soul feels different today, and I feel like I'm able to breathe more deeply and be more grateful, and be more affectionate to Railee, and less annoyed. I think the word for this is serotonin. My brain feels like it has serotonin, and like a spell has been broken. 
-
-It was a big weird brain day, and there were big reasons for a big weird brain day.
-
-# I feel released of the Ally stuff in a new way. I feel like I //want// to be released from Ally for the first time. This, on the heels of the traumatic-but-possibly-healing [[shit that went down yesterday|14th April 2020]]: me finding her on tinder talking about her unrequited love for her roommate. 
-#I did not sleep last night. Like literally I may have slept half an hour. Then I napped an hour or two mid-day.
-#I obsessively (and very successfully) pursued [[swinger shit|Swingers we're talking to]] on-line, all day, like I was zoned, insane, and twacked out. 
-
-Between sleeplessness and horny obsession, it was actually quite a twacked out day. What the hell gives, I wonder?
-
-Whatever the case, I feel very all's-well and ok, and like it will persist. The morning will tell. I have a lot of horrifying shit to do tomorrow. God help me. Rail's is going to cook the kids dinner, in theory. My poor kids, I neglected them today, and I fear I'll have to tomorrow. I hope I hope I hope I get some good time with them. 
-
-Also, Jesus Fucking Christ can you take a look at these women:
-
-[img[jasongrace.jpeg]]
-[img[Jamesbond.jpg]]
-
-Like is it actually possible that someone like that would want to fuck me on [[ecstasy|DrugFacts]]?
-
-What is this life? 
-
-Yeah, anyways, so major mystery as to why I'm happy.
-
-
-
-</pre>
+<div created="20200415081807829" encrypted="{&quot;iv&quot;:&quot;6fCevwsW6X2D/F4mYsm7Qg==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200415083323458" tags="Journal" title="15th April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200417045117397" modified="20200417045745552" tags="Journal" title="16th April 2020">
-<pre>Dear diary. 
-
-I have been awarded [[a job with English Skills Cafe|2020JobHuntNotes]]. Their business is in a very aspirational &quot;stealth mode&quot;, and I don't yet know if it's gonna be another SRC Metals--it somewhat feels like it could be--but they are a sliver of hope. 
-
-I still need to apply for a Paycheck Protection Program loan (grant) from the SBA to try not to lose my entire life over [[this COVID-19 decbacle|COVID-19]]. 
-
-I tripped with Railee last night accidentally, kind of, on [[miproxin hcl, which we smoked in a neat plastic bottle contraption|Smoking 5-MEO-MIPT]], which worked very well. There were really hard Ally times, followed by what I feel were productive us-times and getting-over-Ally-times. 
-
-I've been feeling really guilty lately over the way I've been mean to Chandler and pushed him away.
-
-[[May all sentient beings be safe|Metta]].</pre>
+<div created="20200417045117397" encrypted="{&quot;iv&quot;:&quot;qtudK2xXCkhcb0flKJYgEA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;gmJX4S80TPKT3rruGNwmN6KIzMM8+Us786j2TmTZ6ezzGrL/V5EPIRVJ5996fAqcTILn/wE0uyDlafQepPlMGY9wgMay3usrYeXO8ObXB+tJE3mi7cYtbIfBm6TPv/AYuY5R027P4IUJXnmtKGJqwzRDK9xY+n15yqYyX2CKEvFMjKewXYdbJvwkbE13HTpvIcn+OHq71GOzjTIcB926jdSAAPQQxrBFoBn1CZrXKk4cWGKOb+bsOFAVZusNxlFlG73IlXB7+V+l2ifL29CP6yRpYEcTUNu3n3jBWfaGKZCuHovJakG/fTj6jHM1fSSLH/9PKQcCLs4T45mR98YCzsYkDZKJ6six7PUXHHHuD7nGv78P2i82v1BA5T9BV7N8XnepS6ueAOeLETVZU9uZSA9zqqaZhjBfGiaFPBkva7JJhBjYdP+jr+RMDBGrAWqxOst7yuBAbjczZVBdS+33Agb1s70KozmAVUlQBvLx+LWLLwgT218of4wXHXBToP7OgVrCc5d+jBvhPBrHYVHEj43FlLMOXd2vjzGAPrDZV1hvhw5HzQgrZp0yO0pjbM9MOjOt3KWKoYFsU19X17qO5PzCGbpHOsRhnAQNrQJKzeWeU+g1gi7qAhUF6Rii/vU3lZpl0oRR7LdCsc9HvFiNgiWbJGmuuY+zYra+cYdGC/LcQ5U3wUfH67fFsiLYJXbzhHwe1DEGXO16fd9Q1lgkLDXvLP6CI/WtNFyylMFlQoCDAeKwAn1DU4o2wh2GQYBxleB0m3sDM1g7ZHACZdrGWBRYy4gx3jsHOCyeqTNueLwrbpUF3g1fWW8Rl+Ly4dy+4beeaaKiFsYn2sSBIB+NwCWNSkjQUjoQzpTU9r4p0IJGG6gmfOEfEVKzfvprJihtSYYKNs5NbviNFzRpFkdJhdtKrQq008k6P6yJAnsXXmfOV2k67yeJqfACbqpnQDb5EKPGT23RuMjy5t8cgnVs1HnlfUdCI2SQrLzbUfNwcVYQxgAuIZBSiWKB3l/zxjHRiGt0vd5+pOZ1sFNJvopJDY3mHrWCLjrhTmhOkGBDfDB/2IUaB5mHCAawz40Bh6cMe8SZAcTlhFB2P94n3kVRSroOEukFLrKe5VONyTUyo3Akg/HwDqPGf8JJaStqglrUMZg4VlIf+ZmJqkGlvRxwxUK5i8JfuMuLEGosGQVskKIVrMf3wJ/GsmVHrYlMwuXn3F4kbnUzyuBcSGZ2P+TPaHLpvSo/r5d5aFb59qwCJdzJWpv59fLFUrtBkwyDjp6pOPnV4Hk3VhnsEv6qdsUazuZjRxghMCBCMnNmkLH6u2mLzvfnjQo=&quot;}" modified="20200417045745552" tags="Journal" title="16th April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200419092130293" modified="20200419093025570" tags="Journal" title="19th April 2020">
-<pre>It's 4:21 in the morning. My sleep schedule is fucked, and right now I don't have the terror that I probably should about my likely-impending financial doom.
-
-I'm doing the things I need to do to onboard for the ESL assessment job, but it's frustratingly difficult for me to figure out how to try to apply for the SBA loan/grant that's been made to help people like me through this crisis.
-
-Me and Kenners have both gotten an app called [[Slowly|http://getslowly.com]] that lets you find penpals and correspond with them, with time delays being imposed so that it takes a while for a letter to cross the earth.
-
-He's chatting with some Esperantists, and I'm going to try to do the same, as well as chat with Spanish speakers and plain-old random anglophones. 
-
-I spent the day tricking out my chromebook #[[COVID-19]]passTimes. Now it can run android apps, linux programs, windows programs, and old DOS ones. I even have [[RapidQ|RapidQ Reference]] working mostly correctly on it. 
-
-May tomorrow be good. May I get some sleep. May I take care of business. May all sentient beings be peaceful and at ease.</pre>
+<div created="20200419092130293" encrypted="{&quot;iv&quot;:&quot;mHm2jf2Cz16NMpx1Aah4uQ==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;4eOlF0pTY/tg2WbzCqZ1fNkVZLOFXWilI2smm7nrLkNdCncLkDaxy/IxVSK5NlZVeMiJPN4Ps+0r6n0RFKeDVGnNkfzl3Lpk3DWAvboRZCF/c/ym33f7E/xOQUZQzrWks8V2bJ/G1uPTs27eWu2G+MS0+c0TiLqUaPQAGJgMrSMwk6OQo7B1fjsV08+3MQ0lycZYERlzk067czEYQZjKRn4rUZgghx41iXUWFXcnm7zggBpMGeD15im5XDXeC4LpTBF7mtpnWHjHW+UJMg1jzCNT0wflyHr2fxXSuVur5bWFATNbR35yGK6ZL+V/LjXF5EKTvlBsn0x9RGQaBXVpY9MsgpTPg5vsEdCyRpo4FhzLrMJZxpwXzrCNfTb39IY9yUIMGKOU/swq248IIiofbpyAM9o3ACRvCCCz+fAKtE+uTwmx2bky7GSmcUOxueOkNC60C49KZqx1sfsuQKsJehyewZk0miWz5LTYPfZn3aVIIH8GtrJKUpgZ0jRALE2Tf/ipcrb4o9T8EZebg3vretN728GzzrQpvaG6I+FoKGPbPVuQg9CVooHygAN6votTd/G0LKLufgcRDeTd+GQ2RHujX4kqENqpcwB+T4cfmoKe/GsNbiXvyRLzSpIE5DnNPlKt26K8g664rj+yro862TIRLPAsInnzeX5Dkt0zm/pcDmGAXVrswIWO14nHjKSNrXs9A5dXIGJ0GaClNPN4b4aP1bh4aYc8bMzhSB8hh9c9jIDLV4xoDDI2fp/11uxEfZybHN1RT9oV9HX1Z8/0IJfo1Lso8+6dpBKmkggULud1PhBg98Bdm4eiUeduisMTCBxusZBXFyeLDDFkMgdIU6dZ1g1/EU9FKDSaiLRsVp8+TIiqCdrLqiqarTpAezGhFSFnqyKcQ6OM3MQj3805Y0Tvjya6etqGU8uWUtttTmctS0DA35SeTbWSr319EYGrISGsgXaZFuB6ulAxkhiYdDwC4JQ7DzkXUNAczBpXQwBof7+/OxUciQG6o7LRwtUG2PtSVz3OauA14j2xI3z58jGnVW8h9eHGktqnjSZkTE9sXQR3Kmcq0CBx1VnSUFHeW/Z0IcGtlBSkCDpUw3HzrKU5mCqANpXQFWUu2lUtJW0tUQ3ao9lUNFW4lkULqoidbAk91rmfsE2Sq/xZoNRp8tt+0fkVr59o4z5MM35X0uSq95RMH3pg5qE8lBo3i8lPcj9ii2Gu7xHTFguJulQeWVaNEx7sXioj3OTuJCzF9qbjMFCIjFYlDC8bEPjOo9dGhDa4RNA6jrddUY3DWUdqiyI8TjrmmoC8zYCTC278jjRszQOYqyINBOSDAle45FhWxvy0k8SNi2Ub+4BxmaYhKK4I8+DND3pJb/mAi0Q21e5VjUoG3Uhjq0F1z5W3tk4IZ/zGpToOABXQ50ZDcN9nYYt3jd/dEw8KEySu+BYF+Xhkgih606tkYR7qvGFTqhI8T/Jk44uLyJKrzmWJLM3TpToUvZlhXcq13oxqN6bJfnOU9X3Oxxxj/9HNKHg79tFwi75mOVbIG4cbhvSmr+86Xq05563vRp/7bgcQwcUc92j3R1+a1IOibCyYBWTGVvRWFKd8d3in5gjon+Yg9LwOROarHK6YP/ZWG8aArsH+hYLHoCwHvQ==&quot;}" modified="20200419093025570" tags="Journal" title="19th April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200406052736874" modified="20200416033134378" tags="taxes [[life documents]]" title="2019 1099">
-<pre>I have an unfinished reurn with [[FreeTaxUSA|freetaxusa.com]], for which the username is ''~KennethMyersII'' and the password is sXatas07!
-
-I need my checking account info to proceed.
-
-[img[20191099.png]]</pre>
+<div created="20200406052736874" encrypted="{&quot;iv&quot;:&quot;u2XB8SSXJL5tJGmk+NKjpw==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;mmGlYGxgAs1M5FBHvrCoZ/0sqae0zyVAGqPFonFeKgZu3cBzNEFdsyq34NcCpOiaSBfPwv/0MGyJ9iDss47plamPSIA5ulECikunjBqbW7Vmrdc4G7t87MDJ0NAeXr0Nt5Npiklc+JpRIOwS+B+MsP7T2OU8OXEm//z0g2OcTYZ4qQ1M4Ni1ynu7zcayWkMwR523NFmbdPeg/QirmZwhdY/l7TuimYzQAHFntxui9ligk21UIpXIpjl+j1CxvnPqQt3aMKwjqusMnd7uORaFqeDXEDsQx1e5zJZCoWBK/lk7JmQqn3b1PU9XciK7J+Z1CdIqV1BnmY+KQWCLHVrB62TF9v34d6ld82UbcSwtGu/8wFg8/C73mGO62OlXzzi35rZ+ElpTybtxsfRAZXhLMm3hdDZv453s5hW6O5z7OaI29iixj6E1AS13egGCXrrVHmWZXS4w&quot;}" modified="20200416033134378" tags="taxes [[life documents]]" title="2019 1099">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200403223027221" modified="20200424014313047" tags="to-do jobs" title="2020JobHuntNotes">
 <pre>As of April 3rd, 2020, I am applying for jobs. 
@@ -9984,314 +9990,40 @@ Of note: [[my NDA|file:///media/removable/SD%20Card/FCNDA.pdf]] with ~FluencyCor
 
 </pre>
 </div>
-<div created="20200424014844584" modified="20200424015152472" tags="Journal" title="23rd April 2020">
-<pre>Ok. It's now about a week before rent is due again, and I will not be able to pay it. I'm truly afraid. I do not know how to whether this financial storm.
-
-I had a night with Rick a couple nights ago, and a long druggy sex night with Railee last night. 
-
-Me and Ray have been hunting down [[swinger shit|Swingers we're talking to]] to no avail. No really perfect prospects. We wish we could get Amanda Hodson in on this. 
-
-Wrae Ann hasn't been answering my messages for a day or two, and I'm worried about her. 
-
-I want to be a good man, and to be good to Railee. I hope I can do that. And be a good father. 
-
-May all sentient beings be peaceful and at ease. </pre>
+<div created="20200424014844584" encrypted="{&quot;iv&quot;:&quot;qjytAY2ETxh0XBH/gFsI2w==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;nCirCGBTctC/DbNpG9vvYQ2EkbxbBXGCLKwWjprgxy+AFvCPFD9QVOroNcc4FTrY2UoxpV3DX/vbpEUmBdGaKvXGc/H/Jnf6SgLGxY4es65tCFtVzP3aX840/aQ56WN+P8ryiwxD8OMDJQnZ2e7tjWPH6kVksFyFILzUg/gYyt1TdpMN8t8ydgXBTV8/MjorDqeMY7pYkWpKDL6MjRj5dHZeHBS/oyWPH+ebROcyr7o5zP12ecp0daASuKSIb9XKZ2BmBBiDlIVj/yd7kvgiHvBJ0UucC+kREb24qupXn2n2PyChYpleR7U0eccGlRCl44g6TOzfrQzF1l1gUQ7DYLpjYJ44QXn1BDvDc/YVtwelljbCuKJunh5r1GnAreT3rxJFZec/DLOnQL9+YZe5mnaH7ifrvdSZZIux9fQH7jafAeF7oQjTFQsZaHaBFSO3O55qxAmKlbpwDcT3cJlLTigJQ4nUo/fLdvWHbEz0Xr1qPjDh95xdoyzehkEvH/mMJ/oIycWESzFsZdkFJTvBdXvIn5nuLWXvaSnZ1P5+45wr5FwZOdqiSUhrjbN5g/KCSw96TcAkUpyMoM5/iVrL79jN1bazBMvj2/QmzUFQCxSb8ySU1MgMlQgqqB7xcW0mRjLloNM5Bwh5CU2z6eY848P+NdfXEykldqG/tuAMDu8TIuSBdmmLb9AnQzD6hxKHjIwRqkHTYJqTE4suZ3N801st0586dz9viOMKe03hJCRDU+1qSeeMMziSmD4MwbspjMjToTOxRPSdUCuscUrrznvT886quSnn8CK506I9QqHuEUvA3302DvtMl53Z9gXmOPulwTj7Lxj4Iew08DPPz5OPNOncqksj/FI64rJZZzU5aGoxrZsVruDclGZ6/VPIbQITCjHDMVUmTCKoOsvko1RSWEdyOqt/0c0kWasVOniyVkosvH3DPZ7/r6VP4jjsXalkRZ3CPmohDv3dG7mMZhW/2jccbT+GZABE/2puHChKiQ9NeJHtMem1u8Kywi3u9jTFiTClG8AnNu3hclxR1h/hvSakA9c2&quot;}" modified="20200424015152472" tags="Journal" title="23rd April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200501044841142" modified="20200501051426614" tags="Journal" title="30th April 2020">
-<pre>Ok. Dear God.
-
-!!__[[COVID-19]] Finance Saga__
-So, I've been out of a job job more than two weeks, and rent is due tomorrow (although it has no late fees through the crisis), and I don't have it, and I've gotten a kind-of job with a promising-seeming Australian start-up, but that will be slow to start, and it has seemed as though I will soon be forced out of my house, back to my dad's, losing my life as I know it. 
-
-All of this on the heels of already-deep financial/legal problems. Ouch. 
-
-!!!Well, 
-
-As of today, it looks like I've been awarded a bunch of money through the government's Paycheck Protection Program, and it looks like I may be able to survive on a 2.5 month paycheck replacement thing, possibly coasting until Australia comes online or NTI comes back. Wow. 
-
-I now have plans to try some entrepreneurial and blogging stuff, maybe, and to take care of some of my legal/financial problems, and maybe JOIN THE FUCKING [[Texas Guard]]!
-
-I do feel, though, that having just dodged a bullet as I have, I need to get a job sacking groceries or something, just in case. 
-
-!!__Digital Renaissance__
- 
-I'm slowly migrating to Protonmail. I've gotten a new gmail account, too, and I'm migrating to Brave. I'm trying to establish a life that's more secure, where I'm more in control. I've been getting more into Tor and [[programming|RapidQ Esperanto Diacritic Adder]]. Lots of stuff. 
-
-!!__Railee__
-I still can't quite find my footing with Rails. What a good girl she is, though. I wish that she was just my kids' friend that I fucked. 
-
-!!__Miscelanie__
-
-* I didn't drink yesterday, for the first time in over a month (Jesus). 
-**I'm a little bit uncomfortable with my ambition, who I am sans alcohol.
-* We're all sort of losing our minds here in the Myers house, but quarantine looks like it'll be lifted tomorrow (?!)
-* Kenners is a badass. With his regimen of piano and calculus and push-ups through quarantine. I'm proud to have him as my son. Fuck, I kind of look up to him.
-
-</pre>
+<div created="20200501044841142" encrypted="{&quot;iv&quot;:&quot;FDy9EZq3+dHt0jJ6naC1Cg==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200501051426614" tags="Journal" title="30th April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200404032513153" modified="20200404041306717" tags="Journal" title="3rd April 2020">
-<pre>My god. Let's see if this holds.
-
-I haven't been able to write in a journal since Ally left. I don't want to write about Ally's leaving just yet. It was traumatic. I was just. I'll love her till I'm bones.
-
-I'm dating Railee, a 20-year-old girl who still has a lot to learn in terms of social skills and who she is, but refreshingly lacks the usual catastrophes.
-
-The [[COVID-19]] plague is upon us. I've just lost my job at NTI. I'm just now setting about a [[job search|2020JobHuntNotes]]. I've been depressed for a long time, but I'm optimistic about this job hunt, today.
-
-[[Metta]] meditation has changed my life. But I haven't done it in a second. The stoics //saved// me when I lost Ally. 
-
-Right now my horizons are close. I have no idea, even, where I'll live in two months. Or where, or if I'll work. I may have to leave the kids and go abroad. 
-
-I fell into a fantasy today wherein I might work remotely at better-than-before pay for a company abroad, editing academic journals (I applied to two such companies today). My god that would be amazing. It would solve all my problems. 
-
-I've had other dark fantasies about Railee's grandparents dying so I could more easily live in her awesome house.
-
-Megan has gotten a job at Raytheon (pending her top secret clearance approval). 
-
-Chandler and me have had a falling out, but seem to be doing ok.
-
-Colt is in Romania, locked down for the plague.
-
-I want to join the Texas State Guard.
-
-May all sentient life be happy. </pre>
+<div created="20200404032513153" encrypted="{&quot;iv&quot;:&quot;SAPnGiPbsmuwvmF6NElVYQ==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200404041306717" tags="Journal" title="3rd April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200405090157306" modified="20200405091226175" tags="Journal" title="5th April 2020">
-<pre>Today was another good day in all events, but I'm here at the end, sad.
-
-I'm going to emote and dump and contradict.
-
-Why am I unhappy? Consciously, my narrative is that I don't get the feeling from Railee that I did from Ally.
-
-We lack in conversation. We lack in magic. Maybe there's actually something religious about what happened with me and Ally, and maybe now is a time like losing my faith and Christ Church and my family and friends in those days.
-
-I hung out with Chandler today and was jealous of the love that he and Scarlett have. I wish I had that devotion and affection from Rails. Also, I'm too morally disgusted with Chando to be a good friend, and I'm ashamed of that, but I think he's going to fade into the past like Caleb Hamby, especially as he plans to move back to Yantis.
-
-What are some gross things that could account for my Railee relationship dissatisfaction under the hood?
-
-Did I like having someone who was schiz? Do I need mission and magic in my life? Someone who amazed me? Someone who was merely musical? Was it that Ally was a puzzle? Was it that she could keep me in that hot emergency terror?
-
-I remember her sweet eyes and how much she loved me, humored me, even pitied me. Rails is all brat and joke and jab. 
-
-Is is that I'm drinking too much? Is it that I'm not getting alone time like I would on my pre-[[COVID-19]] commutes?
-
-Is this really my not-teaching-as-much, my lack of friend contact? Is this my drug use? Is it the stress of my job situation?
-
-Why is my sex drive nil? Is it the same issue, or another? Do I just want an 80 lbs. sub?
-
-Is this because I've quit with the stoics and metta? Or have I quit because of my funk?
-
-God help us. The pattern lasts forever. May death be defeated. May all sentient beings be safe.</pre>
+<div created="20200405090157306" encrypted="{&quot;iv&quot;:&quot;EWzXbXoo7jhJWmmg8wSEtw==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200405091226175" tags="Journal" title="5th April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200406051425938" modified="20200419114209836" tags="Journal" title="6th April 2020">
-<pre>Dear diary,
-
-Railee went back home, and it gives me some peace. Though I do love her lots. I think that I may need more introvert time than I'm getting with no car rides and cancelled classes in Ft. Worth. 
-
-I did some catch-up, listening to some Seneca, doing some [[Metta]], cleaning the house, clipping my nails, and shaving. 
-
-I think I'm set to engage with the day tomorrow. I hope to wake up an hour before class, make coffee, bathe, teach, [[record a video for Malaysia|2020JobHuntNotes]], teach more, get the kids to Meg, meet up with James Umphres, then call it a night.
-
-My [[COVID-19]] thoughts have been all over the place. Talk to a doomer for a second, start to be a doomer. Talk to an optimist, become an optimist.  [[I wrote something about my thoughts today, here|April 5th COVID-19 prediction thoughts]]. Then I talked to Levi and started feeling like everything is going to be fine again.
-
-''Futures that might be the best option''
-
-* Going to Denison and living off the land in the new post-apocalyptic world.
-* Going to Denison and staging for Saudi Arabia.
-* Going to Korea, because it's the last country standing. Bringing my kids over as soon as it's apparent that the world is fucked.
-* Staying here and bagging groceries if I can somehow afford to stay in this apartment and continue to be a good dad to my kids.
-* Going to Manila and working remotely for a Chinese or Taiwanese company, sending money back to my kids and living frugally but not miserably.
-* Staying here and weathering the summer somehow and then landing back with a renewed NTI contract in the fall.
-* Staying here and working a decent remote Chinese or Taiwanese job.
-
-The quarantine is getting to my head, maybe, and making me sad. The kind of depression I have right now reminds me of the kind I had as a teenager, and I would walk, so bored and in my head and fantasies, and fantasize about running into a stranger girl and making a new friend on the road.</pre>
+<div created="20200406051425938" encrypted="{&quot;iv&quot;:&quot;E51ax9hn+X1hXkAMPLJHww==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200419114209836" tags="Journal" title="6th April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200506092412459" modified="20200506093200705" tags="Journal" title="6th May 2020">
 <pre>I have been having a really good day. But. I must become no lies to no people again. I must become radically honest and righteous. 
 
 Future self, you wanted me to type this out? I'm typing it out. Burn bridges if you have to. Blown shit up. Stop being false. Die for the light.</pre>
 </div>
-<div created="20200508064520562" modified="20200508070711858" tags="Journal" title="8th May 2020">
-<pre>!!Money
-
-I was awarded a Paycheck Protection Program (PPP) loan from the SBA to the tune of about $6,000. This will keep me afloat for a second while I try to figure out what to do. I'm theoretically still going to work with the Australians, &quot;English Skills Cafe&quot; (ESC), but they've kind of gone silent for a while, and have had many delays. I think it might be prudent to get a really shitty job bagging groceries or something. Even if I can only save up one month of living with three months of working such a job, that's enough to keep me float another month.
-
-I'm anxious about having fucked up something with the PPP loan and having to pay it back or something. I'm anxious about taxes coming due on July 15th.
-
-!!Programming
-
-I've been geeking about two programming languages. [[Sonic Pi|http://sonic-pi.net]], and [[Problog|https://dtai.cs.kuleuven.be/problog]]. Tonight I used Social Security actuarial informaion + Problog to calculate the odds of Ross having someone he loves die this year (10.4%). 
-
-I think that either of these languages, if I learned it well, would absolutely change my life. 
-
-!!Chandler
-
-I talked a decent amount to Chandler today, and it was really nice!
-
-!!Wrae
-
-I had a chat with Wrae last night and she kind of pissed me off, but I still love her dearly. She was poopooing me and Railee because I was talking about how Rails and me can't have a conversation. Wrae said that Rails lacks substance, and was a little condescending about it. Deal is, whatever problems I have with Rails, I have with Wrae. Does Wrae think that she herself lacks substance?
-
-!!Rails
-
-I'm at Railee's house, and the day has been a little bit annoying and boring. She (much like Wrae) has nothing to say, but wants attention sooooo bad. I don't know what to tell her. What can be done? I asked what she did when other friends or lovers are over, and she disdainfully replied that she gets roped into hearing them whine about their problems for hours on end. She obviously doesn't like that, and she obviously doesn't like this, so what is there to do? I'm open to ideas. 
-
-Anyways, the poor baby, the poor good-hearted good girl, makes these desperate ploys for my attention all day that are actually pretty annoying.  She just wants to like literally be laying down, holding me down, making me look at her or something. 
-
-I want intellectual stimulation. I want to talk about things or figure things out.
-
-[[When did people start telling stories, and is it hard-wired?|Questions]]
-
-Rails also wants more sex than my body wants to give her.
-
-Also, today she got drunk and REALLLY annoying, and was being really unrealistically somber and morbid all day.
-
-!![[Sex party|Swingers we're talking to]]
-
-This would all be cured by a sex party, right?
-
-|[img[redhead.jpg]]|[img[johnd.jpeg]]|
-|He wants to roll tomorrow, she's on the fence and probably needs a call from Railee, and a good day tomorrow|These guys are more down to clown, ostensibly, but they're a little harder to get a hold of, which raises the risk of ghosting in my mind|
-
-Railee, too, though, is more on the fence. She was like weird and drunk and whiney all day, and we'll see how she feels tomorrow about the whole thing. 
-
-I want to be a good man to Rails. I want to not fuck this all up. I want her and I to both be happy birds.
-
-May all sentient beings be peaceful and at ease.</pre>
+<div created="20200508064520562" encrypted="{&quot;iv&quot;:&quot;+YlI83/jwgnRx+n5SEp6nQ==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200508070711858" tags="Journal" title="8th May 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200409211926402" modified="20200512132938618" tags="Journal" title="9th April 2020">
-<pre>Dear diary,
-
-I've been emotionally out of sorts in a lovesick traumatized way, about Allison, forever. I felt like a got a little reprieve from that yesterday, honestly when I threw a hackeysack back and forth with Railee at 2am.
-
-My sleep schedule has been fucked. 
-
-This is my last day of work at ~FluencyCorp. I need to make $200 or so by Monday, $400 or so by Tuesday, etc, or I'll be that much behind. I don't see how it's possible. 
-
-We're supposed to maybe have a sex party soon, but I need to find more girls. 
-
-I need to do an awful three-hour editing test for a Canadian company today so I can feel like I'm trying.
-
-It really looks like [[COVID-19]] is slowing and Levi's [[Predictions]] are going to be pretty good. </pre>
+<div created="20200409211926402" encrypted="{&quot;iv&quot;:&quot;ZozWATT5r/g0eLkMFdRIWA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;WQVdvoznwFV0RLE0XHv4DTlrXJ/DP2yOVPcgfV8UjoG9OxxGDXde0gYBJBaZYKkkVaaMAMxHR+WpqCSX6DgKCzaXvUtZfQwj40+GG7jdTYFhr11L2UsO8S8P4juARWZX5CRuzJC81i9s1HwfU125MAHuBwc4XzBFz5xDj//CBz633VZ/BwpyM/M9xcPHvFUWiwuGJs4cBHwZfMgFGuxcSHH5H1q+xcHgopNNG86Z5fh5N3Ou9tI9rmfbr20FGQHR8Le0WIuGSlL0w/lIqbrCES+VJK/clMVL//yGFIsSZxkTX1pP75ZKcM7P53Vt1pSd5dgx4t69nLBALWqeCb/ahAzjqn+Jt0GlcsU9Oh8/IH9dHuW9mBaV4nNSKI01QGrS72SFnToP9L8c1EGZCD3G2bPQ7vuICg9MetE+7jTyK4G4eIiJ/2aME7Ivn9879oaxBKWudsvTT8CpI5WIq9rWxngSXX4T4gA3rK9t3c/WSp8J/aKmmXODOba9UFcVsU8RO0YZjkmUXPJBPppdn06TtVTYlk8voOMmvqb8XDO4wQ5THvqbLnnj8gQf/alETDnmn97Xt0WJyOXGQfdcx6VHS16m9V66100aWE6ww+gYuYWfcUhM3fJUWxGYnViUlPnIGiqhegzh694g1SkdruHMo0RSVh3xtmmny7MSJA3qE8mZQ/UIH7iVggP+y5v79F4vRnqpcJb4tHlDn2G5cxw9zRs9z6YPhsPX3tU+2H+H9ugvLOoxQ8q5VEG+s+jt/0MvkVNfU3obfvqHneBlUzuVIQ/V37mOu5hKGBGGR4bKgzCLn1DrjWfQvIk9xFS+FdCCB4mj16hRAwumeviBXLzQd0ThfMvJjkMlGYP0bdd/185pJDQ92zn2adK5a9LDUkOYs2BWjZDvAoLPiqZyL+VePtsCMMhobWiYUD3hiMUlGl15F0VAyxa3+ogizZ4LqgB1LCwbho2CGNcZ5przJMS7fL0apnz4YuyZzyPdagsttPmHVv5U20qvBJbXfqfeFENZ+CtjWx1Kj2GY5yDsStOzJEBx2jNpBqoXq9wK/yWaFZ7CS3mtIocsRRBqxd/UjkFyyNTwI9CLr6BITvazTvAVv5w7SqMcP5QFZ3DRRGGn5MyJwAKWy28Q2BmfAldi4g==&quot;}" modified="20200512132938618" tags="Journal" title="9th April 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200510042938032" modified="20200512090216337" tags="Journal" title="9th May 2020">
-<pre>We rolled with Heath and Samantha.
-
-&lt;center&gt;
-[img width=200 [redhead.jpg]]
-&lt;/center&gt;
-
-There was oral all around, but I didn't fuck her. They seemed sweet, and like I'd like them as friends, but I bet they don't come back around. 
-
-I think I'm gonna be the church president for another year. Looks like I'm uncontested for the nomination. 
-
-I got all my tickets in both Arlington and Ft. Worth paid off. Now I just need to get my license again. 
-
-I'm afterglowy and very content and very grateful for Railee, and feeling very blessed and like she's a wife-o bird. I'm watching a show where the Tulsa police solves crimes on Pluto. 
-
-[[I was so so irritable and even felt like I was on the verge of breaking up with Ray yesterday|8th May 2020]]. I feel so different now. God oh god oh god walk humbly before the chemicals, Kenneth. </pre>
+<div created="20200510042938032" encrypted="{&quot;iv&quot;:&quot;7BIq5JDQ5ib2gJmOpUk0GQ==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;1CpbIR1hQT1VXlcP1GbCJ5vV5REZMpSDbMB0wcufeLltrnW9wy9iz7LO0QXIjMKre3MMJ3FJT6FfuD11dBWDbbYDLMOfTEVsjHFFd2xWbx13xaqSeVnIRjZ/4FQ9T23r97tvHV8p5K0Rp5Tjo4VtSkcktC2g3cPyP5v/8o76mxKiXgvj61bE+Yl3ZgJfR2hcG0Mll+kj0aRr6nmlglPznxzvBiep3MEePlEuqeMvX3Uqy3xNbdGqqsRz8v+kmk0ZVnto9pWdTfc9fAeShj/KKohSPeFID3KhNKGhgHbo3u3R4RXv8dao3c7DJ+NFhc5GpcywajrMSDfDCnM1OpC5vEZwimcTKYAazJ/6ObBarIROFgQLNn/wl3p3g0rrl9G0CybCmGOv1KnA6EucWmbBifnbIGXL2TQ9+QPZMG0WN2mNQ5DP5OtBx6PPXRxddRGCubQVxSfAnLNhhl/B6g90e4C6UWWnHtsx4kdjmmeevafAVh668axhqd0haTAMhUYmhPONPG0zYccVCTlJGD84nKioCc1FDr7jrCtT5XkhCTi/itkoJ5BJQ0zPGXjYsuGKduzC1lHKasuyK5TTOAMXjT1WiN2RzIAl428Ljqi4i1SqJJX4l7n4aPtwB1NUilpOM5L+5NKoTZwRj7h66S87feTHcvTmqUOcxYzNvN2DBy/Fi2WFHvoYF+oYilEnQNcEtKKX6UW50xySuFLbyFuLODrXHiC/w7jhWpKchD/XbdezAbCX4t0GDWL9wOBmo91sQe/sDc3HmmzK5dX1+Fsoyzp73m0fd+NTulCu+iVDANRUfA21lrl8oDJJzQN3kqsDXOgvmFXhU607t5rdgrcFhrtfjiw5vaT7/ZgWiC23GUfGPhO9Zh/Kf+9mdTHdl1lM8cJsalzx5GpckqCh7IrEcwAHhbfUUmxVZHzSNNrTjt/JwEmaySTP8CfPC40H3adHIcV2N9wikheqJiO8sIq5NWcWmCJMnTldvN0JvLC8Zwbe5AJFDHRZgQKzPNTPRVI5W6SlNxYFK3xde32mzCEQcACcRn1KPp4PtI/LKgeCMzWuPCI9l7nyUV/bQClQTg734wfYgBskM202ysRk/qluiL4lG963FxczULCdBPSzvydV571epOM8TVwRz9+f1VARmfg3u/dmFRCtcu1OA8K8gj6g9bgpbHitpdVWBTLKEw9WozvcsEJnfinlWnN4sXuOf3aqz4Yns6lQdQOG7t3dJPWhd9jenxL2d0c0xfI5bRn+qCpprBjdl9U3HI+MW7NMd+QeUQ==&quot;}" modified="20200512090216337" tags="Journal" title="9th May 2020">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200507012441021" modified="20200507012558953" tags="" title="A/B DMT Extraction 'Tek'">
-<pre>```
-I've had a few requests to write up an outline &amp;amp;amp;amp; summary of the method I've been using to extract spice, that I've adapted over time &amp;amp;amp;amp; thru plenty of trials and errors. I'm by no means a trained chemist, I didn't even take basic chemistry back in high school. But I've put in quite a bit of time researching, understanding, and learning the process and the chemistry behind it. I believe it's the easiest, most straightforward, and most effective way to achieve top notch results - in the shortest amount of time &amp;amp;amp;amp; with the least amount of effort required. I'm more than happy to share what I've learned throughout the past year, so here it is! I'll try to explain each step as much as possible. I personally never measure anything, as I believe that ratios do not need to be exact, but reasonably close is always good. I typically extract from 1kg of MHRB at a time, but I split it into two separate 500g extractions. For the sake of this 'tek' I'll pretend I'm just extracting from 500g to make things easy. It can be scaled up or down as needed, as it is a very forgiving procedure for the most part. If you're new to the game, start with 50-100 grams of MHRB just to get properly acquainted. Smaller extractions always go more smoothly, and larger ones can get a bit tricky sometimes.
-
-Take your time, don't rush or lose patience, and everything will be all good. If something goes wrong at some point, never dump or throw anything away. 99/100 times nothing is actually fucked up.
-
-Anyway, here it is!
-
-Materials &amp;amp;amp;amp; equipment that I use:
-
-10ml Pipettor - I use a Gilson P10MLG. It's my baby. The cheaper green 10ml pipettors with the thumbwheel also work amazingly well for extracting. Buy one of those to start with. No bullshit. A legit pipettor is the one thing I'd never want to be missing during an extraction.
-
-2000ml Corning Pyrex Erlenmeyer Flask ($20 or so, just do yourself a favor)
-
-250ml &amp;amp;amp;amp; 100ml Pyrex Beakers
-
-Large stainless steel pot
-
-Funnel
-
-Hotplate
-
-Cordless drill with drywall mud mixer (blades cut down to fit into the erlenmeyer)
-
-Heat gun / hairdryer
-
-Heptane (VM&amp;amp;amp;amp;P naphtha works as well)
-
-Sodium Hydroxide (Lye)
-
-Shredded MHRB (I avoid powdered bark like the plague, although it works)
-
-Distilled Water
-
-5% Distilled White Vinegar
-
-The procedure:
-
-The whole point of an acid/base extraction is to transfer the spice out of the MHRB and into an acidic solution before actually extracting it. This step is literally what makes an A/B superior to any STB in several ways, and despite it being an extra step compared to STB it saves a ton of time in the long run.
-
-I take 500g of MHRB and throw it all into a large stainless pot, and fill it with enough distilled water so that it's just covering all of the MHRB. Then i add about 100ml of vinegar to the pot as well. This creates DMT acetate, which is water soluble and allows the spice to transfer over to the water. It then goes on a hot plate or stove burner and is heated while stirring and agitating until the water starts to boil. After about 10-15 minutes or so of boiling, i cut the heat and let it cool for 10-15 minutes while continuing to stir. I carefully pour the liquid thru a funnel into a 2L erlenmeyer flask, while making sure the mhrb stays behind in the pot. The liquid should be a dark reddish color. Then I repeat this step 2 more times, adding fresh distilled water and vinegar each time. After each session of boiling and cooling and stirring, I pour off the liquid into the same erlenmeyer flask, so that the total liquid from all 3 times is now combined. I found that 3 times is sufficient to get all of the spice out of the bark. The MHRB will usually turn somewhat dull looking in appearance as it gets exhausted of its alkaloid content, and is no longer needed. I set it aside (just in case) and am left with my erlenmeyer flask which contains all of the liquid from the acid boils at this point.
-
-Edit: UPDATE! I have been getting bigger chunks of bark with my orders for 'shredded' and have had to compensate by boiling the bark for much longer to get all of the goods out. The longer the better, but I've been sticking to at least 2-3 hours each time. I also use a pressure cooker nowadays, and that makes a pretty big difference too. Note: if using a pressure cooker, it HAS to be stainless steel if you use vinegar or any other acid, as the acid will eat aluminum and potentially contaminate your product.
-
-Also: before you get to boiling, it helps to freeze and thaw your bark several times while it is in acidic water. I never was much of a believer in this, but admittedly I was wrong and it definitely helps. For best results, let it sit and soak for awhile before freezing. The expanding of the water when it freezes will help lyse the cells and break everything up.
-
-The ideal thing to do is to boil off much of the water and reduce the volume of the solution to about 25% or in other words boil it down to about 400ml. That way it only takes a fraction of NaOH needed to sufficiently freebase the spice. However, I tend to not do this as it's much easier to pull my NPS from the narrow neck of the erlenmeyer than it is from the base. A/B requires much less NaOH than STB by nature anyway so I don't mind this. Either way, I make sure it's cooled to room temp as a safety precaution, because the next step generates a fuck-ton of heat as it is.
-
-Safety notice: be EXTREMELY FUCKING CAREFUL WITH LYE!! As long as you fully respect it and exercise caution, you'll be fine. HOWEVER, it literally melts flesh upon contact and WILL cause blindness if splashed into the eyes due to negligence.. Pour it in slowly while steadily stirring! And please don't be using pickle jars and shit like that. I've been there, and I don't recommend it. Even Mason jars are sketchy AF and prone to breaking due to sudden/extreme temperature change! Anyway, I then pour in a decent amount (100g or so?) of NaOH into the acidic solution and the magic starts to visibly happen immediately. I stick my drill into the mix and let it rip until it goes through it's crazy reaction and eventually turns black. The DMT has turned from an acetate salt form, to freebase DMT. It is now insoluble in water, and soluble in nonpolar solvent. Basically it's solubility has reversed.. The solution is hot as a MF by this point, so I let it cool for about a half hour, or at least until the outside of the erlenmeyer flask is no more than warm when I wrap my hand around it. More heat increases spice's solubility in non polar solvent, but it also pulls impurities &amp;amp;amp; plant oils and fats which is my top concern. Spice is more than plenty soluble in NPS without needing any external heat.
-
-Note: NaOH (lye) is insoluble in nonpolar solvent. As long as you let the layers completely separate in the next step, the NaOH will remain in the aqueous (bottom) layer. Just make sure it stays there &amp;amp;amp; you'll have no reason to worry..
-
-Now that I've got my aqueous solution of freebased spice cooled down, it's ready to be extracted. This is where things may seem a bit unconventional, but I swear by it. I pour in a bunch of heptane. Probably upwards of 400ml or so. I do big pulls, but I also only do two pulls. Once I have poured in my nonpolar solvent, I stick my drill back in &amp;amp;amp; mix the unholy fuck out of it. After a minute or two, I put a stopper in the mouth of the flask and shake it as hard and as violently as I possibly can for a minute or two. Then I take my pipettor and draw up as much NPS from the flask as it will hold, and immediately spray it straight down &amp;amp;amp; right back into the mix. Over and over and over for a few minutes.
-
-The real beauty of an A/B, is that there's no plant matter to cause any emulsions, so I literally never see such a thing. If by chance it does want to emulsify, I pour in a bit more NaOH and mix the shit out of it out of it some more. If it's got a high enough pH level, the two layers will be 100% separated within 10 minutes at the most. Complete separation is the most important factor in getting pure white crystals. In between the layers should be glassy smooth before pulling the NPS, with no bubbles or anything like that. Also, by doing an A/B there's no plant matter to absorb or steal any NPS, so there's no loss to any sludge. There's also no plant matter to contaminate the end product, so it's a win-win-win-win situation. It's next level compared to STB. No comparison, really.
-
-Once things are separated, my NPS is usually already cloudy from being so saturated with spice. This is why I mix and shake it so hard. I pull the NPS (there's no need to get it all on the first pull) out with my pipettor and transfer it into a beaker, then put it on a hotplate (no flames!) to gently boil it down &amp;amp;amp; reduce the volume. I hit it with either a heat gun or hair dryer at the same time, which makes the level drop pretty quickly. The solvent should remain just barely boiling at most for the entire time, to avoid losing any spice. I like to reduce it until the NPS is pretty much milky white and opaque at room temp, or even while still warm. The more saturated, the better. It decreases the time needed to freeze precipitate and also forces more to crash out in the freezer.
-
-Note: I prefer to use n-heptane over naptha based on the increased solubility and shorter evaporation time, so naptha may not get quite as cloudy as what I described.
-
-When I feel like it's saturated enough, I put some plastic wrap over the top and stick it in the freezer, still in the same beaker. I find that it's much easier to collect and manage when it's in a beaker, rather than dicking around with some big tray or dish. 2-3 hours in the freezer is all it takes doing it this way, tops. I can tell when it's ready to come out by the NPS being completely clear once again. I take it out of the freezer and immediately dump the NPS right back into the erlenmeyer flask to be reused. The beaker containing the spice is set aside to dry. I whip out my drill and mix it up again, then shake the contents of the flask again, spraying the NPS back into it with my pipettor again, then let it settle. 10 mins later when it's separated, I pull the NPS and transfer it into another beaker before reducing the volume and freezing and basically repeating the process. You can always combine the pulls and freeze them together, however I'm an impatient bastard and I like to see what each pull yields separately.
-
-From a 500g extraction I usually only end up doing 2 good sized back to back pulls, and each one will typically yield 3-4 grams of snow white crystals. Another advantage of A/B is that instead of the time it takes for the NaOH to completely lyse and break down the MHRB cells to 'let the spice out' during a STB, it's all available to be pulled immediately so it can all be pulled right away with no waiting. I can't speak highly enough for how much better and easier it is than STB. When I first started I saw people always recommending A/B but I was intimidated by it and didn't understand the significance of the extra step at the beginning. It's definitely a game changer tho, and is the only way to go imho. Recrystallization is never needed.
-
-This whole process takes a matter of hours from start to finish. I can start it when I get home after work on a weekday, and by the time I go to bed that night I'll have at least 7g of clean DMT from a 500g extraction. Or least a half ounce if I start with 1kg MHRB. Ready to vape. And still have time to clean up, shower, eat, dab, etc.
-
-The same quality of results can be obtained via STB without recrystallization, but it turns into a matter of 2-3 days instead, and is a messy sludgey pain in the ass in comparison.
-
-So there it is! It was written up pretty quickly and for that I apologize, but hopefully it makes sense and hopefully it helps some of my fellow blastronauts streamline and improve their methods of obtaining this magical gift. I'll always be happy to answer any questions, sometimes PMs get buried and I miss them but I'll do my best to help anyone out.
-
-Happy Travels!
-
-Some of my best/favorite pics:
-
-https://imgur.com/gallery/1f13f
-
-https://imgur.com/gallery/5zCsd
-
-https://imgur.com/gallery/KfHdB
-
-https://imgur.com/gallery/LqAH8
-
-freebasing a 500g A/B with a drill in slow motion https://youtu.be/VoZjt-E2D9M
-
-My preferred method of vaping - hot rails (thru the nostril). By far, hands down. More intense than any other method, and beyond simple. No taste, no harshness. It's the only method that still scares me everytime simply because of how effective it really is. https://youtu.be/CXab7fNjdu4 https://youtu.be/VPW45St0yoE
-
-Edit; if you have powdered bark rather than shredded, one of the commenters has pointed out that he secures his powdered bark within a cotton cloth, and soaks/boils in the acidic solution 3x for about an hour each. Like a big ass (or however you scale it) mhrb teabag He said he's had good results going it that way. I don't recommend boiling loose powdered bark by any means, it's a monstrous pain in the ass and is nearly impossible to strain/filter out all of the powdered bark from the solution. Credit for this tip goes to /u/Obi-Wan-Shinobi
-
-
-```
-</pre>
+<div created="20200507012441021" encrypted="{&quot;iv&quot;:&quot;DGskcM7Zyw9antSyunLjyQ==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200514104846060" tags="" title="A/B Tek">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200419021741982" modified="20200506011209970" tags="" title="Accounts and passwords">
-<pre>|!thing|!associated email|!username|!password|
-|github|ken+github@fluencycorp.com||later khayyam|
-|Progressive|ken@fluencycorp.com|||
-|English Skills Cafe|ken@fluencycorp.com|||
-|~FreeTaxUSA|ken@fluencycorp.com|~KennethMyersII|sXatas07!|
-|Google Domains|ken@fluencycorp.com|||
-
-</pre>
+<div created="20200419021741982" encrypted="{&quot;iv&quot;:&quot;LIwf9eDGx4qdzwR0eOgoZg==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;kJ6D2+xHLelGjgVxnfma6vqzz0IiqxaFKlMKWuYR5nFPCmc7krZA9GsHivBQB8Hk5V1xXbbXtATWtzhNuZgEw8LfWZ6KHblj0ySvDkPOWi7LM0m711Xi4nhP4PEx9LXlg5JVoSdGGCak9qaqzHlExPbIVQ+Wcy5D/EoSOvyKORXErBJc2m/9REwHvmR6jfHPBN/x4CNFhqPLCuLjNMwXg1nRZKS9gxl9KGxNBwT9UBaRq4KbJftw604lWO5KRHMhNDKbCoMzJKUBDD7XMZTrb2NPlEnEpL1+vlMolmVIFbERe67Lm2Md4y0RTvKqmDwsa759aH509yr0WT5goWp7YiWShTXfw/uM/yLf3+2PcCOVbfZxqw3OEfeqKDKgoHV8iIbQ6BIBZ0QC/M7+fAgdKarkBuoYddEKUwzrog379/5KigOxTNpwLroZ0zzaGHrWE9X8j5g9qBj3iHYgCfBYiBdMtm6gdvkCnkeiTVkOw/BMFVvZcyUP3cuM+Xokn72gzEDWXtUVMEkfSQTRnCcKg7sprp/YQDdg&quot;}" modified="20200506011209970" tags="" title="Accounts and passwords">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200403030715696" modified="20200403032326573" title="AdviceForKids">
 <pre>* When people say no, go to the next person
@@ -10433,65 +10165,17 @@ Following Robin Hanson and the rationalsphere as a whole, and taking some cues f
 Just in case, if someone did see a Great Depression coming, and it wasn't common knowledge, how might they profit on such foreknowledge?
 </pre>
 </div>
-<div created="20200508190713269" modified="20200508190808872" tags="" title="Arlington Forth Worth Traffic Ticket and Warrant Payment info">
-<pre>!!Arlington tickets information
-
-Oct 2 1:30 pm - court date
-
-$413.40 009143668-01
-
-$366.10 009071947-01
-
-Payment location code: 1120
-
-$779.50 ticket total
-
-$38.98 service fee
-
-Total $818.48
-
-govpay.net: 1-888-604-7888
-
-
-conf # 28514565
-
-!!Ft. Worth tickets information
-
-$150 AA061076
-
-682-999-3681
-
-$156.75 (total w/ fees)
-
-PAID
-
-Conf # 05FC977E</pre>
+<div created="20200508190713269" encrypted="{&quot;iv&quot;:&quot;UCn8jLNw7apvQKtcVISsJQ==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;qJp78Njyw3kieilxOrgkqFTRhtAP5t5Bfa+iDepXvkE+ncqKcTAbIVKn5qTQ2NiTcO9vuXrIrYd0kGRPOHiQGoHfGWt5liBmhzpGCXpUcT2TMr1rACjSEL2r/sW/GAO8fA8ZOdf3k6/pom90TtIjXLDjyl3HtSPAzv/23AkDdM6J0tZUFgbTW91L9hd7E08CJYPD9LCQFLvnnpflcooOHSCXH8SXe0rM/FiJDQ5s3SFCDdDPSBIDfEBDLPVo4wl19QJS9poHyxyuDo3KQb9lYg+ui/GnEcGQt7Dms4fRfkA0nw1fR8KFPl7csUKtqBZAx37TRPtTtHy5YRH25BJqaj4cWSkJh/a/AxdeOi+c9/vIP7XPejLHgnlbz4CEY0gh0kiAA+VjNdNvsBW37RW8t21RkLY1h9R7NlphR/ZefX6F+12h+57FG/0J7T1EqcnXYvhy5ZUPsur4wUYqPHnTh4Fls6c3gRHeqx/3X6Wru7T3tk/xPnCT8INRCJ+kr/MPoCzV0kCMJ3OVTTrtw1h1Bzx7QF6WEalIiDZ8gm16OpNA4M3NQp7XizDA8cuzC9OZyy87K+TEx9vaQNAFxp5Wg/poGYnclPr/UiLkqgTq36AStXXI0iXxD2K3C4QkbL5piMPOIjBGzlj/z67O7YqKoTtiD8mbb2ahlKjUS5SQVzWk+5YkJksrpiJlaWCx56b47Wqk9fwkUCx9MA==&quot;}" modified="20200508190808872" tags="" title="Arlington Forth Worth Traffic Ticket and Warrant Payment info">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200419030017999" modified="20200419030141869" tags="" title="ASCII Character Codes">
 <pre>&lt;img src=&quot;asciitable.gif&quot;&gt;</pre>
 </div>
-<div created="20200503014226402" modified="20200512132836622" tags="" title="Blog posts">
-<pre>* Schiz &amp; DMT
-* Urantia and schiz
-* Is belief involuntary?
-* Steal these ideas
-** Evolving music
-**Powerpoint masterfile with audio matching control
-** Clean up old songs with neural networks. If the copyrights have lapsed, you could even make a killing on an album
-** Automatic Spanish accent adder
-
-* Dickhead wizards (the Wightman/Haydon trope) don't exist
-* Rapidly sorting Myers-Briggs types in your head. 
-* GPT-2 religious/philosophical readings
-* The Rundown, Chapter 1
-* Class B Mohist solutions (A fridge that won't open unless the dishes are clean)
-* Life as a game, life as a story
-* Web app that tells you the odds of someone you love dying this year
-* ''Positive Disintegration review for SSC contest''
-* On Trump as a joke, Die Antword, and Borjes' idea of the baroque. </pre>
+<div created="20200503014226402" encrypted="{&quot;iv&quot;:&quot;mgWjcGchppSViGL39+MQeA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;vMRfwZiJzpaYU0QYeDlIVcZiaFFybsLgyhaFqmMp63D80W9lVR1Iui7gUt0aOaUeRnJhI/OMXoH9LCKJlQtMrEpLvsCGWIo33VryklsbjAMf2CNjwuMGKv6u0IWg4hjtso+6dUB7b+eFYxygW//w42tqWUvnQgKTpcOShS693C25903BElKHNHeJh8NzHA9kF9gXTZ9XbNvNVWbQYqoxqMvLYFQCnfBWuA9DLAhT48YTzlnhrchUkV/CplUGFfxynDLsLNCtlATWh2ZiMSmskD7qIpOAtixpc3gp4tT4PxGXJoFOy7dBYpcT1AnGgKFUB815Xa5WonCDgEMkdGoyM6zfPFcXiipB9kZw5qnMYgtCgeq31WUBGGlzq2kJpR91eUVXXrlc97/QKOpQ6eE25TdHAsX+fmbXkcxJYPg4U84aFTI1AgTbDg27PvuI1eYO+QISIe6P7Jcikw0cZ9SVG3TKhToLM9+bXQtxGdMpRAptrZbhcsjU4lWMn4vilxah3debUp6t9TYCdpQSDwuzWmjK67A8GogT+bqWyTKlmut2jV+Q0rFyGHnocl8v+b67xriPPAbnCeWd8JcBRj9gbGutrbsIbnHyUE8xd3CQLq6zjTF0LKBcSa2odSOZtsty/aiUfmwxgih/L+CPVdcXtvSZwB7tzQthKw/nvZWhOQ1GyX2rs9r9mC+B9hKeGJLpf6T6WcGRhD16AYjMezc44muAP7coPD6OK2PAM3q+zP/xF5eQFRRH2Aa0cR+vqetqmd4aQNnmFt+0Wt4/LF2yknZjm+C4KRI14a7FhwRDOGPNpaX23xqb5Abd79IEblHrGREikWUS3C61oxa2iSQ4dxVMOawVVEw/h7aH4GpL4W/GfRBOzNy2hIYvSNSJut+nj/b7eDftwMDaqn/x3RzDduv805Ua2DZ/86RrcKUpoiBXNr/Za3YpQtnTSZTu2s66dAGyMTw7qbLsdew57sBB+zHC1ehZGQ1EJlXfdtRPQRju+jaYwsf+kupgxYSwEaf2DerGc4OzEi0JLEqoxNT1/CZ/1U0R/yQt53txFMbq3TjJWbQecefuf23IfB2jz7BXOD6ujUz9ZGDlS7rd5l9pwnIkjWE4K/ym7tSVCmdt8nvWPtzWgw39ROMmK2khBz7bqJzm8iA7kKYH3sGiCFwZD9oV4+2NYjb48tjtcrbj80lHP5VtvVQ2mtdQQKNwfVUsJg==&quot;}" modified="20200512132836622" tags="" title="Blog posts">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200402183244911" modified="20200402215624762" tags="meney gigs startups" title="BtcPnp">
-<pre>Use [[coinb.in|http://coinb.in]], or their Tor variant. </pre>
+<div created="20200402183244911" encrypted="{&quot;iv&quot;:&quot;fGNayE7OkOflMq1z+mw/8w==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;ZYGjO4/KJUl3+6AI7kYW8peabjiCQnI8ke8FEPZCsPiaEDQIEkDLc7wiHgNd1pw1z3ss7sBbDAOJj7Pi2gzSKe/B4YnPfdgVtHcotTuIFnlfW940TN88wUlq2HvG/nNm+iDXFIVuM6g0jAhY+/PU+AKATbIVh0JRESOiNJZBxUSm4/IQjDWEYbLh+q319sM+Efb7oRitnir0Q9zz7mdTFOnuhSl1sk/njjVe3ohA8kdQiejsDxE=&quot;}" modified="20200402215624762" tags="meney gigs startups" title="BtcPnp">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200403012414859" modified="20200403012444296" tags="" title="Car stereo code">
 <pre>! 66112</pre>
@@ -10584,79 +10268,8 @@ Metaculus has some covid-19-themed prediction contests, including [[this one, ab
 ** Seneca Sparrow is an anagram for Arcane Prowess
 * I want an acoustic/electric ukulele with an amp</pre>
 </div>
-<div modified="20200514085755509" title="Draft of 'Music'">
-<pre></pre>
-</div>
-<div created="20200404201932105" modified="20200416035423250" tags="drugs" title="DrugFacts">
-<pre>__''Things of interest''__
-
-|MIPLA|lysergamide|said to be like LSD without the visuals|
-|Bremelanotide / PT-141|peptide|hijacks your limbic and makes you fuck everything|
-|Moxy/Miproxin/5-meo-mipt|tryptamine|pure &quot;awwwwww&quot; sweetness and beauty, [[smoked|Smoking 5-MEO-MIPT]], enhances music, very sexual. oral, sends you to elf terror world|
-|Metocin / 4-ho-met|tryptamine|manic, low head space, high visuals. A non-commital beginners lsd|
-|Bufotenine / Bufo toad venom / Psiloxin / 5-meo-dmt|tryptamine|purports to give people an unexplainable experience of oneness|
-|DMT|tryptamine|lets you meet beings. this deserves its own wiki page|
-|4-aco-dmt / Psilacetin|tryptamine|darker. commonly gives people alien writing on the walls. scared the shit out of me, made me suicidal|
-|5-MAPB|phenylthylamine|snortable awesome sex molly|
-|2C-B|phenylthylamine|makes me weep at the beauty of everything for a few hours, then convulse in shame for a few|
-
-
-__''Backformed naming convention''__
-
-```
-
-T	4-Hydroxy	4-Acetoxy	4-Phosphoryloxy	5-Methoxy
-DMT	psilocin	psilacetin	psilocybin	psiloxin
-MET	metocin	metacetin	metocybin	metoxin
-MPT	meprocin	mepracetin	meprocybin	meproxin
-McPT	mecyprocin	mecypracetin	mecyprocybin	mecyproxin
-MiPT	miprocin	mipracetin	miprocybin	miproxin
-MALT	malocin ?	malacetin	malocybin	maloxin
----	---	---	---	---
-DET	ethocin	ethacetin	ethocybin	ethoxin
-EPT	eprocin	epracetin	eprocybin	eproxin
-EcPT	ecyprocin ?	ecypracetin	ecyprocybin	ecyproxin
-EiPT	ethiprocin ?	ethipracetin	ethiprocybin	ethiproxin
-EALT	ethalocin ?	ethalacetin	ethalocybin	ethaloxin
----	---	---	---	---
-DPT	procin	pracetin	procybin	proxin
-PcPT	procyprocin ?	procypracetin	procyprocybin	procyprox`in
-PiPT	piprocin ?	pipracetin	piprocybin	piproxin
-PALT	pralocin ?	pralacetin	pralocybin	praloxin
----	---	---	---	---
-DcPT	cyprocin ?	cypracetin	cyprocybin	cyproxin
-cPiPT	cypriprocin	cypripracetin	cypriprocybin	cypriproxin
-cPALT	cypralocin ?	cypralacetin	cypralocybin	cypraloxin
----	---	---	---	---
-DiPT	iprocin	ipracetin	iprocybin	iproxin
-iPALT	ipralocin ?	ipralacetin	ipralocybin	ipraloxin
----	---	---	---	---
-DALT	allocin	allacetin	allocybin	alloxin
-DBT	butocin ?	butacetin	butocybin	butoxin
-
-Chain sub	infix
-alpha-Methyl	-am- ?
-alpha-Ethyl	-aet- ?
-alpha-Propyl	-ap- ?
-Ring sub	infix
-4-HO	-oc-
-4-AcO	-acet-
-4-PO	-ocyb-
-4-MeO	-orox- ?
-5-HO	-oten- ?
-5-Meo	-ox- ?
-base	-odes- ?
-Alternatives:
-
-1. DiPT = diprocin
-2. PiPT = piprocin
-3. etiprocin, etalocin
-4. base trypt = desox&lt;&gt;ocin
-5. base trypt = desol&lt;&gt;ocin
-6. Don't do it
-7. Alternate group ordering`
-
-...</pre>
+<div created="20200404201932105" encrypted="{&quot;iv&quot;:&quot;2QcuROKuvzvRzPWJQw99WA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200416035423250" tags="drugs" title="DrugFacts">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200418004855539" modified="20200418010455867" tags="" title="Every book I've ever read">
 <pre>Love, Freedom, and Aloneness: The Koan of Relationships
@@ -10987,247 +10600,16 @@ Kingdom of Nauvoo</pre>
 * Apply at Magic Ear?
 </pre>
 </div>
-<div created="20200508073451570" modified="20200508205522680" tags="" title="Friday May 8th, 2020 to-do">
-<pre>If the day were awesome, I would:
-
-* ~~Call the Arlington cops and pay everything, if I can.~~
-* ~~Look into a haircut~~
-* ~~Refix beard.~~
-* ~~Re-feed Chakabo~~
-* ~~Call the Ft. Worth cops and do the same.~~
-* ~~Create an amazon account and order [[A/B Tek|A/B DMT Extraction 'Tek']] shit.~~
-* ~~Chillhawaiian~~
-* ~~Get Railee's pulse on the swinging thing, and~~
-**~~Put her on the line with Samantha.~~
-**~~Plot out details with the other men.~~
-**~~Bathe, shave, generally ready myself~~
-**~~Cancel on everyone~~
-* Go home and set up the spare Raspberry Pi with Sonic Pi.</pre>
+<div created="20200508073451570" encrypted="{&quot;iv&quot;:&quot;8C3AM9D3eoe2jODVATc0HA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;DOET8bkpqonB82olu3sNG1Xwe1mi0rVne6jS8a1Wg7MBhLuf35XVG6GXRE7ehkXQiKJr+u6FYHhKDWTUq/cPDa83CxB2+SbzeecBzIBYx7o6C4+DHDsYjvgz5PjwwNzQxmxPfBL/U+MaFPwgTqg/vumSBXyjwJ1OBvMjoPm4e/zcCRQQ+1AhZgy3741gDOu/YJC4xwO0dbA5BODW5bWbbDI9txNvlxWiFAYYuWDFSXRxJPM/KAyDws/KWt6GAjf1TTbSlqD1wn6Vvqhsas/5c1xfLXWsqRPwfE1bV+X5J0HW67f9oyNxAb6SbPSEnRFmVvzR6XoRHabzZBNI36Dd/eVKbEr1MTnHQQFheEi92AfyASH/yDYHepj08Vub9xRYoZPnRD6Vzmb8zrXmpUsbm49usSOB4fHLnJnp9jG+aapguNoDF5KW3hLulESjrcSImWOY/ZX8iiqluI3I00n2jkAHUi0ciUlYX+aIonY9/8L5m34snZAWjiIW5lOfsZIOiRmhVDCuqAs7iJ9y31BemYMc4XogD7DYc9ElbZYwHCOluQSCylFqECmKt9XCsxxFrTEbfZzgJYIXI36rwk6Zp4InsW8QhsHJyQJjoXyqYEngh/i/XlhmSmsU93Fl50TZL/9GrnQinsdKTgxq3RFKUw7QeGaulmyeeQN997hLYvhN3NW7r7I2EAhst4h/cso6tzz1uDl0eRpXi1VH35s9Z/LS4bJ8WeJS3cHjrV/WURYSDDR745yii1y3dOndbJsNHIgtX/IfJHOGijtk9jk/ZyvgLKM3f+v2SkXBGSimc8aw2BCtvHiGAPbflSsOCWCuW0d+ZXDX210wCr2DXQvtF8g6kyE8J+s05A/faM7Zk5CzIDImqM1AzTNyQ15lzuRjjqUTj5m4vxlvBNwJRWMix5CxWiWqOFGsrdjhEmMUq/Gxs9hDQmQhYXtboHA=&quot;}" modified="20200508205522680" tags="" title="Friday May 8th, 2020 to-do">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200512132449342" modified="20200512132602993" tags="" title="Glasses prescription">
 <pre>My prescription, on [[Zennioptical|http://zennioptical.com]], is this:
 
 [img[prescription.png]] </pre>
 </div>
-<div created="20200403044823887" modified="20200405021736300" title="GoBag">
-<pre>Principal go bag components
-
-|!General|!I have|!Ideal|
-|seasonings|ramen packs||
-|solar charcher||Levin™ Solstar Solar Panel Portable Charger|
-|protein|tuna, opener|Datrex 3600 Emergency Food Bar|
-|razor|razor|Wahl All In-1 Lithium Eyebrow and Hair Trimmer|
-|ecig|ecig||
-|pens|pens||
-|ukulele|ukulele||
-|pico projector||AAXA P2 Jr Pico Projector with HDMI input|
-|cookery|small cast iron|2 person aluminum camping cookwaer set |
-|hatchet|hatchet|small Øyo hatchet|
-|weapon|kitchen knife, mace|short sword, Defense Distributed Liberator|
-|pencil|pencil||
-|utensils|forks|sporks|
-|earplugs|earplugs||
-|eReader|Nook|Earl survival tablet with survival books|
-|Flask|||
-|paper journal|paper journal||
-|steno pad|||
-|computer|chromebook and phone|triple boot comp with software, music, and movies|
-|hard book|hard books||
-|Firestarter|lighters|magnesium emergency firestarter|
-|Mylar blankets and tent|||
-|fishing hooks and line|||
-|frst aid kid|first aid kit||
-|sewing kit|||
-|passport|passport|multiple passports|
-|coffee|coffee|instant coffee|
-|epi pen|||
-|toiletries|toiletries||
-|clothes|clothes||
-|swimsuit|||
-|collapsible cups|cups||
-|speakers|||
-|MDMA, 5-meo-mipt, smoking devices|||
-|pancho|||
-|water purification straw|||
-
-The pinterest version of this list can be found [[here|https://www.pinterest.com/kennethmyers/go-bagwork-bagparty-bagedc/]]
-
-
-
-
-</pre>
-</div>
-<div created="20200404205117621" modified="20200404205153526" tags="drugs" title="GordoTek" type="text/plain">
-<pre>Sep 12, 2018 at 8:42am
-
-Written Out Version of GordoTEK DMT extraction TEK (heptane variants included)
-
-Special thanks to Dane for contributing the first draft of this write up. 
-
-Things that separate this TEK from others - no lab equipment is needed, NO harsh chemicals like sodium hydroxide (LYE) are used, there are no high temperature reactions, no chance for emulsions, no need to measure pH, only grocery store, food grade items are used for the acid and base. Work effort is minimal, yields and purity are high, and it’s easy to do. Before asking a question check the FAQ.
-
-GordoTEK DMT Extraction
-
-A visual aid for this TEK is quite valuable to avoid mistakes and build confidence, see:
-
-Extract video on YouTube
-Extract video on DailyMotion (Low quality and requires login)
-
-Below is a written reference guide for after you have thoroughly watched the video:
-
-Required tools and ingredients:
-100 grams powdered or finely shredded mimosa bark.
-100 ml of distilled white vinegar with 5% acidity.
-80 grams of Calcium Hydroxide (preferred, pickling lime is fine if Calcium Hydroxide is the only listed ingredient, washing soda (Sodium Carbonate ) may work but it is not as strong a base and some have reported problems with it.  Do not use baking soda which is sodium bicarbonate and will not work. Both pickling lime and washing soda are sold at Walmart in the US you can order online and pickup from the store for free, both are also available from Amazon in many countries).
-600 grams of Heptane or 400g Naphtha (solvent). Naphtha is preferred.
-Equipment:
-Stand mixer (with mixing paddle).
-Strong blender or coffee grinder (only if mimosa bark is not finely ground).
-Kitchen scale.
-Cling wrap.
-Two glass pie plates.
-Crock pot (any capacity but round is ideal, if yours is oval shaped you will need to block off any gaps after placing a pie plate on top of it).
-Mason jar with lid (or other similar glass jar with lid).
-Coffee filter.
-Photo/lens paper.
-Stainless steel or glass funnel.
-Stainless steel spoon.
-Freezer, on coldest setting.
-
-
-[Keep all open flames or heating elements well away from your solvent at all times, use proper ventilation when working with solvents (fan to outside) or work outside or in an open garage]
-[Note that in this TEK most liquids are weighed, hence grams and not milliliters due to the fact that many people will have a scale but not necessarily have proper volumetric lab glassware] 
-
-1) Put 100 grams Mimosa bark, powdered or shredded fine (blend with
-strong blender if need be) in a mixer with mixing paddle or wire wisk attachment.
-
-2) Add 100g (or 100 ml) Distilled White Vinegar plus 1/2 cup (approx 120ml) of boiling hot water to the mixer. Use a silicon spatula (or metal spoon or fork) to scrape down the sides of the bowl periodically to make sure everything is well mixed and not sticking to the sides of the mixer bowl.
-
-3) Use a timer and mix everything for 40 minutes on a slow setting.  If mixing by hand, you do not need to mix continuously, but the total time should remain 40 minutes (with periodic hand mixing every 5-10 minutes).
-
-[Note: At this point (before step 4), you can optionally add what is called a &quot;defatting&quot; step to help remove plant oils - this is recommended if you are using acacia root bark (ACRB) but generally unnecessary if you are using a quality mimosa root bark.  To remove plant oils you would mix about 50g of solvent (naphtha would be better than heptane at this stage) with the acidified bark/water solution, then separate the layers by letting it sit until they naturally separate.  The proper lab equipment for then removing this solvent is a separatory funnel, but some people try to suck the solvent off using things like a turkey baster, syringe, large pipet, or siphon. Another option is to filter it all, the solvent with plant oils should pass through the filter while the bark mass is left behind.  The solvent will dissolve the plant oils but not the DMT at this stage, so you want to then remove and discard this solvent. You can repeat this procedure to be sure most of the plant oils are removed, if the solvent is still yellow, do another round.]
-
-4) Now add 80g of Calcium Hydroxide (often sold as 'pickling lime' just verify CaOH is the only ingredient if you buy it this way) or  Sodium Carbonate (sold as 'washing soda' but it is a weaker base and calcium hydroxide is preferred).
-
-5) Continue mixing for 10 more minutes, scraping down sides of mixing
-bowl to insure all lime is mixed well.
-
-6) Place the bark mix in one of your glass pie dishes and spread it out
-evenly, with a stainless steel or silicon instrument. Cover the bark
-with cling wrap, careful not to make contact between the cling wrap and
-the bark. Then let the bark sit for 1-36 hours, based on what's
-convenient for you.
-
- 7) Verify the purity of your solvent by placing one drop on a warm clear sheet of glass to make sure it leaves no residue on the glass after it fully evaporates.  Any oily or gritty residue is a problem, such solvent should be avoided, but it is normal to see very minor &quot;watermark&quot; type patterns like you would see if you evaporated a drop of tap water (that solvent is fine to use).
- 
-
-8) When you are ready to do a pull, put 500ml (2 cups) of very hot water (you can microwave it for 3 minutes) in a crock pot with the crock pot setting on high (this should either be outdoors in a well-ventilated area or right under a kitchen vent on high fan that vents to the outside).
-
-9) Put 100g of naphtha (150g of Heptane) in a mason jar with the lid on very loosely (do not tighten). [Note: Some prefer to use as much as 50% less solvent here and just eliminate or greatly shorten the reduction step later which may have some advantages including saving time and solvent, but this is more difficult for a beginner.]
-
-10) Place the mason jar with the solvent into the crockpot. Then place the
-pie dish containing the mimosa bark on top of the crockpot so it serves
-as the lid and the bark mix can warm up. Leave both to warm for 10 minutes.
-
-11) Remove the pie plate from the top of the crock pot, wipe the bottom dry with a towel, and set it down.
-
-12) Add the pre-warmed solvent to the bark mix in the pie plate then place the pie plate back on the top of the crock pot to keep it warm during the pull.  
-
-13) Stir, slice through and move the bark around slowly with a stainless steel spoon so that the solvent has the chance to make contact with all areas of the bark.  It is a good idea to use one hand to hold the edge of the pie plate while using the other hand to slowly stir the bark mix and solvent.
-The solvent should remain clear.  Stir for about 10 minutes if using naphtha, 5 minutes if using heptane (because it rapidly evaporates). Toward the end of this stir period, push the bark mix together and create an empty space in the pie plate for the solvent to flow to.
-
-14) Put a coffee filter into a funnel, pick the bark mix pie plate up, dry the  bottom of the plate with a towel, then slowly pour all of the solvent into the funnel, which is placed over the mason jar so that the now DMT rich solvent is back in the mason jar without any of the bark
-particles falling in with it.
-
-15) Now place a clean/dry pie plate on top of your crock pot and pour the DMT rich solvent into it.  Do not cover this pie plate, this should still be done outside or with kitchen vent on maximum. Watch this very carefully until it is reduced to 10-25 grams (1 to 2 tablespoons).  With heptane this will generally only require a few minutes, with naphtha it may take about 30 minutes (if you used less solvent to begin with, the reduction will take less time).   [Tip: If you pre-weigh your pie plate and wipe the bottom of the pie plate before weighing again on your kitchen scale you can easily determine when you've hit the target 10-25g range].   Optionally place cheese cloth over the pie plate or put some barrier around it to prevent dust from falling into your solvent.
-
-16) Dry the bottom of the pie dish and cover it tightly with cling wrap, then put the pie dish, tilted at a slight angle, into the freezer set to the coldest setting.
-
-17) Leave in freezer for at least 2-4 hours (it's OK to leave it overnight)
-You will know it is ready when the solvent first becomes cloudy and then clear again after crystal formation.  You should see white crystals at the bottom, try not to disturb the dish while they are forming. 
-
-
-
-18) It is highly recommended (but optional) that you rotate the pie plate after the crystals are done forming so that the DMT is out of the solvent, but leave it in the freezer, still tightly covered, for several more hours or overnight- this will pre-dry the DMT.
-
-19) Take the pie dish out of the freezer, and pour all the solvent left in the pie dish into the mason jar, using the stainless steel funnel.  Place a lid on this solvent jar and tighten.  This solvent could be reused, but it likely contains plant oils and possibly other contaminants so it is preferable to discard it as it will not contain much if any DMT at this point.
-
-20) The DMT crystals should all be in one small area of the pie dish because you put the pie dish in the freezer on an angle.
-
-21) Let the pie dish dry for about two hours in an area where it will not be disturbed.  If your room temp is high (above 80), it is better to let it dry in a refridgerator.  Using a gentle fan pointed at the DMT is optional any may speed the drying.
-
-22) Scrape the DMT off of the pie plate with a razor.
-
-23) Scrape it onto your photo/lens paper.
-
-24) Weigh the extracted DMT on a milligram scale to determine your yield (tare the scale with a sheet of lens paper on it first for an accurate measurement).
-
-25) Repeat the &quot;pulling process&quot; of extracting DMT from the bark roughly 48 hours from start time, a week from start day, and two weeks from start day. To do this repeat these instructions from step 8.  Always store the bark mix tightly covered, at room temperature, but a cool place like a basement is fine (do not refrigerate it).
-
-[NOTE: Pure DMT should be white (crystals can also be clear).  Yellow, brown, or reddish colors are signs of contamination, which is typically from plant oils or using the wrong solvent.  These can be removed with recrystallization, or just accepted and used as is (some people seem to prefer contaminated DMT, possibly because it's not as strong). If you vape at a low temperature with the right kind of device (such as a dream maker tool), plant oils will generally be left behind and not inhaled.  Otherwise, they can result in harsh vapor and lower potency by weight (because the oils are heavy) making dosing more difficult to determine.]
-
-Watch additional GordoTEK videos to learn more about how to use the DMT:
-GordoTEK: Low Dose Mystical Experiences with DMT
-
-GordoTEK DMT Vaping Technique and DIY Vape Tool (Effective No Smoke Method)
-
-GordoTEK Pharmahuasca &amp; Pharmachanga (DMT with harmalas/MAOI/ß-carbolines)
-
-It costs you NOTHING to support this work, just click any link below to amazon and I’ll get a small “tip” if you buy anything (even if its not the item linked).   Here is every item you will need for this project:   
-
-Cheap round crock pot  
-
-Good value stand mixer  
-
-The actual stand mixer used in the video  
-
-Gem Scale (best value)   
-
-Kitchen Scale (great reviews, inexpensive)   
-
-Good value blender  
-
-Actual blender used in video   
-
-Stainless Steel Funnel   
-
-Lens Paper  
-
-Nitrile Gloves  
-
-Razor Scrapers  
-
-Milligram Measuring Spoons (very helpful to have)  
-
-Microscope Slides (optional for solvent evap test)  
-
-[You can get solvent cheaper from a local hardware store, art supply store, or tractor supply, you only need one small can (400ml total)]   
-
-VM&amp;P Naphtha 
-
-or Heptane / Bestine (harder to work with than Naphtha)  
-
-[You could get the rest from Walmart or a grocery store]   
-
-Silicone Spatula  
-
-Stainless Steel Spoon  
-
-Glass Pie Plates (you need two, this is a two pack)  
-
-Cling Wrap  
-
-Distilled White Vinegar  
-
-Pickling Lime (also search for calcium hydroxide, it can be found on Amazon International sites but should be sold locally for pickling)   As an alternative you can also use washing soda (sodium carbonate, NOT baking soda) but it is a weaker base and may not work as well.
-
-Coffee Filters   
-
-Finally, the bark -- ALWAYS BUY from within your own country, you do not want to deal with customs on this.  Do some research, the first link is to a vendor I trust, with a finely powdered product, ships from the US: MimosaHostilisRx (verified, high quality bark, trusted vendor plus get a 10% discount using code: GORDOTEK).  Another source I trust: https://u-dont-exist.com/mhrb-powder 
-
-
-
-************************************************</pre>
+<div created="20200403044823887" encrypted="{&quot;iv&quot;:&quot;i8kidwlgnOF6KQKQOGFcng==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200405021736300" title="GoBag">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200402195503683" modified="20200513005542845" tags="" title="GroceryList">
 <pre>(shopping list)
@@ -11601,20 +10983,8 @@ But I've had a revelation here, bruh:
 I'm like those pot-smoking retards. My fix is just introspection and big ideas.
 </pre>
 </div>
-<div created="20200507013530484" modified="20200507013901466" tags="" title="OfficialDocuments">
-<pre>''Passport''
-
-[img[passport.jpeg]]
-
-''Social Security Card''
-
-[img[sscard.jpeg]]
-
-''Car insurance''
-
-[img[carinsurance.jpeg]]
-
-</pre>
+<div created="20200507013530484" encrypted="{&quot;iv&quot;:&quot;UhMB8mKrlpG4SePC+MiRkw==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;uVTdN7pWENWjGtZ3MaD6UP36rdRxGRMqI6/r3IpirH9Lx7RQYQkFlUiMwyBs5W5Rh+YgSKtr9aJGgk1NRQAu9rvpoSri1hHhHoWqQj8O9gQXEjEkrkXRdAN7k8A2KAxexbBE21Uc01l1I697ZplRDYaNx1Q4afQ+s6fIGONWNTnvjK4y6Uj52jEx9LZ2/26N3wWKvAk02VgPtly3MgBleXLvh+GfAVubHJxW5ftqjGglFJhEuv3QU0n9eS5Q9y+iqt/mI5dV+pAtVPhfS5xNvAPa5QkWbZq2cikZIpTRonZ0XlQV2SZCZJKBX+HSRLg7JBwTJ7ANZkUYqV1bSBMb3KE=&quot;}" modified="20200507013901466" tags="" title="OfficialDocuments">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200403011635080" modified="20200403015055080" tags="sermons" title="On universal love">
 <pre>* Mozi vs. filial piety
@@ -11622,6 +10992,9 @@ I'm like those pot-smoking retards. My fix is just introspection and big ideas.
 * Jesus, neighbors
 * Greeks, virility vs. virtue
 </pre>
+</div>
+<div created="20200404205117621" encrypted="{&quot;iv&quot;:&quot;+tByE4Q2VTbeihQ7Kco0UQ==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;C5gNnINZit+G7N/Oq3CsgbEDkvSgmMODg7YIK9vVwC/e6asi5Sp/KeogD/qPbTw/fO3G3TzHSrA3umzBAZBFE5zB95aztZnWRTqRdSITgcHt/3/wf42w7yJx/9TAmJSyBNWNM+1IycevpxHTwgclAkZdPFemAmaERAwo6ww6ORoWroOhexELBzdjM0buaDTEZReS6LlnLKvStpGnMC7Nvt5qILIfpI3wmf2oarZv94pJjwOKtniRSMtGtpdGZSC0hBRD7YJOERjzeIj+0yst0r65YNFXUvVATYW+hNM9nmMCHbnttY4TIfcx1xNi44qkgvvouddZyJOig69uoLT13J3feWpqXJSuHGWr3ZIPtTdGHMXkmOxJmxuhpxkAxaPL/m9PPiOERe/CcfZz0sCs+L5PFuK1qWHE2cIc4iqSae3qhaPwo4kOmwZ8/QKnPaE+1PCdqzhdsH6mVZp5VQ+oSOhX4ajNJwYO5qB3gBxTZn77pZ3yhRWupGOCTGzKRWgBwz56OlWzZc46L34ov3mBhgiYYtAGzE+OHklgVdsQ44TCBMjCljE+PY+jAQo7iJfJSIdNhNYIh4DOxakaqJGfDQYuVeyxl9v52N0IHNV0SsOVLdphvaW8W3uBQ6gZ3rtVWxsxgG5Pp4OUugqOXDnbhUesj3tdlAHWfc4xoQm3pUymFdWlz/m6AgCZSvfd4ven7VQK8nM1hGKPmufh4EAxJ2W/iZB4EN+4rvKBmpc+Ng3j4MAD797JwVzEm7z6EcDx2DxfZybqpC2TBfnZWvXGrmBEs7aAoxEd7ZvHZB1vE8CFmJKH7v3DTqEuk0pioy/RAFSd9qk/KTF+9O5LGmIWyou48NkFVFLPrdsds9kMtkG7e201ahEglJUmRBKhRbf0sFiWtNlAOzyM10i+HRX9C1Xu8rMY5fn9yuAf32yBtiwBM4ZWwngY5nlGF6BukzZlZL+GYlkPTCyBMThyjVaXvD6VxvbWIX137vP3RzZMKY/JfWHGcnJvA1l30KS5Y3p3d8tMt3NqJTY3Hv0WlaBDHCIwRAVjzFKVwaEKnGA4sN4Rflz/HDK+jRmqvFZJW9IEanoj/KO5oeFhJeLqYB8r0oHZnZx+N4BzqCxwHaEZFZpp1ExNGUpUYtubKyZhU2L0PBwLBGBy4tZ+9hPEe+XuRAVFy5Wu+mWjCJcUpWHCWkqWiIjn/VONz0aA8Vd0poa3JiBiv2M7ElA0oER3BuNRZKcAPsgiW9HPiBBabTLI85ym787sa9+zq6B/aLj8FTPsRFtQs2Tq0upanzUYfW+BY+8Gkypr+MKDDRAktsm9IFgprYHuoZfpKHlK54l8GQvYhreBuc9vq7K7PUaG/mJflzzuX69Qt23Sz+PpdC4J2u7zGJEvLyWVHH4I5q5mOt3MMalUUQ4SS/7I5zF9a6LftONO8VsnERqMIEHsISNdjDIKvO/LsZnTFlozVD9Uc1yaMHSEW4zJKIgcnnV9lsU7mUzzwedQv3plOHlM/hSkEpOw1uYLQ0rNm6PGiQ6usO8y7IOYgOBL4YqixNBH/yg0t3U656ESBXGrR/OYXT7BR6+FcOjST16h6EgTzwOBBcHuwtUxV9jJFBheUVZf3PwZ4XhZSP5uDhM14CwZ35gsXSreW6j4q8Ya/edn+3LEvEhb+Tv5xEyj+rJ0fzWhKurGjIFP96VtMwoXUVrX2eZYqTudk2Ak1OSWzbXEHkV8VEK+r+7T4WqKoX51Hl3kliTiVQYUiEpCTEHJY/Rhilz1RzlQQg/+LYKOpDmMCY7CYkkPug8dlPZKnZMReo3AITL6jkS3ulws/RAEgm/sxNf3HMzHM2O8fwKHIicYWcq+L1B4pKd9udWXBwL/s0K8/Nf/grFRNnhyCwoj/BOfgdIC9t75NxFYtLm3ZgNbfZq5WJQ88lsL8BXWQURlCO03ES+2l+HIpNUBFqUuSerYJErINzTRb3X7uax47ONJC2op4nC0G9fTPTyE0xT1txKOW0QHrKXzLOIhGBkAC6YtZ1qHJzKF76qaTpEDceLIV/qM4XVqUoYBkJb7KrgHgWYGKB8cKQoyG2/1celU2/qrQIgO2egXF9I3ShjhzJAyLCUghhLNr2RKpL9ZcFvxQnN0bT8sMFeUV3yqSeKMp/xchVOiBkoQ+R4yNSpSOv8VvZaBSU7KgjoMydiun3e0zYxJ4RWz5o2vQSMHgM23DtA3XimHjTCQo/XrXA9EbTOntZVf/sY0FeIykS/r7iJGl79MKYe/ZDfvJTN6P+u5Kcb3fZgpjf5Ukr8vnNood1O27YcSiGT9CQ5QXN6jayyhvlftw96bUHNvV8Y2k9odNeUKUtt9vpgVWlQq9Ob7OM1vNOWsa64NO42/kaXVKDZVLqkqMGRpLGlBtLiS6P2Ab8kcl/C5GW0yC4URFTYmUmqRiutXxc3pZCCl0bNH3TFHmAOIC67DFU4vgtkaUeHAP6VV74Jfwnuntc2AP44/+F45Boxzsg3mCO3RvJ51HpXDj+95GiM5zqJiwhwwwD8kWExc4KXb3mi2Nipx4dNPx63pRJ6c+U4iifb69CGqFcwc03WMBA5R/cNwSaPV6k6z2/WqjuZsULZmoYsIAvh0VizV2Fc0d37juwoP1o3L8CSdA6+ZhOLGidjlmVOtNZ3IjhDLyVosvmo8Ezv264KYBQbPRN/50lMjHPSjX7lMfH2nHRbln6jM8QSFP3p+RWOjG5eOiR8em4veFLqA8xU+yuPPq6OalyBSltQfxegB/Npt/sLn3D9voRkDGrrBau9Llj5FOYq17VBaSWgIjgrG/QrbKjjWc4921oyXS24mWXc0yAxpzsNy5WtjQQOnMGRFhbFWpWou8jH1g20LbB2lum2+IlcWOAC05izx92XwzhzAfLGcJFF5ydEfHcSIw5RZzYsfJvej68bBgeNN3HSo7xPKv+ybxsKSWxEZ7DyF9zf1tTznNgTx4Bm/Vnqvfsf2bPTa4P2QGfNhwmqly1NOf37iU+GWYSvWRxQfprOFD6IKHLboMBK9AFuzfmMNIGt/nRt7XDP7NT4/BmvVCukFaneCqlSd6068N+Uqe8mgOy/Y+WR/5k7+wNll/YlyW812Wn1w9YmP2hJ3PEmsYC51VqwpYvMAngQ4NerJQbyicoJbmxaMIhxCPVPB/JhTTYP9APCYAyj5dyBhew3nDoQvXyfvNkAKzWHwPA++iJxEts7De8fB44rKJwuhwIgrPH9pd5dk2EBcY+Z+wNzzPBal12o/XI+3oPvMTrXvDXSJF+6dXxKgUX8hw9XGYVs7IfhYajzmTqDXtV5pvQFcRQEMtiZG/YJTAy6SKSDpT2mKF1FYXOwgGhh2PsXchfyagryYXsYJf2VKO+t+c3wnYciSL76hzokGs3c+ipZKEtwp71dCMsbO/5mllyAaO9sp/r1bycvaqSAt4fLjmxcQN66ADFpnF7DUDJ3nX02hwMQ+jBtoIJKFLlPHWpSq9PN89OMzx5g9yuRX5BS/rMR75ts2ynVBi1+UJcFpxGWVOfq5V3fLI0PRPjDrIdnghOywQ1vacuYbKT2DsMnhflZLgZUeXzQeTyCRQaJC9CVlNubrMwcZ7x4enxb7mpuK6AS39KdMw1xA0JdFYRcJiPdqc+6IJl4n6ium/uRT8HPu4jMFzHGjGoBmhf3cW1VqD3fk3NupwGBbPzT0SVvjftkII3IjgQmYWVQf7kk59z6Oet+V5NVf/z1ELWnZ6kQdaUV98MT/HzmFVdL1lIxQ82gRfBypVrGUboJtaDxBfLhPZrLi5UVWnkqBtrTr5sveZMpHCjTvMocqNEx+emrcyTLdDvQmMZ4sAcHsOv2J2gd+LIYxapVmybaP0yWzEQxFOVi4/XkkPMgk1CHIL3OwHY8ojQixMrF5Pgdo1VJlGJcQSr1O82Pi3O4rvH1Xh7I9yql5rRtJRtkkhwjYj196zrs7hQnJs5lATSmw47gj00Xt/BT5D+EEH21eovK7PQ5WzFRL/kDu2xUX5nQFgKFE9dSBK2utut8jG0fPeJKeXymHPWlZGE6uAd/ugxMcydZjoZPFn8+HkLX3e1iYJbd+A+R5Th1UDxsBvqDlgjNmV53l4zoCqJXU4YavNMKOFO7h5azem/+wpDVCBWR9VYR21JTxl2OgKGYhVoNxEARYd5o3cIWrElhYQErT/9sfJdRfTEUnhjnrA9ZFm6uaVfx5bMzEho9e6nqbQpczPEdceAx0e9IhVnLtUG0/yH3hAmQYqYy4Jw66XMkd3afdEMot0XfOb2NodA/1AC2hWlog90W84Bsp3qc5dBpA0cTZpc/AcGuTmC88KAuJj4CH55kUmhe5QjZEeAJz2EA01DQ5ohFmbep35GRl4QQ4kLTb/f0IkEflLZCCnJBzmN5MbmAT7//ZU91zUko2JRCmL5KDXaNBdr4xEXVpBRm42MXp3d0YYw10NGUyir6D6h/TLsIXlsW0tsu2dcOXXdY0j15gjX6FmrQNnp+BJGW9jmjFkis8EX1qdUP+R2C56HdrLCfO14SOqJxICHkm9gOVAIXJBor6T1Q15HTW85erg5JJmXAFyLgLJnk5FhoHoBI1tzjEmdu4gpFmSZCCx8TCyocnXzu2OSSPiq7Vi7NkZsf8oEpc69YLzqdeS9grAjAbm+LVOagUSoOH2oSeV8Q94c+CjjRQrDbOwRVt+nSAOzNaep7RXO27ioVS9167imGMvq+Oo5d06/S+VBQfZC4jVZleji3xvKESN/bcKN99nvFkC+ejBI2NE4eFRg5lHwTh/OeAMOBhc2bGGPgp2vRxZxT9PMpMTZDuMRz3ys3Abw9oWnbF6Tm2QRI0ghblOCvlx3e/nNojkw34RHVmNPCWwQAo7s2CDCnotKOeMC7QtwvKc1A/FiJ3w0cE+sa3CT/qriO7Yj76z5jC3niAiuVchG2OCYHI31sFp6h+1GD/GyRNoKT/bJ1ghNs1sQ5IMYN95eoRrDGMWxG7IFU+ZTyN2QdclQFcOb/1PaNU9y3ajmrA2BHZJq8E48kCfvsMqPhkLOnIDG1TBFdla+rOiIFITY+NW27q3D9657pRwJ79JuDiHTKPkL20uPjpADFvHWfu3fccnuBclyugE9PLmtuGQDg2bQfX8WH9+Muw7N19IzzMRFRmM6o2XcORJZnVZR/Dc2SG9Pkvkzk+qCRB+OiOkMRaXmtSiumJib0BWKYOI/CVGQrfwVO3/X4rgIqudM8y+g5LTHZHlOyBHXjrl2ibyFhzp39aRYEooyX8CaxYKN8O2LUi3i/MNe/1+u23RBa7Dpy6/ZlxMlnK34srTk2x3Jdp6lB/sxRFmEY+DQxdBROVpYtmyAVq2o9YiXtrnDyns6gtEhWHxTC9lo7nLd2AQ8sPTa5zy0AftIVL8fCqV7dKFbxmT7dBySxRqfbF+NPP6nAqvLyp/n20NHbzcuUCwLJtfxFEjeAWOSA3tQ/WUO9NZKY1PSJbvNaItz34nrXrfuKn7EFwj6E/l3rYbl4mI3ep7vwkgDH8XhiWrLpSaWDmaPEysalWmjWQWy9y/l+VE8zroZCLWl9/sY05hIY0LjW+PusDI7Cs2j67w6Bhp80gVFX9t4Hx6YrC/ee2zLkENcLDERkRidLSw0qaXp377BcwwTqM4GN6x7td28N8x6L3Gva4Y9Hj5hkxDWwmkcKDOSUNOY1yTNxhqLSFEeJETzNxTII/G0V0+VPWkC3LckCAaSjrsgfzRXMuIblhy8edUk+KDnGcAn0jCuRjYYuj8vbz8xCFaNnbPoynzPmk65zmuPdb5O7rXdTUm2GkHWGIw9sfJgfg/0X6xlO14/mFeRTXM5q+sHAdhvIeKFW6YRPZs4OL8v1J9H+hLbKq3+FbYtlyKx9IRGeyrbmrrZ3vR3NI12m2ukduuj0HOKf+TWsg8PE30BW/XYedEdlI61rJPBPA/wZ1CGtlI70UrADRCtOx+wggWNBO7b38A6PIGEOhRWd8zrCVo3HmKbUQkJIyI8YIgdx2x6wpLqQbVAIG/YkIcuiTfn2UpHnGqHk5ns5DZrdCyFps3/0/LRJa53r/o0bvPNE2qUef4s6n4IizdlcaAUpoHfgpoO7WmBa0VBZfinoIcoWKnxdo/JzTwsa0KI5xLlCaURPvP9fXH0tev8mFVvyytA3IoYMo43A7JmpVYDho6dn8o9SBmQnxSgB2d0ZcORs1dV4Fp456arVk4wX9Eft3duzDTtntbUsocQl8J5NYNzq/lf+CT9vKU6pdHphZ8/rxnS//JABRPRX77sK3m3UvuY1tN9axl2kIJRBrR8c0r1v278d0JzWIqBScmENm0DudMSBkXBmIV1Ew5qb8N3MSbAWixBqijTyJZUlEBcYzpKtr1YV36sJ8YeNICKnivRcoNWYS/jDVoe/azxX6CM/3qEsRviQClxgyDNAsKFWpQkPI3j1wfx98zCNQYkvaX5qXvjwN1vNzG64qZXCAmYLSsTkGNwSu1KBHOPLyJVGfHC/J2Q86pCc6fHyE8+WcABqm+MVhScg09EzUlo03PVlKFsq2tRf5I6WWWxI99CxZOdW8D1Hg+9mhDwmRETXvW3S6m5gXnnsh/ErZj7fa6RtYkcoftV+Cw6/UcY0o2+Vvxn3xHmV9tgFtYuDtGX6IsBRZk15/MSYbXtx2/0T0OH9BSnNtTWIETVqNub9ZozunIGrvbSSrPDrxOMeuUhbs8gB7DuhrDRnib6CcBsLmUgWXllHPZPPNdAyoa7hcc/TPKBHuycFkiyoEAVc8q4+m+ZsYKoeeSmF3WukgaId3jTnkVhSE8jCZjNwkAZk/8/HVtyCXULXWCbyhuTSg2rF33BCP2hsuQzHTmW3lK+eYsTrNUnUPA1U9Ez8n7wxg4aypkIjyRwtVq7+cQC1FBofQt+SxvM9+94D6bXCZdjLa3e5+EA6JBMoKSOi5vDcGGtzp40+tpkptX06JZ1SnDs9B10XALKYmoeZU5xPp+KsybP/eLCMk1LRHt4JH+kU2GgY+hwMRicZvHJ1ntBQQyU0vTq9zxbGd5rLiu050aZVycFMSTc4LTgGW8V+wuOXYmUuH0/nomNt5qlAZTboxglmdNA5PbjBGYUumkvNfsJE0gtu0agQLE6D4UkdzB6tUD9G1sLP0KZpNtXXi2572tNMPcXAn6x0W3JtbsQVQv2wTx4SgrvGIvqt/N349mwfSz2wKhIsf4qauh4PT4OSz7lRFoP5PNcLat3HzM/Avq/L4Yr6/6qph6rJuY3HI73RpuhWfBkIA0P9gLLI1h6pQ58QZytwjET66nBPFyWpiUyGQCcaIGv41clSAQY4pQS6DisRxv+o2qhpB7dDWST7+QPMEWeiIDtWWvSwmoUPlSxEqNHiaMCfJe0khT8tsnJWGJJkXXMGinL+fpuoXK9Nvregv/M2gktau4BLO0L0VZxHG/g/f9peW2YkOyW89Tbzv6lq5CEsoOzraU4gi5wARDAXjvRVeYvOzt+Vjg861QEAJwsuNmcBf/pCJwhKMPBdMdW+FBs/lGt7Wjx/5U9inwUV58bekQ7AIYYYabyYRQX/Z+eb2bu4EI/C1IyislzPQtQjocad4UQEPIE8vtj1vQIHz2mk8JECSVvsl0XG33qA/bnLTP43/i+PntbBDXEJwX+VKBXmQfqrjdWNwrUd+xdZ4elXF7ImGbstLtd2K1t03dB9p8PPesXqvQFwE61QAucWFWGlAnS2hl2ycjvKmtFiAGMtvM3PLpxducUpdZekSsaoWvOsWm9ryjzf7eZQ9p9B30skumOzr0tpxFfStB6s18s1xC+iE+BoFpZxtaYy/rvkqNEAB8LTyf725le/ysE/Q4qS4OzMnXQPAnVEE8fxG6F1vO4yW2kPlPG9BPCQq0KZk2NdDkkbOhxfOmVJKz5UgbjugIPlvn5MNYhb+pMtsudO9vZg25pSXazhwf0pXCd14JgmRt5tZlFg8MMjlQ6a76k+9poV9VxqurtqisJ5TGIxYYV9VDzZL/A2rTzHFSXRyYDHzsZDw2/ZYQSSwhPSW5929p5iGVdKQ6NxL+3M2jZrZjStRkloutHFfmnRrZLH5J47sBiDjTE1jDvWeeQ0yCTo9G/9iU7xCb8cfqXbGliEAmighLt8DTrnGpiVRWttOWkUpz+CNMUGGkaewnSPveUca5J/na8TWr/vADzKvdXXwkYYyEJqCALOq0JFYnLqpOb16I1hgQHxnjlvRBV0SjkDIZdptxfUEJy7Z2IxP58i0e4P94ScTgNioA2Osdn+dgf+TIAiFn/bDuONQFucc1a8HkXpTHYFVB/xdw7mWkrjR5r8lk/QLte95MMnRyOUJonc23W+clGtNirHO5isLVRSGgj6iaHKvBJOos8fMBSEvaAOtfIvFHsvPbMOjOPrPkGnLicXkRauv9RbvrQmlVbkpsuyHE6NFxYdo8e8XPV9CvPL8qSRbhMQeRCL6FF8F+Van7nGmzdrh/LikETkTDsMjwYKz9j0gjUOZ56kZn5HWphKS4U/qoiLKo/KlKs5I6Db2IVfmGuLympJ7a1AvZnMu7FOPN4zkFmkh1DqKrzwkah1s3i+B44p+43aPxL9Kfxwq0UZd8bW1j3Mj5+dna/vkGCjIXKGTxS8//EhJWZNpE8gd5UOSOca6l+kNnuyBMJ0tdQJFe6mWJ0yadcdvTGNVemdGgYWKFJC8nuwHyosIHJhHj69HSCzqj16HxTL0zwLAuAEH2+RqFD4oQ7brF7dzlIBsiEQTs/XToSTax6/maIVZ6j9lqoiHi6FWQCii1ySL49banf9pChi+8oxyuc1aVYSN81eN+vnU6EDaP3JRRynt+/tjeIeWcj2X7YTFqlrwr5oDN2dPJYO11kVAbZreu2qm3JVhJUwzJRGkTdGuioG4py9okI0Py0RMUbaDhENBCy0CetJRFCMDR3HVMe4rQEHWY6OkFFtkRlhkZ7nhBnljg1fHiorafqPGhUEe37poBFy9rn3OFvE1Hy0MyI4qrY3kxyJTTIQ08MU8wSU8YcyISgCW+uLZbAIUNK7t/HLuOiQNeP1NRytfmzPUQUZeoBOrvmVHW9Jr6i8ER6MW9hXFaYL57t4MCsS9awZV0F9kOXxRY7JFa+tj8VvVF4zqLBhVVkFw1WCaYonlzPGMBv45YR0XQ6+Jswb1QH6SkBQx5FsTudZ4qFDbBGx9drSFNd5PH3cUT7cv54Ba4d7c7zyD6Gh7Gz9bi/uEIOYu8kGZCZVRTLDueYJdRZyICSkXLlergNePdRNgPJd4JikeNKeh2V674a9sVL8oqDR6CU1SeuVTm37rWcVeXE5nJ2/1Gn8ZV2lljmNTxDKMUtAGroSvFyjj9Ysq/6gnDKz/bFi5O/22aYyaPcx/EQ4d+sSpZyKtOVxLt/ivjsA3jryVUmAsELI7pNJujZmt1yMBwq8J69Hkxp4jqv+mpXUT483mVtyEEcbFnJNOWq2+pRuYaOKC4m2z3qoJMnUE6FLI37nGWXwBG1ZSn2J9EwMZqPUY9rMxCRjvOAWEYJ3R0cVMyFZGbCUnGojt8zflO3LVqhNWWFuO+Ezj1ENA0ONWTThqXYAwFCqFY0euYNI6PtGNNhtXs+FLhuQErcdUchUTrD4kFxUrr87wn7suG5uoq9eSvHYteXIECYyASPeF9cAAM4gDMsUJPuH+9aUZwHaRMoascNtcybYq55wUYUUewKaJ6yOy1MiyvRPXfIx1zVP1jL4Hx6eq/bslCQ4xzsIlHWpCbgdAzz0WXmxRdj4YQktLLUUXMQNZQ/Gc3rkPEs2BaBaSz7p0qDEKBgzBUSPYD6mR27cdmQnatQZIZItqLP4OWYoXkLGlbcBSHT4THTtYRQ12+fGMdLL0CXpPVcGB2jS7lDZ32UInn+tEsV8Ot/Frt0i0GdYd+/dPUj9FOxaLgLm3673nQbdDk4jRKKoTHqMaaQA92vnRU4Qi27pxaLmpNePjSHVw5WEurCvSjTKLBcQQDLXDKrmEHfPlRVi5Fk+bcwCsECfgqsWk4OnV/K8Y8DNJi9I+1eLuNFwPBp5qR70ZTjNf8Jyqp+0/wruj426gtMJ404IHzlBII0fFbjr8kIs5pxfZrdkwFLBHiHR+m99jH7GJmfORAT23BcnzWR2zHK/aE9HylPiaA0K+V2L9RxCNhtVWFQJD13qHZXF6ecHzfg1DuyPGpJLaNruMCrXhd/871OzAh/NAlOh9SS2MkFagxnqV7rl+J070Cx94hIkZBAL088VkbrUmyRjfz3oI8IzvLre/jETj8f5bALfqi+vu7Jc8EwvawIPdie52FuKHOUv6JwMNIzY4jALGAliZdiwWtq4Ab1QcEw1OdCgb4KpWsQ9pIehbXLWJi9sUcaOl+E+QAmjrfSxIjgbYNGSccG2oL+JRFIqWSbB0n2MFiBHI3udLu14UZpLH/YBKe668aY9ddbIV88wH2Kmbdd4Ko0p3XITdNx/t33Cy3FZErw7lYT+6gSNf4/ye6xw55y84JasIzIbtLcQAr8jKyGcn203EDXQEeFUVENjx0lmgBxN6MczPl/YXe/tBn0YbUD91vXisi9N5Kv5UikNMIKi0fFhetgp46jZQq8CRKQ9vZ1CmpB3GWQzxdlRS/Iw3eSu/ZBfsGHqZ7drhs6io0JRjbItDDIQPMZ/KUhopo2KYP0A7nck7P7AUIf+rso6B6/64o8hkOi9xaTWsxGDpUOpljnR0FyOlr33e1Sftpr4P9HxNrnxIo9XiKijwGZf0+MNz/sae8laePCTjRXD/94Vq758eXvF0r+q1PzHX9x+CSYCmuBuPsLdXwjXP75VT3qiOQLwlxY5t9S9s77ayGPhZLJdTJsEtOk/8YDliFeC4nhjA2vrRQt62tIwHZUwQeDNnJTUFq2fgRe7aIUmmi8Fk0fiWEj6tKsO4h3TmxCICTLyLaJBZFs3h5VbRDaKQwIcJK8U/RsIxY0OmvZR1FJcSTdLF63nu1+bBUX6XXnrCj1h2xQlp6FjwI2mK7zF+YzV7yOyfoXU5T3/HrfmpBUAoUkZo5w0V9uPLNHyufUeWjU91UDYLNb8nb5GYGglLb8/d7+nrJg+IebHmenbq2oqwue/BevdepgAIY6u3601nqV1ZcP4tUrDjuyAWbfAeNzWVhnHQE0qZ586XNcraZb4kbx5F/PDm6ABPi/VNwyCl7PPlb24cBuRSIwb2iOoU2VzvfW2TGnfi0BM2aQ/Zx5c+CjXMzEG3+DoVuKn9XB3jrEk/FJQUIxAXkQ+YoEcY/Wr3RTY3fN73mAt7NxyIWqJ3SKH1yJpPAReoqfDz4hSOkroZlF7gTrDrZqex5RaY1j3jA7WU+ZhhtU5r173dvXzkyh/OwI8Z5ThcNIj/rF9TgYfAdx6hke+vG4detCRc0JhD1H2Tn+u+p66Ptt2iJJuq3wnxTQHn59lFD3RoTKxBsC/PIflH9JbFa9Qx/ZTTbVHTTuz7wUsIEb2EUxhhiO4wWnJv56H8/kQXkH0IV7P6s49+3qPQvFubKlPm1/+9vd/3+eRJ49sb4i9MD5mLzVoC75Bt5X0lbhTngX881AT21668xpQJfSWL0IOlQ7eGsZGECWewgvzA5KIfACN2aAhey9/AgsPfBSw6uhRR+c5NTWYECiTIBajzGc1Zp99pFUxkbOR8bLBQmX+niyo5xwPGlFqi4kgcEC0fhkLiceQcznZVJ9kl51kq5VLpL6zet+spL3/103IXJOKxxFgEf8TmDx/9i9ICO2JXCax62wITM053+yhCFWY2KNyKthrvdjXhrzMUhbOdy4UGVF/XSVshtiPwc7PhH464H3hukayNt3K0P53WobMuouOOSKIs7GEl7Wi/4QXGCnTGYjOuQKFrtzdbKg1kwol1uRBDVPIbyRuA1npR4nKbM9ozjeBtvnqEyzabmQudcYRc5v6Gj9P9cCKRlpCgEIsFGc8masiVVUyn6pe6j5mJ40Us/fEtSVzfvTKgOgNP2eNzC+q9ZaNPc+eZDxR15jWtQqyuoYoaStvBNK07blFxvJ587mvLDku9AcnXHvo64Gc3pwKgBVbK1IwkMU1oWVCXisOct6D5ezQiagmeH0zH+yY+eoqJl78f7mCaTOsU1RciUMGtddHLsl9rUS70OZ5NqanTGsLYu0RfjnQmtr/mm17QS0DlEr5z9s0mBpdFe8Fp5pT7EpUofMJGpISAk8EwjWBqs0o3lm80zH49usxj2HhATXtg6kK7mzbEc+0TlpAROp1MwCMqKfjaG/uehlhT4jL+BXyxQa2L+uox5cJ+NIlBqWynHjlGMsjOOfiavS5PKy6j9NZxunIhFbiUE1JPCdZOjDgnbAx4TdYUuCH4Il4DiiyagkwDbqjBrU0GTmZJqUxkE5XW+X25m0Qvc37kmKOj3NFvjggwGtsyCxR2NeNmeczPddH87f0nI+ZbBtAQsJP3USXXbrnWX/p0qHIqf0cphhnJMJeCXRTA+9CId7Jo0lBJRQKphLE/dTQJi86PL4wAbVynYGCzu/7fqMek9Fak5iBtkur5+UD5A6aK0ovbyaOrnoeLh288PXpC0dFjgu6XhGlQ+ortZ6eSWCrHgF/am5RO8nk0n4KfU3z9li3dWNdAJji+tDzIoVeUENpUAxyDnsU+S2h4pJeTiaHQehMbN0Q4gSrNy7lHV/dpnvmzpo7lz18kDxiPm/Dg8n6z1F1le8JLJ8JwhCnDJx7z6ALOevOjatLyBX4m7p9ulV0w5C/IgrcqDio4ek5raSCOwrLQNDTt+S+pYq7IGuvEigSWU/GerfuqeD7Td6dqdbO7xqj7WU+6WyEtv9DAcjFiDki3QJKxYDs2g6obwELetg2p6w0k83gBWi/dS3YSRnC+OfQvsHBj44AiModPd+tX+nWLpTg4nelUxL7PdCNddWXBDA1JbiBQT5z8WOS90izgN6fxZF+y87ybHDYi17EVpr2n64KQJgy2kOrkgY3Qy3EAud4k5on42Toe13eidSVWDGuRywLZVBak8rCQFycwIHVdqJLqSOVEcJVa9iF9aSxO8S41WzTEzlMNfSTEP1zO/g0unBYsBSUF2gXjwidK8RnZ3LKr3IPmJMWwP1Ku4MKhKwNYZYWAxFvMIIQ9vu7lD4/cJKBXZyG/3okh3Cve/xUF7+TxiiH921ZH9AfCVx6iwgTOGvQx/Lt1MnPO2I5xEOc28w61MXSgLBnk1L3fweIYWIhuRCzhdpnaFN4clLg0vpljm82b3rxZp2TmjR8h5S+Ry9Sa1UEf0nPCLvZTEwPcsMeXnIh44gZKhHA6Xe5JD+r9aWNzJmhcfhYe0yLIbNvb+u5id6alIDuPmqnzBdqBET6vuF27JQ9H0l0XSi+JAX7LD90iscMrUClyglEel9iXsjb+PLsZQVUvgm93iUYDI89L/0Y+7gAtjI56iVfRytn6LeKMG9lDSYluYNft+mC8dszfwMitWRAzj7FDIn8oaYZ6Hq8ag0jQK04166Q0r1mXv64aWvcDilHJ+AZbB7uT4TnBq4YetnxQQn0b8LOAUcQ8bsnK3qI8o6vq8Yvpj7CM8RzoqSiN/oLrkVnJO8/2TZ7hDa5XElg1nLukCbCbMIL3yGvO5XSSCIKz5H5OFL8RMOdQzuhvo0ooCLS6UWUVaPv+4wmNbculZybWpSj2HxH8NeEMYP/2y2i7pT1WiBw21oOZx6VnPB0DFr2RswSYn/u+yIlUanqx5wa+xDYh5ipmdodZYDAK59zk8avQL5vmOmp/gw08e9ipHYa4AiKkrEaMASh7KGe1QXYK/mhNRTF2jj+vZFUV5ru1sNUPvQSvVKpPuFCgYINkxCQuPL6oXnCJLlfvIEt6nJZy/ZPk5HBSxC8L/eWmfJkyx5Q4ze24mWY1AEA/yVjVv8JgqUHLXusWjP2UYMTCu4jRqXGy3Yur9ZR54Nsbzlg6n+nD6hChMLdRZx/ewLGOPNnVetYLDb46z5B6uHHsg8zmvbruJlrG+ze8WzRy/votMwV94R9JU8UYedTfva222rsQ2US2/qCjKUJ1aj+Ucnw0KSr16XYDSrcrQdqPHNUm1Vhyd0vVwWRc96SmpN23bmehy6EQy4NmTqebpR4QpaoD3PqinMnyGxmEh9QEnca4N/pwO/ERqPBaHzkLzBbG5w8DLN7atZrwstyRxfUkrKJT5tkJv1eC2N76N9zUI4AbZeXMHWV5NwQKadkgV+h594GUV4ubL59GwsBLM+/YIqpwO+uc7buhNuJI0LRUIgH2850U8NcPeEXlyG180HlsRFo0vq5SVcV1a8wOn3Fh8PccwxdMYGEcxaaqOQv2I8RdbxphtF1g+Jv1AX74SnrJIQ7CHjGAldMb4UkoDF0Vx5npjZxJp4CsnOxbMYLDjRJJZ52LJMXs9EupV1RH4Rm+b6w9l38S8kx9ckinPi37Eo1CVWExeooexUZQ4P7zf7ZyYwwFU+2gj13fNYibqjUPviq7bVJivLmpd2zg2DjE5x0iMrkbrK7o500vansFZ9WMtDKwn8ztsWHKL1Y0XXx4rG46mVQgWOdiNI2X8yVVKbhMcHmlCDsMhVkO9WG2HRC3IffNz+N0/9ZvdF+MxW21/bnqMWJv9t1XoVvYy+Wx0jOvt+EvS6H+/hTRl9ae6GJvv33QB+Zj8WPv7XE+gaWkLM76XzoxRqNfv2+urCJ2SpCbpwxXMJDrpudPqh0P4lFSUc3AiP5O3tAQWywcsMQucH4Tq7+jzZkbmAvnTMvnKR0YIK+vvGT04yDJPQHOI1MTfNU9aTj85A7qHr1yOEQfRFIvyqF/dCzIcTcb4MdSYoqAmVQUt3Ivn/ELgP1esXyWg5H4b+YWAs1/c9tHpoIz9HkRkA1GEkf2ZLxMc5tDsUP9KRZTS84+xd/LD2cG1f9yKuKeM13WbpRakjgonk+z6Ljc1M41FBrwQ0sKwLxiUcjkMYhjxiRq9R012r1HLt9J9cNeDX6Rie6WNv+uDKg0mU+8puYmimOIVajW/yuWQG9siJ5GoFZ/5FCzi7ezfKOK0u5drYgH8EfBLYBpNUbGM43Idm3e8IULiv+Va85IE8MTGHW0oOYnWOb4tAv+wSJJap+fQKj1iLVoh1e6amDS9jqjQd3xH49BpNyPlsfIhn2oNuGFb+wqm+hfDYrjCxvfXEnsdNdD0yl8PeU4RWts31qsTYexc43Ck2VCqzhms+p+8dOFjXI5nWOUBH5fzy8r3WGZ1OLbUGxeA5/m0jBGz5+ureE+aLtGE10qiMeRP4SINr++qvwvjoqJTmrBBMaZsQy/DFfjwsSO3+8v9Db0oRSxxf7aPQoTB5cTKxUOhMze3J+GuzeZ23nA8rA7C67lKd6MPHc7b5aIcfp13Mmj5oxQNPpXbXp/V6bjpO5pHZKo7pl/1cflzFoZw4+VOPSS/Pbn07Otm8+Gir0BttYDbIeNyTNfdbAlRYrLMPQxWqqV5mEB/xbEhzIyl9IYrY9SuSxeZC2wV4bATZ31u58fg19azouN+biTIcYA9ozPQo/sA52NR0CcwaHKHhPgjQZn47tWTqNwhGNwAbNTanVWU0nXQX1/jskY52K7SQvWlrJrDDp7THyHZ4b2lTOhySbGfyziwo6gfOQ9nEgAZErk7OonsdBhTyfXTwwzUeXpNuhDCayKWVK14eFgT3OE3oJJAPbMbxjRZHvyaEauSppkANV34OPcOhhuL5K69AqLAVm3ewLfCy3sd75BTrWw8bHjqdIuGTwrt+MA3oO0/NlFZuFu/ORPlldW+Rv1iEnqC3GW25gc1LpWqeZWphuT8QNnGmIPPOHXwi/0o5Xt55Xwsyz1R82h3eGbAuOOfx8c8V4b4BX20es29iLhQGo/8yJKWis1h2ji/7TF1alj+QcmWVqx3kfdiqHhYxJj5M+h5+fV3xQEsSdLr4A+ChuGwUh2FAXDzmewkEOJkgCUH6TDRaDDKO3KVS0PjsDiJPDtDURDNYRUDCb8BBoJCxG2ARna36NGjImFAzlE8WPsl/bvSodNTdo5VLXUqRnCSeYXvajsZMg+CL7Fqk2/1FfyBycvgW5t5yFhFEuTkZjEkrV7oFMR3fXXEbspAcISh0J+n8H22yvTSWBfAnNdiBK2iF3Ut9yohmk2AN8FtpW4yoNPTDuDPiQkalnD1OuJVMM/3/bU8u4OvXvHA2gPVQI5PCVAvl0BxS4PGRv9qEc7QsNL1m1PnulrVAT+WbFXjH3fKC/crnZIlMS3a9Xxp3RGTHErXhmy2ShfARV5G8gHY1Jn11HzLEzZ8gY3kCoxWrOTyIlljTLFlYflu3lNxdQnnJR409Uk5oiP1B9gJYRam3nkuLA8nMDHZFGai3oALgafdEO3DAoXnvVXOfFiR2ajijAyWetTsGjryk4yQmZoRM1OgtzSwol7UBd3DR7UEwa8beEKwtxou+Ff5+aJLS3XkTNirjXGMHa0QMqAbjWgzM6yopW1RXoiUnTcltF/pspl40ETrgJygTl29Jz/2KDDTde1k17uwDCo4cb7wAZ4PBxmFAcxj7QfNn+SlrDMu06dw+QN5uA4afpmmz9WJRmmqccZaXtTOVKyT2eCNpBwPOKX7QeuPQSKIffKJBp2j9dzGwH9BVCFaopq6rBIhgYV5t3pySgltnb88kWjsyTRIOZmno/t9G6PtBD/eNDnUlb1z1eOo1KbKVvh3NML1i3FPBzXb7bmxtuO0d+k588H4yoEBuAYIQ72s86kTjiQLjzzmJfjUPwOAuVs8rBm6VOXugklwpKA/noKduQN0UsIqZYyKAByInDRA/O8LC8CPygW7HnHvoo0rGQw2BBGXpDj/WpXLnBgaKx8u6OjnCmwmVagLXOixbRFbYaFVieFx1KneiYqV63/sTt1H2Q02ezzSPzh9b9ebWF2GdMadya3KLLg7j0xBRwlfclHbbZdMKx2czM/Nqs78NhFTESgtvFe3uey3jCJbifSitbBd2ZFLosWaaZTTXfmnsLDh8eDoPODjOW9BFUK6y1XsfRn/4MhwumidxXz27Pewyq9dFkuGe88gqyTWGxTtN2yNUa0+p6+k+9DPMTCgXqlQIGxoDcjvA3wNJyg4xIqfZ/1qzZQ9nAVf4KvHHgzKXDjRttWkrgCYqEkPnsYSq4GY4Z545bK68QkbUBnKPyVRkSAotCPx/Hu8V08VT/XzcSlX2kf0M2rfZbrhKs+36wOGPA8Pzle9IB1WrRrcqjGhE/w9LC2MVaDh4fawzn0x9DHIKmgTtnaBlcTU+xTS5ZBZna7H8kt5aRDgKbD3Riyz6TwDCxyCstEKNuqzKXaWcZZunzbBIITraAvE3BQ+4ornSiBYCXh+2sDHKrhptH0yG8jUaHpLVB8ZYoZLZtbjnRuQ7lhKebkJcfx1XOjj/xVpA+e84gUc/1CvHTrjVR+QNK6newKhofM9jrWYo49iQPSBRwDwqg=&quot;}" modified="20200514105643104" tags="drugs" title="Other Tek">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200512231220756" modified="20200514041135597" tags="code" title="Practice and Study">
 <pre>* Ukulele
@@ -12567,16 +11940,8 @@ Please email ma@scribendi.com when you are ready to receive the mock assignment.
 &lt;&lt;&lt;
 </pre>
 </div>
-<div created="20200514014402480" modified="20200514014902467" tags="" title="Security and Privacy">
-<pre>//This page is an example of what is meant by &quot;security and privacy.&quot; I mean shit, it's up on github in public for convenience. Note to self, fix that.//
-
----
-
-* There's a reddit comment over-write-er that people use on research chem subs and stuff. Why? Is that a just-reddit fix, saving that information from being in their own databases, whereas that doesn't happen if the comment is merely deleted? What about google and caching? Does it fix that?
-
-* It's said that Whonix (non-amnesic system? ask Ken) might be better than tails. Something about Whonix being able to come out with more reliable Tor entry points. 
-
-*Qubes seems to be the end-all be-all, if I ever have money and time and really set up a badass desktop.</pre>
+<div created="20200514014402480" encrypted="{&quot;iv&quot;:&quot;BhzWCMh37sj9znhJsLbp+A==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;mTP1BUFpXpvilnlCVnG8WL0fvrxLy+k9dtrzWfK9JqZ+tI67ZIq+/bo3gArb+CE6AaNUVldhsuhHFM8tyQLJ7ogqlkDRol70EQ+yGnlI+KNaeDkCP4j/AZ90EEPJzqeaEUXWTR7MXJfJs2WmKX3esovee0VrxzodHe2lpAECpHp0wEX3wvAZivb4HNBV9S0CDYGOWiTF5npKtvQqaJtPUC+N4tzVWYwgrdTOFQRfRHkhhMT6PpNNGLtdlCdK/1bi3t52Pq7RbI03noGW0yP8RnMHFlm238UOQoc51pZdSyd0zjCzSrLbKUvfD3YFSeeY/173V+NO+B/D9T2L1OwN/TbWe3QKJOO5NxrdHGdQSryROjKubO7g8lH968zAIb+HJTPjKdjOdUlzu62bNrADcH5L/joLVAOO0jjng94e2Fgb0w69Dsm+nT3jUNyDkEMSMqq8N6wcbzGWtP9ri915NiouZJLLx+Oc3k7oQJfBMnD1Zbmoz2N7wtuJpT/eKkZCchzjksShL5jYriHTRMi/1BlwREe6mJOD94M2TTJJI+PNR4Hgy/RausEq1/7WdnLSukPfvxfMi0YqqnNPcbrMgn59wcTZwtE6oSEMbpnGBk7PBHCMxtcB51/W3xnJVzZUMsQo58bnWtxyYjySxMAkTqGb7DpaRC78q31NU1I+q2BbRUsUO9qis7mTEKzQu2CLYBBlL5qB62anG0VvHeS3nkuYHgYXDWHRmQSNBs06IPxNAB2Lt6mW+1yuIWP5Wrrg5VRL2oh/KgWKJ+C0YktTqCfSrXHn7a/q7Eyu72gtMbB1L0pDEsrbklvWBaUSMagBHgXpc3rLHSoaKFixOw528eYclBsHizCua1PLy1xUhXTZjKlp/oEuJqfNbyCwnAiolgqMDFfmOx2g0pcfP32RiQZm3bu6WqGgSAFImpQ/npaD8sMD9mAsM5z8uLtbg8eQ1EerHj7zV9j2zvppeoTyAi2P7OVi6FSnjGenAfsuwV1wRl09Td5rPxKr+nXQJdOHSSrJ5ByRFOH5ndmp/KSxRAjeIK3aPBL9+2LzHsYTF3Fhet/OqHXbKUFL57Hey8oFhymUIm0ja5oN5v6yC1niDmjfzGw44kdurd0CcbykZiCR8IlWlnwo&quot;}" modified="20200514014902467" tags="" title="Security and Privacy">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200402185917993" modified="20200404032431752" tags="sermons" title="SermonIdeas">
 <pre>* [[Heaven and hell as places we are now]]
@@ -12596,87 +11961,14 @@ Please email ma@scribendi.com when you are ready to receive the mock assignment.
 <div created="20200407180529385" modified="20200407180554904" tags="" title="Slate Star Codex (SSC) automated podcast">
 <pre>https://danwahl.net/ssc-podcast/</pre>
 </div>
-<div created="20200416033216845" modified="20200416234026001" tags="drugs" title="Smoking 5-MEO-MIPT">
-<pre>__''Smoking it without freebasing it''__
-
-On the internet, there were various ideas. One guy said you could __sandwich it in ash__.
-
-
-&lt;&lt;&lt;
-It's really easy. I just put a decently fine screen in my bong, put some ash onto it, then the 5-MeO-MiPT powder, and again some ash over it. Then just slowly light it up, carefully get closer with the flame and don't totally burn over it. Very effective, 10mg had me trip my socks off.
-&lt;&lt;&lt;
-
-Another says he made something not dissimilar from __&quot;The Machine&quot;__ with a plastic bottle and foil.
-
-
-&lt;&lt;&lt;
-I just put mine on some foil the attached that to a soda bottle with the bottom cut off. Heat up slowly until the bottle is filled with smoke and you can no longer see more smoke being made then take off the cap and inhale.
-
-Didn't convert it to freebase or anything. Had a pretty crazy time. The stimulation is almost too much.
-
-Also, it tastes like ass. It tastes worse than DMT and kind of numbs your mouth.
-
-Only vaped 10mg
-&lt;&lt;&lt;
-
-
-''__Freebasing it__''
-
-One gentleman has what sounds like a wonderful way of freebasing in a microwave:
-
-&lt;&lt;&lt;
-Try using a shot glass in the microwave. That's how i do it. Ime that paste in the spoon is impossible to avoid and the rocks never look as good as the dealer's.
-
-Put your coke in the shot glass and add just enough water to dissolve the coke. I mean like a few drops of water. Just add water dropwise until it's dissolved. Then add your soda and give it a gentle stir with a tooth pick. Microwave it in 3-5 second bursts. The reaction occurs immediately when the Microwave turns on. You only do small bursts of microwave so that the mix doesn't boil and pop out of the glass. I think usually it take only 2or 3 bursts. Stir it up between bursts. Let it cool and you should have a little cookie on the bottom of the glass.
-
-&lt;&lt;&lt;
-
-
-This guy purports to make a __changa__ of it:
-
-
-&lt;&lt;&lt;
-What I do is this: dissolve moxy and bicarbonate of soda in a little water, heat to evaporate most of the water, add weed/tobacco and mix, lay out to dry overnight, then it's ready for smoking. Smoked moxy is the bomb, if you're prepared to use 2-3X more product for similar effects
-&lt;&lt;&lt;
-
-</pre>
+<div created="20200416033216845" encrypted="{&quot;iv&quot;:&quot;SSXk3AUSjIFFrgDnOr/uwA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200514105255313" tags="drugs" title="Smoking Moxy">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200402183142220" modified="20200419070500401" tags="meney gigs jobs" title="StartUps">
-<pre>* AutoSpanishAccents - DOES THIS STILL NOT FUCKING EXIST?
-* EditingEnglish - Google searching common never-grammatical ESL phrases and then cold-pitching a proofread
-* BtcPnp - getting money to help keep people's secrets private
-* 90s TVs - an actual TV from the 90s, made to act like one, showing period shows
-* EditingWorkEmails - it's what I did often for Nieves, etc. I think they might pay for me to continue, and I thing it wouldn't violate [[my NDA|file:///media/removable/SD%20Card/FCNDA.pdf]] if the people themselves paid.
-</pre>
+<div created="20200402183142220" encrypted="{&quot;iv&quot;:&quot;BHZk16+auxyjv77U+Ha8dQ==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;tTAD9Wzsu0u66OAh5rBhVYgUCsGpWBG+NQaTo8e0yGjli+ohgB7YOt/Y+HQllcUpk/kIIe3ORLSMbdtg1sKyz0DsxoSHXjlD9UZWzq0g4EeTym2B7KN3VtgqUxeCaeJoB4iiAX7Gq+L/F5iFvAIcL/526BfIAkVe9xYNnwFkqpORDuKyrq7CmTxuggh8AmlUAUSHkh6rxA/NjStSp+PR4j13u9eNlRy5E9vUJDnCYuTUq/mQWy1yNnbR9mQiqtzN/ekKLGVAjwtk5xvX44fm3DRa+y7SeFBJML47upibO2/qaVelcx3lm6lbya6qDBCnVNIwsaxG08wtSQG5kGG1BUR341hvnbgL34Fqn/XVgzoHIKquPicTtM267pCvERVSI2bFMbAUThyitIp7MIYp4ASrTDPh1g4xGiFtX+doJzF2qPsvky6cWmISVVttKKPcc9FZqYicKaRynxEwqqBNsyklwhH8bF4HYWYNhsnkneDw8u23HFssC7T8g1fg9KxSlF2jSWLFbhds4ygP2b6xA0i7pEBR+DePF2e9UESAraSyhimO9j+CFaw7cE3tACli8kPh1TgGM5b7iHGo5iucVxjImcim6PVfYQ10i8PLGsp9d9vXDUMugjhG9AMH3pXPpqJklZglA39v+PD65l5z0icwejb7cSDSg8mpJ7+cJftPVHodn6ySAdz4IsOBlJE6A/JoBIWSFUszq0CsLwPjKmCyqoe+8IkfhM3DPLobx8H/WufchXvRO++ugrDVR6NTMLD+Lm8bxoFb5WJe5mXF6bqET5mAljEaXjdf3Bq5c36jllZOjlDuPH50EVxMolBkQUo0OqOEKAmNouEggfjmIQ2+Un+pMn0oH2u8gfOcxu7AyJuESis=&quot;}" modified="20200419070500401" tags="meney gigs jobs" title="StartUps">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200415025917800" modified="20200512143731923" tags="" title="Swingers we're talking to">
-<pre>|!Image|!Name / handle|!Forum|!Bi?|!Drugs|!Location|!Plans|!To-do|
-|[img[shawnjudie.png]]|Shawn and Judie|Kik|She's huge bi|unknown|Plano|none|Figure out about E, schedule|
-|[img[johnd.jpeg]]|Jonathan and Tori |Kik |She is. |E-friendly |unknown |Possibly something on Friday? |Schedule meet|
-|[img[drearory.jpeg]]|Rory and Drea|Kik|unknown|unknown|unknown|none|Get answers to questions!|
-|[img[redhead.jpg]]|Heath and Samantha|Kik|Bi enough, heh heh heh. |E-friendly|Denton|DONE.|Follow up, thank them.|f
-|[img[robbandleslie.jpeg]]|Robb and Leslie|Kik|She is, I think he is|E-friendly|unknown|Meet after their party on the 1st.|Tell him we have no videos, start group chat!|
-|[img[davidstevie.jpg]]|David and Stevie|Kik|She is|E-friendly|Plano|Rough plans to drink and hang|Migrate to Signal or SMS and set drink date. These guys seems hard to get a hold of, and like she might not be on the up-and-up.|
-|[img[jayandjenn.jpeg]]|Jay and Jenn|email, SMS|Him, kind of, her, way|E-friendly|unknown|none|Make plans. Their best night is later this week.|
-|[img[darrellandena.jpg]]|Darrell and Ena|Kik|She is|E-friendly|unknown|none|Coordinate. Possibly roll with them tomorrow!|
-|[img[Bourbonlife.png]]|Brad and Stephanie|Kik|She is|Pot only|unknown|none|Make meeting plans. They're very enthusiastic. But no MDMA!|
-|[img[perrylakina.png]]|Perry and Lakina|Signal|She is (I think)|E-friendly|Arlington|Roll if Kina is down|Check if Perry has talked to Kina. This seems like it's going nowhere.|
-|[img[e_lynnK.png]]|E_Lynn K|Gmail|She is|unknown|unknown|Rough plans to meet after COVID-19|Finalize plans|
-|[img[michaelkatie.jpg]]|Michael and Katie|Kik|unknown|Sounds like they're not all about it, but they seem convincible?|South Ft. Worth|Rough plans to meet|Possibly down to meet Saturday!|
-|[img[Bb.jpg]]|Bb|Kik|unknown|unknown|unknown|none||
-|[img[Josephgrizman.jpg]]|Joseph Grizman|Kik|unknown|E-friendly|unknown|Rough plans to roll and swap|Finalize plans|
-|[img[Sstephonlee.png]]|Sstephon Lee|Kik|unknown|unknown|unknown|none|Wait for reply or re-contact|
-
-
-!! ''Ghosted''
-
-|[img[jasongrace.jpeg]]|Jason and Grace|Signal|She is curious|E-friendly|Denton|Rough plans to roll and swap|Finalize plans|
-
-!! ''Creepy''
-
-|[img[Jamesbond.jpg]]|James and Anna|Kik|She is|No|unknown|Meet drink, and play sometime before the 27th|Schedule.|
-
-</pre>
+<div created="20200415025917800" encrypted="{&quot;iv&quot;:&quot;nybjGohHhgInfGma7BbIkA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200512143731923" tags="" title="Swingers we're talking to">
+<pre>!This is an encrypted Tiddler</pre>
 </div>
 <div created="20200406044722739" modified="20200406045058824" tags="survival" title="The Best Way to Make Acorn Flower">
 <pre>//Web version with pictures, [[here|https://honest-food.net/acorn-flour-recipe-cold-process/]]//
