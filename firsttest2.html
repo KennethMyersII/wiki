@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Very basic examples &#8212; ProbLog: Probabilistic Programming</title>
+ 
+    <link rel="stylesheet" type="text/css" href="https://dtai.cs.kuleuven.be/problog/_static/graphviz.css" />
+    <link rel="stylesheet" href="https://dtai.cs.kuleuven.be/problog/_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://dtai.cs.kuleuven.be/problog/_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://dtai.cs.kuleuven.be/problog/_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="https://dtai.cs.kuleuven.be/problog/_static/problog.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="https://dtai.cs.kuleuven.be/problog/_static/documentation_options.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/jquery.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/underscore.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/doctools.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/problog_editor_advanced.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/ace.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/mode-problog.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://dtai.cs.kuleuven.be/problog/_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="More examples" href="02_more.html" />
+    <link rel="prev" title="Viral Marketing" href="../dtproblog/02_viral.html" />
+      
+    <link rel="stylesheet" href = "post.css">
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body style="background-color:#262626;">
+<div id="wrapper">
+
+
+
+
+<div id="page-wrapper">
+<div class="container">
+  <div class="row"> 
+    <div class="col-md-8 content">
+        
+
+      
+  <div class="section" id="very-basic-examples">
+
+<div class="col-md-12"><div class="problog-editor" data-width="100%" data-task="prob" data-advanced="false" data-trackurl="false" data-autosize="true">0.8::stress(ann).
+% 0.4::stress(bob).
+0.6::influences(ann,bob).
+0.2::influences(bob,carl).
+
+smokes(X) :- stress(X).
+smokes(X) :- influences(Y,X), smokes(Y).
+
+query(smokes(carl)).</div></div><hr class="docutils" /></div>
+
+
+        
+<script type="text/javascript">
+    $(document).ready(function() {
+        problog.init();
+    });
+</script>
+</div>
+    </div>  <!-- wrapper -->
+  </body>
+</html>
