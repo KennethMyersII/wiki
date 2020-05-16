@@ -49,15 +49,16 @@
       
   <div class="section" id="very-basic-examples">
 
-<div class="col-md-12"><div class="problog-editor" data-width="100%" data-task="prob" data-advanced="false" data-trackurl="false" data-autosize="true">0.8::stress(ann).
-% 0.4::stress(bob).
-0.6::influences(ann,bob).
-0.2::influences(bob,carl).
+<div class="col-md-12"><div class="problog-editor" data-width="100%" data-task="prob" data-advanced="false" data-trackurl="false" data-autosize="true">0.4::lastMoneyForLaptop.
+0.3::closedBorders.
+0.1::virusMutates.
 
-smokes(X) :- stress(X).
-smokes(X) :- influences(Y,X), smokes(Y).
+russianAlley :- lastMoneyForLaptop.
+russianAlley :- closedBorders.
+russianAlley :- virusMutates.
 
-query(smokes(carl)).</div></div><hr class="docutils" /></div>
+
+query(russianAlley).</div></div><hr class="docutils" /></div>
 
 
         

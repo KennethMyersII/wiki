@@ -9658,8 +9658,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200401233108563" modified="20200515103940514" title="$:/DefaultTiddlers">
-<pre></pre>
+<div created="20200401233108563" modified="20200516062000954" title="$:/DefaultTiddlers">
+<pre>[[Problog Codebox]]</pre>
 </div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
@@ -9812,8 +9812,8 @@ Error message and password prompt
 <div created="20200515042952686" modified="20200515043018620" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20200401234012909" modified="20200516030035589" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Appearance</pre>
+<div created="20200401234012909" modified="20200516061949415" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
 <div created="20200401234035701" modified="20200401234339168" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/DownloadSaver</pre>
@@ -9821,13 +9821,13 @@ Error message and password prompt
 <div created="20200402182518749" modified="20200515093912665" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Orphans</pre>
 </div>
-<div created="20200402000457344" modified="20200516034331536" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200402000457344" modified="20200516062010423" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20200515102243955" modified="20200515102250860" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditorToolbar</pre>
 </div>
-<div created="20200516034154048" list="[[Problog Codebox]] Spreadsheet [[Notes on REPLs and Widgets]]" modified="20200516053550015" title="$:/StoryList">
+<div created="20200516034154048" list="[[Problog Codebox]]" modified="20200516061940366" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11330,7 +11330,7 @@ But I've had a revelation here, bruh:
 I'm like those pot-smoking retards. My fix is just introspection and big ideas.
 </pre>
 </div>
-<div created="20200516023734007" modified="20200516043101506" tags="code" title="Notes on REPLs and Widgets">
+<div created="20200516023734007" modified="20200516061451672" tags="code" title="Notes on REPLs and Widgets">
 <pre>I'd like to have Jupyter Notebook-style powers in this tiddlywiki. Wait--one better--I'd like to have Jupyter notebook style stuff, BUT with the obscure shit that //I// use. 
 
 This is difficult, and will probably be a long off-and-on project. 
@@ -11339,13 +11339,11 @@ Here's what I've got, with known issues:
 
 !!__[[Problog editor]]__
 
-This mo-fo is literally just an iframe that really runs an editor from the problog people's site in a window in my tiddler.
-
 ''COOL'': Well, I have a problog editor now.
 
-''SUCK'': Um, the color scheme, and the fact that I can't have this thing load with code in it.
+''SUCK'': Nothing. Kenny fixed everything,
 
-''FIXABLE'': All of it. To hear Kenny talk, with some hacking, I could get this straight to Jupyter notebook-level, except I guess I'd always need to be online to use it, since it would have to run their backend.
+''FIXABLE'': I could download all their js files so it could run offline.
 
 !!__[[Spreadsheet]]__
 
@@ -11395,7 +11393,7 @@ Again, an iframe (like the two before). This lil guy is just an embedded widget 
 **Study Esperanto
 </pre>
 </div>
-<div created="20200402190440653" modified="20200515081107239" tags="philosophy covid-19 code predictions" title="Predictions">
+<div created="20200402190440653" modified="20200516055251127" tags="philosophy covid-19 code predictions" title="Predictions">
 <pre>//One should always be mindful of ways to capitalize on these things.//
 
 ''COVID-19''
@@ -11413,147 +11411,11 @@ I have also, for years, predicted that the turing test will be passed in roughly
 
 I don't know if I've said this to anyone, but I believe that [[the theory of lithopanspermia|https://en.wikipedia.org/wiki/Panspermia]] is true, and that we will find strong evidence of extraterrestrial life in the next fifteen years (so between 2020 and 2035). (Typed on April 2nd, 2020)
 
-&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify &quot;$:/temp/probmodel&quot;&gt;&gt;&gt;
-
-''Problog Model ▼''
-&lt;/$button&gt;
-&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;qualify &quot;$:/temp/probmodel&quot;&gt;&gt; text=&quot;&quot;&gt;
-
-```
-% EXISTENTIAL POSTULATES
-% =================================
-
-0.5::simulation. 
-% 50% chance that we are living in a simulation.
-
-0.9::aboutIntelligence :- simulation. 
-% 90% chance that if we're in a simulation, 
-% the point has something to do with intelligence.
-
-0.9::panspermia. 
-% There is a 90% chance that our 
-% abiogenesis did not happen on earth.
-
-0.7::doublePanspermia :- panspermia.
-% 70% chance that if the abiogenesis was exogenous,
-% so was the capture of mitochondria.
-
-0.7:: gfMitochondria :- \+ doublePanspermia.
-% 70% chance the great filter is mitochondria
-% IF the mitochondrial symbiosis evolved here.
-% darkforest, zoo, etc
-
-0.8::lifeEvidence2035 :- panspermia.
-% 80% chance we'll find convincing (to me)
-% evidence of the influence of organic 
-% processes on extraterrestrial atmospheres 
-% with the James Webb telescope 
-% if even non-mitochondrial panspermia is
-% true.
-
-0.8::deliberateSilence :- doublePanspermia.
-% 80% chance that the Great Silence is
-% intentional if mitochondrial life came
-% from afield (and therefore exists elsewhere 
-% and spreads). This is because there have been 
-% multiple evolutionary paths on earth to complex
-% brains, and I assume that where there is mitochondria
-% intelligence develops after sufficient time. 
-
-1/15:: gfDarkForest; 14/15:: elderRace :- deliberateSilence.
-% There's a small chance that the Dark Forest
-% scenario is the reason, if the silence is deliberate.
-% I give it a low chance because I'd think if
-% exterminations were common, someone would have already 
-% gotten us, since we've been casting biosignatures
-% for billions of years.
-% The alternative, to me, is that a race with a million
-% -year lead on the others got the upper hand and effected
-% the evolution and norms of all followers.
-
-observed :- elderRace.
-% We have been observed if there is an elder race.
-
-gfSomethingElse :- \+ gfDarkForest, \+ elderRace, \+gfMitochondria.
-% if the apparent great filter isn't these things, it's something else.
-
-
-% AI PREDICTIONS
-% ================================
-
-0.51::turingBy2029.
-% The Turing Test will be passed by 2029
-
-
-% COVID THOUGHTS
-% =================================
-
-0.10::greaterDepression.
-% 10% chance of a greater depression.
-
-0.15::massViolence.
-% 15% chance (metaculus number) of rioting, etc
-
-
-% FRIENDS
-%==================================
-
-0.20::kenRaileeBreakUpBy2021.
-% We break up this year (5.10.20)
-
-0.45::chandlerToYantisBySept.
-% Chandler actually follows through with a lifeplan. 
-% Highest chance ever. (5.10.20)
-
-0.70::scarletLeaves02 :- chandlerToYantisBySept.
-% If they do this, it won't end well. (5.10.20) 
-% She ditches by next February.
-
-% ME
-% =================================
-0.2::shirtSuccess.
-% my enterprise goes well
-0.45::ntiBack.
-% NTI takes me back
-0.30::goodNTI :- ntiBack. 
-% they pay enough
-0.10::financialDeusEx :- \+goodNTI.
-% something else randomly avails
-surviveHere :- shirtSuccess; goodNTI; financialDeusEx.
-% I stay here.
-
-
-
-
-kenChandlerHere :- surviveHere, chandlerToYantisBySept.
-
-
-query(elderRace).
-query(gfDarkForest).
-query(gfMitochondria).
-query(gfSomethingElse).
-query(scarletLeaves02).
-query(surviveHere).
-query(kenChandlerHere).
-
-```
-
-&lt;/$reveal&gt;
-
-&lt;p&gt;
-
-&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify &quot;$:/temp/probshell&quot;&gt;&gt;&gt;
-
-''Shell ▼''
-&lt;/$button&gt;
-&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;qualify &quot;$:/temp/probshell&quot;&gt;&gt; text=&quot;&quot;&gt;
-
-{{Problog editor}}
-
-&lt;/$reveal&gt;</pre>
+&lt;iframe width=&quot;100%&quot; height=&quot;450&quot; src=&quot;predictions.html&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+</pre>
 </div>
-<div created="20200516053555079" modified="20200516053651471" tags="" title="Problog Codebox">
-<pre>&lt;iframe width=&quot;100%&quot; height=&quot;210&quot; src=&quot;firsttest2.html&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+<div created="20200516053555079" modified="20200516054812529" tags="" title="Problog Codebox">
+<pre>&lt;iframe width=&quot;100%&quot; height=&quot;450&quot; src=&quot;firsttest2.html&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 </pre>
 </div>
 <div created="20200515080416913" modified="20200515081250924" tags="code" title="Problog editor">
@@ -12381,7 +12243,7 @@ Please email ma@scribendi.com when you are ready to receive the mock assignment.
 <div created="20200416033216845" encrypted="{&quot;iv&quot;:&quot;SSXk3AUSjIFFrgDnOr/uwA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;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&quot;}" modified="20200514105255313" tags="drugs" title="Smoking Moxy">
 <pre>!This is an encrypted Tiddler</pre>
 </div>
-<div created="20200516010918745" modified="20200516041917421" tags="" title="Spreadsheet">
+<div created="20200516010918745" modified="20200516055754351" tags="" title="Spreadsheet">
 <pre>&lt;iframe width=&quot;100%&quot; height=&quot;210&quot; src=&quot;spreadsheet.html&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 </pre>
 </div>
