@@ -38,23 +38,15 @@
     <div class="col-md-8 content">
         
   <div class="section" id="very-basic-examples">
-<div class="col-md-12"><div class="problog-editor" data-width="100%" data-task="prob" data-advanced="false" data-trackurl="false" data-autosize="true">%THIS CODE IS FUCKED UP NOW AND MY LIFE IS FUCKED UP.
-    
-98/100::truepaternity; 2/100::falsepaternity.
-98/100::truepaternity; 2/100::falsepaternity.
+<div class="col-md-12"><div class="problog-editor" data-width="100%" data-task="prob" data-advanced="false" data-trackurl="false" data-autosize="true">8/100::truepaternity; 2/100::falsepaternity.
 
 146/839::thisbandofcentimorgans :- truepaternity.
-183/193::thisbandofcentimorgans :- falsepaternity.
-% Corrected, because these need to be of the form
-% odds::consequence :- cause, where it is so that
-% "When [cause] happens, there is a [odds] chance of [consequence].
+183/193::thisbandofcentimorgans :- falsepaternity. 
 
-% Same answer (89%) as always, of course.
+evidence(thisbandofcentimorgans, true).
 
-
-evidence(thisbandofcentimorgans,true).
-
-query(truepaternity).    
+query(truepaternity).
+ 
     
     
     
