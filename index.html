@@ -403,6 +403,8 @@ Error message and password prompt
 
 <li>StartUps</li>
 
+<li>Stellar Cartography Project Code (scraping)</li>
+
 <li>Stimulus check</li>
 
 <li>Swingers we're talking to</li>
@@ -10054,7 +10056,7 @@ Error message and password prompt
 <div created="20200515102243955" modified="20200515102250860" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditorToolbar</pre>
 </div>
-<div created="20200528152819003" list="ToDo" modified="20200528154756914" title="$:/StoryList">
+<div created="20200528152819003" list="[[Stellar Cartography Project Code (scraping)]]" modified="20200528162014296" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200518014750959" modified="20200518014750959" title="$:/temp/HidePluginWarning">
@@ -12986,6 +12988,37 @@ Please email ma@scribendi.com when you are ready to receive the mock assignment.
 </div>
 <div created="20200402183142220" encrypted="{&quot;iv&quot;:&quot;VNe83Tl9hzWeSfQSXEDeCA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:128,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;BW1tgCg7zuE=&quot;,&quot;ct&quot;:&quot;HMZGjvSGL9zJu8juDNk1UsPSSmNOmAGqs2hb39lKaD4ps1jLUApV+8dPLIVtsBoMN/NzR4/X1P6dxvOH/EhToVf2oyAC7CEtCxRVjy2mTYgf/b0HIy/1tRUPmf4NaK6lkm/6h2M5I2sFlbGigNeBKJMep9XC/SzrcnvdtUQnDpIec+ORa34UIkOXskOeNigEbfGIUgpsvgAKlu2uMb1ltXUoVjtoF3oyld2XmKQQUB618fPdEEBdvyy2clbDY2GxyOYIexGWD8WdwgTXaszqVjB3pMJR3Ti+fsJzBK2lmmdhN7nWxGpRtLA7smissZeybdhgQtN4LAbfv/9dGOVLOhe1r48txy8XQgrO6x40vdFdjQXVxZPKhKqjPwc6vKozwyGAgqAC+BBgiYt71Xc0smCD9DrUjbOXOYsXpMEGh9ICZYntU8+v/nM2G/rI4Wjnf1YXwOP7lPilrV3N/hSR9q0SPbRLTBmEoNQBaSPXhnsgw/uRuJNk/G9pNyd8KwGeZqePu1CyMENSeTubDGMDn6A+zfoM3glS4xAXiR+6fGK3IsNgjf3zOdOcGyxFRIiJ25CJvvcUslVDA/yRr4jPz4XXJxVj0gOfaPnCefxtby2PV4b/a+GZXgHq8f4/Tpl/84SRXzaOxlVNT4gwBuqcUkfrJhqTDo9DOswlehE3Q3fLzhn6HYL7gT9MbtA+GKrUokyxa24p6dDDybGWQVCkW/QrlnGPI9tbGjJsGAtIjDkT88cvbLS2HS4CNLCQDsicQHONPH0iULDqO0mSi79yvltcyZ1p9/1SqoXQCBIMZ0YviwHviQOUAOyaQ/XhDLXEgETjtX+OeKos6PJPQpEgwdgAZy/JOTHtUtf9f6/+cHcA7OWcX20=&quot;}" modified="20200419070500401" tags="meney gigs jobs" title="StartUps">
 <pre>!This is an encrypted Tiddler</pre>
+</div>
+<div created="20200528161322915" modified="20200528161949845" tags="code" title="Stellar Cartography Project Code (scraping)">
+<pre>Download star page from [[Stellar Database|http://www.stellar-database.com]]:
+
+
+```
+$ wget --output-document=test.html http://www.stellar-database.com/Scripts/search_star.exe?Name=wolf+359
+```
+
+[[Awk]]/cut/awk pipe for star name:
+
+
+```
+$ awk '/H1/ {print $1,$2}' test.html | cut -c 13-100 | awk 'BEGIN {FS=&quot;&lt;&quot;} {print $1}'
+```
+
+outputs
+
+ `Wolf 359`
+
+Awk for cartesian coordinates:
+
+```
+$ awk '/Celestial/ {print $6, $7, $8}' test.html
+-7.416, 2.193, 0.993
+```
+
+outputs
+
+ `-7.416, 2.193, 0.993`
+</pre>
 </div>
 <div created="20200521042956371" modified="20200521043047198" tags="" title="Stimulus check">
 <pre>It looks like I'm going to get a stimulus check after all!
