@@ -281,6 +281,8 @@ Error message and password prompt
 
 <li>ASCII Character Codes</li>
 
+<li>Awk</li>
+
 <li>Bayes' Theorem</li>
 
 <li>Blog posts</li>
@@ -10052,7 +10054,7 @@ Error message and password prompt
 <div created="20200515102243955" modified="20200515102250860" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditorToolbar</pre>
 </div>
-<div created="20200528041937579" list="ToDo" modified="20200528042232696" title="$:/StoryList">
+<div created="20200528142415226" list="ToDo" modified="20200528152220319" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200518014750959" modified="20200518014750959" title="$:/temp/HidePluginWarning">
@@ -10122,7 +10124,7 @@ Error message and password prompt
 <div created="20200514104125949" modified="20200527234826024" title="$:/temp/password2">
 <pre></pre>
 </div>
-<div created="20200402031459511" modified="20200528042027078" title="$:/temp/search">
+<div created="20200402031459511" modified="20200528152426872" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
@@ -10612,6 +10614,97 @@ Just in case, if someone did see a Great Depression coming, and it wasn't common
 </div>
 <div created="20200419030017999" modified="20200419030141869" tags="" title="ASCII Character Codes">
 <pre>&lt;img src=&quot;asciitable.gif&quot;&gt;</pre>
+</div>
+<div created="20200528144002967" modified="20200528152156107" tags="code" title="Awk">
+<pre>I'm starting with [[this basic shit|https://www.geeksforgeeks.org/awk-command-unixlinux-examples/]] and it's working for me.
+
+---
+
+The awk program fits inside single quotes, before the file with the data being worked on.
+
+
+```
+$ awk 'this is a program' mydata.txt
+
+```
+---
+Awk iterates line-by-line. It can find a match specified in forward slashes:
+
+
+```
+$ awk '/virtue/ {print}' mydata.txt
+```
+This will print every line in mydata.txt containing the character sequence &quot;virtue&quot;.
+
+---
+
+Our example file, `mydata,txt` is a seering introspective poem:
+
+
+```
+$ cat mydata.txt
+
+```
+yields
+
+`
+This is a test
+And I am
+a sad, sad man`
+
+---
+
+Awk automagically makes every word of that (as defined by whitespace, I think) into an enumerated referencable string. 
+
+So that
+
+
+```
+$ awk '{print $1,$3}' mydata.txt
+```
+
+yields
+
+`
+This a
+And am
+a sad`
+
+__($0 will reference the whole line.)
+__
+
+
+Observations:
+
+* It keeps trailing commas and stuff on words. I checked.
+* What the fuck is that comma doing in the program?
+---
+
+Awk has built in counters and variables.
+
+|NR| Number of Record |Number of the line we're on|
+|NF| Number of Field |Number of the word we're on|
+|FS| Field Separator |Reassignable. Default is whitespace.|
+|RS| Record Separator |Reassignable line break character. Default is newline.|
+|ORS| Output Record Separator |Default newline|
+|OFS| Output Field Separator |Default whitespace|
+
+So that 
+
+
+```
+$ awk '{print NR,$1,$2}' mydata.txt
+```
+
+yields
+
+`
+1 This is
+2 And I
+3 a sad,`
+
+---
+</pre>
 </div>
 <div created="20200518020200941" modified="20200518032800541" tags="" title="Bayes' Theorem">
 <pre>//I have now added a ~KaTeX plugin, and can do neat mathematical and scientific stuff. This might even be useful for chemistry!//
@@ -11487,8 +11580,12 @@ INSIGNIFICANT [platitudinous] INTRODUCTION
  
 From the moment my soul was first astounded by Mozart's music and humbly bowed in admiration, it has often been a favorite and refreshing occupation for me to deliberate on the way that happy Greek view of the world that calls the world a xo!lo~ [cosmos] because it manifests itself as a well-organized whole, as an elegant, transparent adornment for the spirit that acts upon and operates throughout it, the way that happy view lets itself be repeated in a higher order of things, in the world of ideals, the way there is here again a ruling wisdom especially wonderful at uniting what belongs together, Axel with Valborg, Homer with the Trojan War, Raphael with Catholicism, Mozart with Don Juan. There is a paltry disbelief that seems to contain considerable healing power.  It thinks that such a connection is accidental and sees nothing more in it than a very fortunate conjunction of the various forces in the game of life. It thinks that it is accidental that the lovers find each other, accidental that they love each other. There might have been a hundred other girls with whom he could have been just as happy, whom he could have lovedjust as much. It considers that many a poet has lived who would have been just as immortal as Homer if that glorious subject matter had not been taken over by him, many a composer who would have been just as immortal as Mozart if the opportunity had offered itself. This wisdom contains considerable consolation and balm for all mediocrities, who thereby see themselves in a position to delude themselves and like-minded people into thinking that they did not become as exceptional as the exceptional ones because of a mistaken identification on the part of fate, a mistake on the part of the world. This produces a very convenient optimism. But it is abhorrent, of course, to every high-minded soul, every optimate, to whom it is not as important to rescue himself in such a paltry manner as it is to lose himself by contemplating greatness; whereas it is a delight to his soul, a sacred joy, to see united that which belongs together. This is good fortune, not in the sense of the accidental, and thus presupposes two factors, whereas the accidental consists in the un articulated interjections of fate. This is good fortune in history, the divine interplay of the historic forces, the festival period of the historic epoch. The accidental has only one factor: It is accidental that Homer, in the history of the Trojan War, acquired the most remarkable epic subject matter imaginable. Good fortune has two factors: It is fortunate that this most remarkable epic subject matter came into the hands of Homer. Here the emphasis is just as much on Homer as on the subject matter. Here is the deep harmony that pervades every production we call classic. So also with Mozart: It is fortunate that the perhaps sole musical theme (in the more profound sense) was given to-Mozart. With his Don Giovanni, Mozart joins that little immortal band of men whose names, whose works, time will not forget because eternity recollects them. And although it makes no difference, once one is in, whether one ranks highest or lowest-because in a certain sense everyone ranks equally highsince all rank infinitely high, and although it is just as childish to argue about first and last places here as it is to argue about the place assigned in church on confirmation day, I am still too much of a child, or, more correctly, I am infatuated, like a young girl, with Mozart, and I must have him rank in first place, whatever it costs. And I will go to the deacon and the pastor and the dean and the bishop and the whole church council, and I will beseech and implore them to grant my request, and I will challenge the whole congregation on the same matter, and if my appeal is not heard, my childish wish not fulfilled, then I will secede from the association, then I will divorce myself from its way of thinking, then I will form a sect that not only places Mozart first but has no one but Mozart. And I will beseech Mozart to forgive me that his music did not inspire me to great deeds but made me a fool who, because of him, lost the little sense I had and now in quiet sadness usually passes the time humming something I do not understand, and like a ghost prowls night and day around something I cannot enter. Immortal Mozart! You to whom l owe everything-to whom l owe that I lost my mind, that my soul was astounded, that I was terrified at the core of my being-you to whom I owe that I did not go through life without encountering something that could shake me, you whom I thank because I did not die without having loved, even though my love was unhappy. No wonder, then, that I am much more zealous for his glorification than for the happiest moment of my own life, much more zealous for his immortality than for my own existence. Indeed, if he were taken away, if his name were blotted out, that would demolish the one pillar that until now has prevented everything from collapsing for me into a boundless chaos, into a dreadful nothing. Yet I certainly need not fear that any age will deny him a place in that kingdom of the gods, but I do need to be prepared for people to find it childish of me to insist that he have first place. And although I by no means propose to feel ashamed of my childishness, although it will always have more significance and value for me than any exhaustive consideration precisely because it is inexhaustible, </pre>
 </div>
-<div created="20200526133423138" modified="20200526142533504" tags="" title="Linux shell commands">
-<pre>!!cat
+<div created="20200526133423138" modified="20200528152325709" tags="" title="Linux shell commands">
+<pre>!!awk
+
+Syntax is found on its own [[study page|Awk]].
+
+!!cat
 To print a file type 
 
 
@@ -11957,7 +12054,7 @@ Again, an iframe (like the two before). This lil guy is just an embedded widget 
 
 </pre>
 </div>
-<div created="20200512231220756" modified="20200527131853308" tags="code" title="Practice and Study">
+<div created="20200512231220756" modified="20200528152359839" tags="code" title="Practice and Study">
 <pre>//Writing an awk interpreter in gambas would teach me both to fluency.
 //
 
@@ -11969,7 +12066,7 @@ Again, an iframe (like the two before). This lil guy is just an embedded widget 
 ** Practice in new keys
 ***G (5/12), (5/13), (5/14), (5/15), (5/17), (5/18), (5/26)
 * Programming
-** Study awk
+** Study awk (5/28)
 ** Study problog (5/17), (5/18)
 ** Study sonic pi
 ** Study gambas (5/26)
