@@ -485,6 +485,8 @@ Error message and password prompt
 
 <li>The Rundown</li>
 
+<li>The Sex Party Algorithm</li>
+
 <li>ThingsToWiki</li>
 
 <li>ToDo</li>
@@ -500,6 +502,8 @@ Error message and password prompt
 <li>Untitled</li>
 
 <li>UpdateResume</li>
+
+<li>Virtue</li>
 
 <li>Wallet</li>
 
@@ -10139,7 +10143,7 @@ Error message and password prompt
 <div created="20200515102243955" modified="20200515102250860" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditorToolbar</pre>
 </div>
-<div created="20200610193845090" list="Apocalypse" modified="20200610201022279" title="$:/StoryList">
+<div created="20200610193845090" list="[[The Sex Party Algorithm]] Blog Apocalypse" modified="20200610221923712" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200518014750959" modified="20200518014750959" title="$:/temp/HidePluginWarning">
@@ -10209,7 +10213,7 @@ Error message and password prompt
 <div created="20200514104125949" modified="20200610181823720" title="$:/temp/password2">
 <pre></pre>
 </div>
-<div created="20200402031459511" modified="20200610201043753" title="$:/temp/search">
+<div created="20200402031459511" modified="20200610222919741" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
@@ -10917,7 +10921,7 @@ In this example
 
 </pre>
 </div>
-<div created="20200603231310562" modified="20200609182349891" tags="" title="Blog">
+<div created="20200603231310562" modified="20200610222610667" tags="" title="Blog">
 <pre>''Reminders''
 
 * I bought the wordpress personal plan on June 3rd. It'll need renewing in a year.
@@ -10927,7 +10931,9 @@ In this example
 
 * [[This|https://youtu.be/E6jvAHk80oY]] is probably a good way to make slideshows.
 
-* https://quotebacks.net/
+* [[This|https://quotebacks.net/]] is awesome for twitter-like linked quoting of blogs (can I make it work for books?
+
+*[[Vidyoze|https://viddyoze.com]] offers a lifetime of cool video effects that make your video look professional like the news for a one-time payment of $67.
 
 ''[[Blog post ideas|Blog posts]] are here. ''
 
@@ -14112,6 +14118,89 @@ Logistics:
 
 </pre>
 </div>
+<div created="20200610222623760" modified="20200610222905733" tags="code" title="The Sex Party Algorithm">
+<pre>Incomplete code ([[also on repl.it|https://repl.it/repls/CavernousAnguishedPrograms]]) can take ordinal lists and calculate a person's power. 
+
+Ken3 says the optimal algorithm would make a match of the couple with the highest combined inverse ordinal ranking, and then re-adjust all lists to remove them, rinse and repeat.
+
+
+```
+DIM SHARED howmany% AS INTEGER
+DECLARE SUB TakeNames
+DECLARE SUB TakeLists
+DECLARE SUB ClearScreen
+DECLARE SUB DiagnosticP
+DECLARE SUB Rank
+PRINT &quot;How many people to pair off?&quot;
+INPUT howmany%
+TakeNames
+TakeLists
+Rank
+
+
+SUB TakeNames
+  DIM SHARED participants$(1 TO howmany%, 1 TO howmany%)
+  DIM SHARED ranks%(howmany%)
+  FOR i% = 1 TO howmany%
+    PRINT &quot;What is the name of person #&quot; + STR$(i%) +&quot;?&quot;
+    INPUT name$
+    participants$(i%,1) = name$
+  NEXT i%
+  ClearScreen
+  PRINT &quot;Awesome.&quot;
+END SUB
+
+SUB TakeLists
+  FOR i% = 1 TO howmany%
+    ClearScreen
+    ClearScreen
+    ClearScreen
+    PRINT &quot;It is &quot; + participants$(i%,1) +&quot;'s turn to type a list.&quot;
+    PRINT &quot;Get everyone away from the computer except &quot; + participants$(i%,1) + &quot;.&quot;
+    FOR j% = 2 TO (howmany%)
+      PRINT &quot;&quot;
+      PRINT &quot;Who is your #&quot; + STR$(j%-1) + &quot; favorite person to fuck tonight?&quot;
+      PRINT &quot;(If you have listed all the people you're interested in, just press enter)&quot;
+      INPUT name$
+      participants$(i%,j%) = name$
+    NEXT j%
+  NEXT i%
+  ClearScreen
+  ClearScreen
+  ClearScreen
+END SUB 
+
+SUB ClearScreen
+  FOR i% = 1 TO 10
+    PRINT &quot;&quot;
+  NEXT i%
+END SUB
+
+SUB Rank
+  FOR eachPerson% = 1 TO howmany%
+    PRINT &quot;Calculating rank for &quot; + participants$(eachPerson%,1)
+    FOR tallyAttraction% = 2 TO howmany%
+      ordinalFactor% = ((howmany% + 1) - tallyAttraction%)
+      FOR tallyA2% = 1 TO howmany%
+        IF participants$(tallyA2%,tallyAttraction%) = participants$(eachPerson%,1) THEN ranks%(eachPerson%) = ranks%(eachPerson%) + ordinalFactor%
+      NEXT tallyA2%
+    NEXT tallyAttraction%
+    PRINT STR$(ranks%(eachPerson%))
+  NEXT eachPerson%
+END SUB
+
+
+SUB DiagnosticP
+  FOR j% = 1 TO howmany%
+    FOR i% = 1 TO howmany%
+      PRINT participants$(i%,j%)
+    NEXT i%
+  NEXT j%
+END SUB
+
+```
+</pre>
+</div>
 <div created="20200402181729846" modified="20200606183213467" tags="to-do" title="ThingsToWiki">
 <pre>* ClassRecords
 * TurnsOfPhrase
@@ -14205,6 +14294,11 @@ Logistics:
 <pre>* Add NTI
 * Add Danny Quah
 * Add Micah</pre>
+</div>
+<div created="20200610221827402" modified="20200610221911652" tags="philosophy" title="Virtue">
+<pre>
+!Virtue needs nothing to set it off; it is its own great glory, and it hallows the body in which it dwells. 
+-S.</pre>
 </div>
 <div created="20200601214518496" modified="20200601215232380" tags="" title="Wallet">
 <pre>&lt;iframe width=&quot;100%&quot; height=&quot;380&quot; src=&quot;wallet.html#wallet&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
